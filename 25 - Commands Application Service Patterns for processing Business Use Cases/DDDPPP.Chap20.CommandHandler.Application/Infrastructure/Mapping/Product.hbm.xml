@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+    namespace="Agathas.Storefront.Shopping.Model.Baskets.Products"			   
+        assembly="Agathas.Storefront.Shopping">
+
+  <class name="Product" table="Products" lazy="false" >
+
+    <id name="_id" access="field" column="ProductId" type="int">
+
+    </id>
+
+    <property access="field" column="Name" name="_name"/>
+
+    <component class="Agathas.Storefront.Common.Money, Agathas.Storefront.Common" name="_price" access="field">
+      <property access="field" name="_value" column="Price"/>
+    </component>
+  </class>
+
+</hibernate-mapping>

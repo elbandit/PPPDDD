@@ -1,0 +1,1 @@
+﻿put here any events other Bounded Contexts are interested in.

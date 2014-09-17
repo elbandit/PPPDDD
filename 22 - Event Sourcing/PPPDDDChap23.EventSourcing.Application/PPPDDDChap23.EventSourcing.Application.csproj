@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8D3BFFDD-A798-4CE5-B427-8A755698DC9C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PPPDDDChap23.EventSourcing.Application</RootNamespace>
+    <AssemblyName>PPPDDDChap23.EventSourcing.Application</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Raven.Abstractions">
+      <HintPath>..\packages\RavenDB.Client.2.5.2851\lib\net45\Raven.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Client.Lightweight">
+      <HintPath>..\packages\RavenDB.Client.2.5.2851\lib\net45\Raven.Client.Lightweight.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap.2.6.4.1\lib\net40\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Application\BusinessUseCases\CreateAccount.cs" />
+    <Compile Include="Application\BusinessUseCases\RecordPhonecall.cs" />
+    <Compile Include="Application\BusinessUseCases\TopUpCredit.cs" />
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Infrastructure\Entity.cs" />
+    <Compile Include="Infrastructure\EventStore.cs" />
+    <Compile Include="Infrastructure\EventSourcedAggregate.cs" />
+    <Compile Include="Infrastructure\EventWrapper.cs" />
+    <Compile Include="Infrastructure\IClock.cs" />
+    <Compile Include="Infrastructure\PayAsYouGoAccountRepository.cs" />
+    <Compile Include="Infrastructure\EventStream.cs" />
+    <Compile Include="Infrastructure\SystemClock.cs" />
+    <Compile Include="Infrastructure\ValueObject.cs" />
+    <Compile Include="Model\PayAsYouGo\AccountCreated.cs" />
+    <Compile Include="Model\PayAsYouGo\IPayAsYouGoAccountRepository.cs" />
+    <Compile Include="Model\PayAsYouGo\Minutes.cs" />
+    <Compile Include="Model\PayAsYouGo\Money.cs" />
+    <Compile Include="Model\PayAsYouGo\CreditAdded.cs" />
+    <Compile Include="Model\PayAsYouGo\CreditSatisfiesFreeCallAllowanceOffer.cs" />
+    <Compile Include="Model\PayAsYouGo\FreeCallAllowance.cs" />
+    <Compile Include="Model\PayAsYouGo\PayAsYouGoAccount.cs" />
+    <Compile Include="Model\PayAsYouGo\PayAsYouGoAccountSnapshot.cs" />
+    <Compile Include="Model\PayAsYouGo\PayAsYouGoInclusiveMinutesOffer.cs" />
+    <Compile Include="Model\PayAsYouGo\PhoneCall.cs" />
+    <Compile Include="Model\PayAsYouGo\PhoneCallCharged.cs" />
+    <Compile Include="Model\PayAsYouGo\PhoneCallCosting.cs" />
+    <Compile Include="Model\PayAsYouGo\PhoneNumber.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Application\Queries\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

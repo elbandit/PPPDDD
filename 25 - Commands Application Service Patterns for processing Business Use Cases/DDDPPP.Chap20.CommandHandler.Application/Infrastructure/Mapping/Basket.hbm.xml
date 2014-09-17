@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+    namespace="Agathas.Storefront.Shopping.Model.Baskets"
+        assembly="Agathas.Storefront.Shopping">
+
+  <class name="Basket" table="Baskets" lazy="false" >
+
+    <id name="_id" access="field" column="BasketId" type="Guid">
+      
+    </id>
+	  
+	  <component class="Agathas.Storefront.Shopping.Model.Baskets.BasketVoucher" access="field" name="_basket_voucher">		  		  
+		  <property access="field" name="_voucher_code" column="VoucherCode"/>		  
+		  <component class="Agathas.Storefront.Common.Money, Agathas.Storefront.Common" access="field" name="_discount">
+			  <property access="field" name="_value" column="VoucherDiscount"/>
+		  </component>		  
+		  <component class="Agathas.Storefront.Common.Money, Agathas.Storefront.Common" access="field" name="_threshold">
+			  <property access="field" name="_value" column="VoucherThreshold"/>
+		  </component>
+	  </component>
+	  
+	  <bag name="_items" lazy="false" access="field"  inverse="true" cascade="all-delete-orphan">
+      <key column="BasketId"/>
+      <one-to-many class="BasketItem"></one-to-many>
+    </bag>
+  </class>
+
+</hibernate-mapping>

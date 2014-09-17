@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPPDDDChap23.EventSourcing.Application", "PPPDDDChap23.EventSourcing.Application\PPPDDDChap23.EventSourcing.Application.csproj", "{8D3BFFDD-A798-4CE5-B427-8A755698DC9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPPDDDChap23.EventSourcing.Presentation", "PPPDDDChap23.EventSourcing.Presentation\PPPDDDChap23.EventSourcing.Presentation.csproj", "{2D68287E-7C3A-4A2D-8DF8-510BD615A954}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPPDDDChap23.EventSourcing.ApplicationTests", "PPPDDDChap23.EventSourcing.ApplicationTests\PPPDDDChap23.EventSourcing.ApplicationTests.csproj", "{CC4EB0F4-877E-4767-95F7-FCFF629D9251}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A40CA553-C0B1-4068-865E-306AB36100ED}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8D3BFFDD-A798-4CE5-B427-8A755698DC9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D3BFFDD-A798-4CE5-B427-8A755698DC9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D3BFFDD-A798-4CE5-B427-8A755698DC9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D3BFFDD-A798-4CE5-B427-8A755698DC9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D68287E-7C3A-4A2D-8DF8-510BD615A954}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D68287E-7C3A-4A2D-8DF8-510BD615A954}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D68287E-7C3A-4A2D-8DF8-510BD615A954}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D68287E-7C3A-4A2D-8DF8-510BD615A954}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC4EB0F4-877E-4767-95F7-FCFF629D9251}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC4EB0F4-877E-4767-95F7-FCFF629D9251}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC4EB0F4-877E-4767-95F7-FCFF629D9251}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC4EB0F4-877E-4767-95F7-FCFF629D9251}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

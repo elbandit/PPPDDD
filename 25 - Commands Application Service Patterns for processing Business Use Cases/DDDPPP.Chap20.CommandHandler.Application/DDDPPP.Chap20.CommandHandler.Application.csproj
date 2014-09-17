@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{52858090-3479-4015-984F-5AA049857F3F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DDDPPP.Chap20.CommandHandler.Application</RootNamespace>
+    <AssemblyName>DDDPPP.Chap20.CommandHandler.Application</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Application\Api.cs" />
+    <Compile Include="CommandHandlerRegistry.cs" />
+    <Compile Include="Application\Commands\AddProductToBasketCommand.cs" />
+    <Compile Include="Application\Commands\ApplyCouponToBasketCommand.cs" />
+    <Compile Include="Application\Commands\CreateABasketCommand.cs" />
+    <Compile Include="Application\Commands\RemoveOfferFromBasketCommand.cs" />
+    <Compile Include="Application\Commands\RemoveProductFromBasketCommand.cs" />
+    <Compile Include="Application\Commands\UpdateBasketDeliveryCountry.cs" />
+    <Compile Include="DomainEventHandlerRegistery.cs" />
+    <Compile Include="Application\Handlers\AddProductToBasketCommandHandler.cs" />
+    <Compile Include="Application\Handlers\ApplyCouponToBasketCommandHandler.cs" />
+    <Compile Include="Application\Handlers\CreateABasketCommandHandler.cs" />
+    <Compile Include="Application\Handlers\RemoveCouponFromBasketCommandHandler.cs" />
+    <Compile Include="Application\Handlers\RemoveProductFromBasketCommandHandler.cs" />
+    <Compile Include="Infrastructure\BasketRepository.cs" />
+    <Compile Include="Infrastructure\PromotionsRepository.cs" />
+    <Compile Include="Model\Baskets\Basket.cs" />
+    <Compile Include="Model\Baskets\BasketItem.cs" />
+    <Compile Include="Model\Baskets\BasketItemFactory.cs" />
+    <Compile Include="Model\Baskets\BasketPricingBreakdown.cs" />
+    <Compile Include="Model\Baskets\BasketPricingService.cs" />
+    <Compile Include="Model\Baskets\Events\BasketCreated.cs" />
+    <Compile Include="Model\Baskets\Events\BasketModified.cs" />
+    <Compile Include="Model\Baskets\Events\BasketPriceChanged.cs" />
+    <Compile Include="Model\Baskets\Events\CouponNotApplicableForBasketItems.cs" />
+    <Compile Include="Model\Baskets\IBasketPricingService.cs" />
+    <Compile Include="Model\Baskets\IBasketRepository.cs" />
+    <Compile Include="Model\Baskets\NonNegativeQuantity.cs" />
+    <Compile Include="Model\Baskets\ProductSnapshot.cs" />
+    <Compile Include="Model\Promotions\Coupon.cs" />
+    <Compile Include="Model\Promotions\CouponIssues.cs" />
+    <Compile Include="Model\Promotions\ICouponPolicy.cs" />
+    <Compile Include="Model\Promotions\IPromotionsRepository.cs" />
+    <Compile Include="Model\Promotions\Promotion.cs" />
+    <Compile Include="Model\Promotions\PromotionNotApplicableException.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Application\ReadModel\Product.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Application\Contract\_readme.txt" />
+    <Content Include="Infrastructure\Mapping\Basket.hbm.xml" />
+    <Content Include="Infrastructure\Mapping\BasketItem.hbm.xml" />
+    <Content Include="Infrastructure\Mapping\BasketVoucher.hbm.xml" />
+    <Content Include="Infrastructure\Mapping\Offer.hbm.xml" />
+    <Content Include="Infrastructure\Mapping\Product.hbm.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
