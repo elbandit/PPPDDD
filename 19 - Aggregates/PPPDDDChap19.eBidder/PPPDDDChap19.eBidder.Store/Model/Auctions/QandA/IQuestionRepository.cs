@@ -9,5 +9,6 @@ namespace PPPDDDChap19.eBidder.Store.Application.Model.Auctions.QandA
     public interface IQuestionRepository
     {
         Question FindBy(Guid id);
+        void Add(Question question);
     }
 }

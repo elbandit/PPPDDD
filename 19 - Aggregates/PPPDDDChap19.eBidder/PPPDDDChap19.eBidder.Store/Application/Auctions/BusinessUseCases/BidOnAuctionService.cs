@@ -3,6 +3,7 @@ using PPPDDDChap19.eBidder.Store.Application.Infrastructure;
 using PPPDDDChap19.eBidder.Store.Application.Model.Auctions.BidHistory;
 using PPPDDDChap19.eBidder.Store.Application.Model.Auctions;
 using PPPDDDChap19.eBidder.Store.Application.Model;
+using PPPDDDChap19.eBidder.Store.Application.Model.Members;
 
 namespace PPPDDDChap19.eBidder.Store.Application.Application.BusinessUseCases
 {
@@ -10,15 +11,18 @@ namespace PPPDDDChap19.eBidder.Store.Application.Application.BusinessUseCases
     {
         private IAuctionRepository _auctions;
         private IBidHistoryRepository _bidHistory;
+        private IMemberRepository _members;
         //private IDocumentSession _unitOfWork;
         private IClock _clock;
 
         public BidOnAuctionService(IAuctionRepository auctions,
-                            IBidHistoryRepository bidHistory,                            
+                            IBidHistoryRepository bidHistory, 
+                            IMemberRepository members,
                             IClock clock)
         {
             _auctions = auctions;
             _bidHistory = bidHistory;
+            _members = members;
             //_unitOfWork = unitOfWork;
             _clock = clock;
         }
@@ -30,6 +34,9 @@ namespace PPPDDDChap19.eBidder.Store.Application.Application.BusinessUseCases
                 using (DomainEvents.Register(OutBid()))
                 using (DomainEvents.Register(BidPlaced()))
                 {
+                    // Ensure member exisits
+                    var member = _members.FindBy(memberId);
+
                     var auction = _auctions.FindBy(auctionId);
 
                     var bidAmount = new Money(amount);
@@ -60,7 +67,8 @@ namespace PPPDDDChap19.eBidder.Store.Application.Application.BusinessUseCases
         {
             return (OutBid e) =>
             {
-                // Email customer to say that he has been out bid                
+                // Add message to Member message board.
+                // 
             };
         }
     }

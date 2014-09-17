@@ -8,14 +8,20 @@ namespace PPPDDDChap19.eBidder.Store.Application.Model.Auctions.QandA
 {
     public class Question
     {
-        public Question(Guid id, Guid auctionId, Guid memberId)
+        private Guid Id { get; set; }
+        private Guid SellerId { get; set; }
+        private Guid AuctionId { get; set; }
+        private Guid MemberId { get; set; }
+
+
+        public Question(Guid id, Guid auctionId, Guid memberId, string question)
         { 
         
         }
 
         public string Desc { get; set; }
 
-        public void SubmitAnAnswer(string answer)
+        public void SubmitAnAnswer(string answer, Guid sellerId)
         { 
             
         }

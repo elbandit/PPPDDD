@@ -39,6 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\Auctions\BusinessUseCases\Answer.cs" />
+    <Compile Include="Application\Auctions\BusinessUseCases\AnswerAQuestionService.cs" />
+    <Compile Include="Application\Auctions\BusinessUseCases\AskAQuestionService.cs" />
     <Compile Include="Application\Auctions\BusinessUseCases\AuctionCreation.cs" />
     <Compile Include="Application\Auctions\BusinessUseCases\BidOnAuctionService.cs" />
     <Compile Include="Application\Auctions\BusinessUseCases\CreateAuctionService.cs" />

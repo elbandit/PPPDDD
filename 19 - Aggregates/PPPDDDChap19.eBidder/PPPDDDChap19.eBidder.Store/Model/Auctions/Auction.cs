@@ -24,9 +24,13 @@ namespace PPPDDDChap19.eBidder.Store.Application.Model.Auctions
             if (endsAt == DateTime.MinValue)
                 throw new ArgumentNullException("EndsAt must have a value");
 
+            if (item == null)
+                throw new ArgumentNullException("The Item cannot be null");
+
             Id = id;
             StartingPrice = startingPrice;
-            EndsAt = endsAt;              
+            EndsAt = endsAt;
+            Item = item;
         }
 
         //public Email ContactSeller(string question)
@@ -41,15 +45,19 @@ namespace PPPDDDChap19.eBidder.Store.Application.Model.Auctions
             return new WatchedItem(this.Id, MemberId);
         }
 
-       // public PaymentMethod AddPaymentMethod()
-       // { }
+       //public void Add(PaymentMethod paymentMethod)
+       //{
+           // replace Item and add PaymentMethod       
+       //}
 
-       // public PostLocation AddPostLocation()
-       // { }
+       //public void Add(PostLocation()
+       //{ 
+       
+       //}
 
-        public Question AskQuestion(Guid MemberId)
-        {   
-            return new Question(Guid.NewGuid(), this.Id, MemberId);
+        public Question AskQuestion(Guid MemberId, string quesiton)
+        {
+            return new Question(Guid.NewGuid(), this.Id, MemberId, quesiton);
         }
 
         public void ReduceTheStartingPrice()
@@ -58,21 +66,16 @@ namespace PPPDDDChap19.eBidder.Store.Application.Model.Auctions
         }
 
         private Guid sellerId { get; set; }
-
-        private string Title { get; set; }
-
-        private string Description { get; set; }
+        private Item Item { get; set; }
         private DateTime EndsAt { get; set; }
 
-
-
-        public void AmendDescription(string description)
+        public void Amend(Item item)
         {
             // http://pages.ebay.co.uk/help/sell/revising_restrictions.html
             // if (currentTime.
             // Throw New ItemRevisionEvent(Description), DateTime currentTime
 
-            Description = description;
+            Item = item;
         }
 
         private Money StartingPrice { get; set; }
@@ -85,12 +88,6 @@ namespace PPPDDDChap19.eBidder.Store.Application.Model.Auctions
         // The listing then proceeds as a regular auction-style listing, with the item going to the highest bidder. 
         // (If the auction has a reserve price, the Buy it now option will be available until the reserve price is met.)
         // http://sellercentre.ebay.co.uk/add-buy-it-now-price-auction
-
-        public void BestOffer()
-        {
-            // http://ocsnext.ebay.co.uk/ocs/sc
-            // for Buy It Now listing only
-        }
        
         private bool StillInProgress(DateTime currentTime)
         {
