@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5DA97316-904D-480F-B3BC-3FA75E120FEE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PPPDDDChap19.eBidder.Listings</RootNamespace>
+    <AssemblyName>PPPDDDChap19.eBidder.Listings</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Application\Auctions\BusinessUseCases\Answer.cs" />
+    <Compile Include="Application\Auctions\BusinessUseCases\AnswerAQuestionService.cs" />
+    <Compile Include="Application\Auctions\BusinessUseCases\AskAQuestionService.cs" />
+    <Compile Include="Application\Auctions\BusinessUseCases\AuctionCreation.cs" />
+    <Compile Include="Application\Auctions\BusinessUseCases\BidOnAuctionService.cs" />
+    <Compile Include="Application\Auctions\BusinessUseCases\CreateAuctionService.cs" />
+    <Compile Include="Application\WatchListing.cs" />
+    <Compile Include="Application\WatchListingService.cs" />
+    <Compile Include="Infrastructure\DomainEvents.cs" />
+    <Compile Include="Infrastructure\Entity.cs" />
+    <Compile Include="Infrastructure\IClock.cs" />
+    <Compile Include="Infrastructure\SystemClock.cs" />
+    <Compile Include="Infrastructure\ValueObject.cs" />
+    <Compile Include="Model\Auctions\Auction.cs" />
+    <Compile Include="Model\Auctions\AutomaticBidder.cs" />
+    <Compile Include="Model\Auctions\BidHistory\Bid.cs" />
+    <Compile Include="Model\Auctions\BidHistory\IBidHistoryRepository.cs" />
+    <Compile Include="Model\Auctions\BidPlaced.cs" />
+    <Compile Include="Model\Auctions\IAuctionRepository.cs" />
+    <Compile Include="Model\Auctions\Offer.cs" />
+    <Compile Include="Model\Auctions\OutBid.cs" />
+    <Compile Include="Model\Money.cs" />
+    <Compile Include="Model\MoneyCannotBeANegativeValueException.cs" />
+    <Compile Include="Model\MoreThanTwoDecimalPlacesInMoneyValueException.cs" />
+    <Compile Include="Model\QandA\Answer.cs" />
+    <Compile Include="Model\QandA\IQuestionRepository.cs" />
+    <Compile Include="Model\QandA\Question.cs" />
+    <Compile Include="Model\Auctions\WinningBid.cs" />
+    <Compile Include="Model\FixedPriceListings\FixedPriceListing.cs" />
+    <Compile Include="Model\FixedPriceListings\IFixedPriceListingRepository.cs" />
+    <Compile Include="Model\FixedPriceListings\Offers\BestOffer.cs" />
+    <Compile Include="Model\Items\Item.cs" />
+    <Compile Include="Model\Items\ItemRevision.cs" />
+    <Compile Include="Model\Items\ItemRevisionEvent.cs" />
+    <Compile Include="Model\Auctions\Price.cs" />
+    <Compile Include="Model\Watchers\IWatcherRepository.cs" />
+    <Compile Include="Model\Watchers\Watcher.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Application\Auctions\Queries\" />
+    <Folder Include="Application\FixedPriceListing\BusinessUseCases\" />
+    <Folder Include="Application\FixedPriceListing\Queries\" />
+    <Folder Include="Model\Items\PaymentMethods\" />
+    <Folder Include="Model\Items\ShippingMethods\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

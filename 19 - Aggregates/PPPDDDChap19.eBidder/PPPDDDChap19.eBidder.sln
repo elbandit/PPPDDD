@@ -1,7 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPPDDDChap19.eBidder.Store", "PPPDDDChap19.eBidder.Store\PPPDDDChap19.eBidder.Store.csproj", "{0CFEC25F-FBD0-4957-A048-2E64B15BD2DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPPDDDChap19.eBidder.Disputes", "PPPDDDChap19.eBidder.Disputes\PPPDDDChap19.eBidder.Disputes.csproj", "{6753FC4E-CDEB-4F17-A4C7-9CE18A4C11DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPPDDDChap19.eBidder.Listings", "PPPDDDChap19.eBidder.Listings\PPPDDDChap19.eBidder.Listings.csproj", "{5DA97316-904D-480F-B3BC-3FA75E120FEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPPDDDChap19.eBidder.SellerAccount", "PPPDDDChap19.eBidder.SellerAccount\PPPDDDChap19.eBidder.SellerAccount.csproj", "{8917A663-AB2E-4A7A-B6D1-D153842BDEF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPPDDDChap19.eBidder.Membership", "PPPDDDChap19.eBidder.Membership\PPPDDDChap19.eBidder.Membership.csproj", "{48FF285F-08C2-4D38-91FC-48C4C942DE26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPPDDDChap19.eBidder.Common", "PPPDDDChap19.eBidder.Common\PPPDDDChap19.eBidder.Common.csproj", "{45804B34-C80F-4096-9919-C22260412E2B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +17,26 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0CFEC25F-FBD0-4957-A048-2E64B15BD2DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0CFEC25F-FBD0-4957-A048-2E64B15BD2DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0CFEC25F-FBD0-4957-A048-2E64B15BD2DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0CFEC25F-FBD0-4957-A048-2E64B15BD2DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6753FC4E-CDEB-4F17-A4C7-9CE18A4C11DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6753FC4E-CDEB-4F17-A4C7-9CE18A4C11DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6753FC4E-CDEB-4F17-A4C7-9CE18A4C11DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6753FC4E-CDEB-4F17-A4C7-9CE18A4C11DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DA97316-904D-480F-B3BC-3FA75E120FEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DA97316-904D-480F-B3BC-3FA75E120FEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DA97316-904D-480F-B3BC-3FA75E120FEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DA97316-904D-480F-B3BC-3FA75E120FEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8917A663-AB2E-4A7A-B6D1-D153842BDEF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8917A663-AB2E-4A7A-B6D1-D153842BDEF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8917A663-AB2E-4A7A-B6D1-D153842BDEF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8917A663-AB2E-4A7A-B6D1-D153842BDEF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48FF285F-08C2-4D38-91FC-48C4C942DE26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48FF285F-08C2-4D38-91FC-48C4C942DE26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48FF285F-08C2-4D38-91FC-48C4C942DE26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48FF285F-08C2-4D38-91FC-48C4C942DE26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45804B34-C80F-4096-9919-C22260412E2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45804B34-C80F-4096-9919-C22260412E2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45804B34-C80F-4096-9919-C22260412E2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45804B34-C80F-4096-9919-C22260412E2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

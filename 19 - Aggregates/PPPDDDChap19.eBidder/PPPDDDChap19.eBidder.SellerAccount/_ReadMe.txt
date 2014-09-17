@@ -1,0 +1,1 @@
+﻿This project would hold the code for eBidders membership.
