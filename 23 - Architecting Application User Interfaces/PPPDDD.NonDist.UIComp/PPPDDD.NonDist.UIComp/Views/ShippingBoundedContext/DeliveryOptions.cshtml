@@ -1,0 +1,14 @@
+﻿@model IEnumerable<PPPDDD.NonDist.UIComp.ShippingBoundedContext.DeliveryOption>
+
+<div class="deliveryOptions">
+    <h2>Delivery Options</h2>
+    @foreach(var option in Model)
+    {
+        <p>
+            @Html.RadioButton("deliveryOptions", option.ID)
+            @option.Name - $@String.Format(option.Price.ToString(), "##.##")
+             (@option.Duration.Item1 - @option.Duration.Item2 days)
+        </p>
+            
+    }
+</div>
