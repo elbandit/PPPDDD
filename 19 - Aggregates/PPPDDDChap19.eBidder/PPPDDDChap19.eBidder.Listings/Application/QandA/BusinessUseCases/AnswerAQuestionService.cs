@@ -9,7 +9,7 @@ using PPPDDDChap19.eBidder.Listings.Model.Auctions;
 using PPPDDDChap19.eBidder.Listings.Model;
 using PPPDDDChap19.eBidder.Listings.Model.QandA;
 
-namespace PPPDDDChap19.eBidder.Listings.Application.Auctions.BusinessUseCases
+namespace PPPDDDChap19.eBidder.Listings.Application.QandA.BusinessUseCases
 {
     public class AnswerAQuestionService
     {
@@ -18,18 +18,28 @@ namespace PPPDDDChap19.eBidder.Listings.Application.Auctions.BusinessUseCases
         //private IDocumentSession _unitOfWork;
         private IClock _clock;
 
-        public AnswerAQuestionService(IQuestionRepository questions)
+        public AnswerAQuestionService(IQuestionRepository questions, IClock clock)
         {
             _questions = questions;
+            _clock = clock;
         }
         
-        public void Answer(Guid questionId, Guid sellerId, string answer)
+        public void Answer(Guid questionId, Guid sellerId, string answer, bool publishOnListing)
         {
             var question = _questions.FindBy(questionId);
 
-            // TODO:Publish to item so that all can view
+            using (DomainEvents.Register(QuestionAnswered()))
+            {
+                question.SubmitAnAnswer(answer, sellerId, publishOnListing, _clock.Time());
+            }
+        }
 
-            question.SubmitAnAnswer(answer, sellerId);
+        private Action<QuestionAnswered> QuestionAnswered()
+        {
+            return (QuestionAnswered e) =>
+            {
+                // Email member about the question being answered
+            };
         }
 
     }

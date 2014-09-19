@@ -8,7 +8,6 @@ namespace PPPDDDChap19.eBidder.Listings.Model.Auctions.Offers
 {
     public class BestOffer
     {
-
         public void CounterOffer()
         {
             //price and terms, and click 'Send'.

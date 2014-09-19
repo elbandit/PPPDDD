@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PPPDDDChap19.eBidder.Listings.Application.Auctions.BusinessUseCases
+namespace PPPDDDChap19.eBidder.Listings.Model.Listings
 {
-    public class Answer
+    public enum FormatType
     {
+        Auction,
+        FixedPrice
     }
 }

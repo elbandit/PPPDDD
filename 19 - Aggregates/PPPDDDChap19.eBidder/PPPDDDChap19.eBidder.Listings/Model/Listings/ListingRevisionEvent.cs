@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PPPDDDChap19.eBidder.Listings.Model.Items
+namespace PPPDDDChap19.eBidder.Listings.Model.Listings
 {
-    public class ItemRevision
+    public class ListingRevisionEvent
     {
         private Guid Item { get; set; }
-        private DateTime Date { get; set; }
+        private DateTime Date {get; set;}
+
         private String RevisedInformation { get; set; }
     }
 }

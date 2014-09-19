@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PPPDDDChap19.eBidder.Listings.Application.Infrastructure;
 using PPPDDDChap19.eBidder.Listings.Model.QandA;
-using PPPDDDChap19.eBidder.Listings.Model.Watchers;
-using PPPDDDChap19.eBidder.Listings.Model.Items;
+using PPPDDDChap19.eBidder.Listings.Model.Listings;
 
 namespace PPPDDDChap19.eBidder.Listings.Model.FixedPrice
 {
@@ -14,7 +13,7 @@ namespace PPPDDDChap19.eBidder.Listings.Model.FixedPrice
     {
         private FixedPriceListing() { }
 
-        public FixedPriceListing(Guid id, Guid sellerId, Money buyNowPrice, DateTime endsAt, Item item)
+        public FixedPriceListing(Guid id, Guid sellerId, Money buyNowPrice, DateTime endsAt, Listing listing)
         {
             if (id == Guid.Empty)
                 throw new ArgumentNullException("Auction Id cannot be null");
@@ -28,18 +27,18 @@ namespace PPPDDDChap19.eBidder.Listings.Model.FixedPrice
             if (endsAt == DateTime.MinValue)
                 throw new ArgumentNullException("EndsAt must have a value");
 
-            if (item == null)
+            if (listing == null)
                 throw new ArgumentNullException("The Item cannot be null");
 
             Id = id;
             BuyNowPrice = buyNowPrice;
             EndsAt = endsAt;
-            Item = item;
+            Listing = listing;
         }
 
         private Guid Id { get; set; }
         private Guid sellerId { get; set; }
-        private Item Item { get; set; }
+        private Listing Listing { get; set; }
         private DateTime EndsAt { get; set; }
         private Money BuyNowPrice { get; set; }
 

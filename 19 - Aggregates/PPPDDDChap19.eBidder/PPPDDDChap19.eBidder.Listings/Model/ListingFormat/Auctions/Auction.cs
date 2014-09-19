@@ -1,8 +1,5 @@
 ﻿using System;
 using PPPDDDChap19.eBidder.Listings.Application.Infrastructure;
-using PPPDDDChap19.eBidder.Listings.Model.QandA;
-using PPPDDDChap19.eBidder.Listings.Model.Items;
-using PPPDDDChap19.eBidder.Listings.Model.Watchers;
 
 namespace PPPDDDChap19.eBidder.Listings.Model.Auctions
 {
@@ -10,54 +7,21 @@ namespace PPPDDDChap19.eBidder.Listings.Model.Auctions
     {
         private Auction() { }
 
-        public Auction(Guid id, Guid sellerId, Money startingPrice, DateTime endsAt, Item item)
+        public Auction(Guid id, Guid itemId, Money startingPrice, DateTime endsAt)
         {
             if (id == Guid.Empty)
                 throw new ArgumentNullException("Auction Id cannot be null");
-
-            if (sellerId == Guid.Empty)
-                throw new ArgumentNullException("Seller Id cannot be null");
 
             if (startingPrice == null)
                 throw new ArgumentNullException("Starting Price cannot be null");
 
             if (endsAt == DateTime.MinValue)
                 throw new ArgumentNullException("EndsAt must have a value");
-
-            if (item == null)
-                throw new ArgumentNullException("The Item cannot be null");
-
+            
             Id = id;
+            ItemId = itemId;
             StartingPrice = startingPrice;
-            EndsAt = endsAt;
-            Item = item;
-        }
-
-        //public Email ContactSeller(string question)
-        //{ 
-            // You'll receive the message in your Messages inbox and your personal email account. 
-            // When you respond, you can choose to post the question and answer to your listing 
-            // so all buyers can see it. Once you post the answer, you can't change or remove it.
-        //}
-
-        public Watcher Watch(Guid MemberId)
-        {
-            return new Watcher(this.Id, MemberId);
-        }
-
-       //public void Add(PaymentMethod paymentMethod)
-       //{
-           // replace Item and add PaymentMethod       
-       //}
-
-       //public void Add(PostLocation()
-       //{ 
-       
-       //}
-
-        public Question AskQuestion(Guid MemberId, string quesiton)
-        {
-            return new Question(Guid.NewGuid(), this.Id, MemberId, quesiton);
+            EndsAt = endsAt;            
         }
 
         public void ReduceTheStartingPrice()
@@ -65,23 +29,12 @@ namespace PPPDDDChap19.eBidder.Listings.Model.Auctions
             // Only if no bids and more than 12 hours left
         }
 
-        private Guid sellerId { get; set; }
-        private Item Item { get; set; }
-        private DateTime EndsAt { get; set; }
-
-        public void Amend(Item item)
-        {
-            // http://pages.ebay.co.uk/help/sell/revising_restrictions.html
-            // if (currentTime.
-            // Throw New ItemRevisionEvent(Description), DateTime currentTime
-
-            Item = item;
-        }
-
+        private Guid ItemId { get; set; }
+        private DateTime EndsAt { get; set; }       
         private Money StartingPrice { get; set; }
         private WinningBid WinningBid { get; set; }
+        private bool HasEnded { get; set; }
         
-
         // Fixed Price or 
         // Auction
         // Once someone bids, the Buy it now option disappears. 
@@ -92,6 +45,11 @@ namespace PPPDDDChap19.eBidder.Listings.Model.Auctions
         private bool StillInProgress(DateTime currentTime)
         {
             return (EndsAt > currentTime);             
+        }
+
+        public bool CanPlaceBid()
+        { 
+            return HasEnded == false;        
         }
 
         public void PlaceBidFor(Offer offer, DateTime currentTime)
