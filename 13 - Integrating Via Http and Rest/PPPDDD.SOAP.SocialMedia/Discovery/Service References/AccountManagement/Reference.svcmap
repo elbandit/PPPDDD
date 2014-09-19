@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ea8f9dcc-d2d4-40de-bc30-b0009feb01c5" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:3100/FollowerDirectory.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="FollowerDirectory.xsd" MetadataType="Schema" ID="746555dc-5e15-4053-bf3a-ab352c92bb5c" SourceId="1" SourceUrl="http://localhost:3100/FollowerDirectory.svc?xsd=xsd2" />
+    <MetadataFile FileName="FollowerDirectory.wsdl" MetadataType="Wsdl" ID="4759b466-8efc-4aa3-8aa9-d762a571edef" SourceId="1" SourceUrl="http://localhost:3100/FollowerDirectory.svc?wsdl" />
+    <MetadataFile FileName="FollowerDirectory1.xsd" MetadataType="Schema" ID="31f8dab8-9c5c-4167-9d30-af579d1d1a1c" SourceId="1" SourceUrl="http://localhost:3100/FollowerDirectory.svc?xsd=xsd1" />
+    <MetadataFile FileName="FollowerDirectory.disco" MetadataType="Disco" ID="18e7a042-6928-4f9c-8ca1-8e6114626826" SourceId="1" SourceUrl="http://localhost:3100/FollowerDirectory.svc?disco" />
+    <MetadataFile FileName="FollowerDirectory2.xsd" MetadataType="Schema" ID="229e27f1-b33f-4c27-bace-11b376e44133" SourceId="1" SourceUrl="http://localhost:3100/FollowerDirectory.svc?xsd=xsd3" />
+    <MetadataFile FileName="FollowerDirectory3.xsd" MetadataType="Schema" ID="a6466f23-d2b5-4a60-829c-5ba95646cf99" SourceId="1" SourceUrl="http://localhost:3100/FollowerDirectory.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

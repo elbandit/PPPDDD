@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2013 for Web
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountManagement", "AccountManagement\AccountManagement.csproj", "{A5683820-EAE9-4C2A-B91A-50F50A1D052F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discovery", "Discovery\Discovery.csproj", "{A8F7B7B2-F436-4F38-A5B6-A0C86FEC4F8F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5683820-EAE9-4C2A-B91A-50F50A1D052F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5683820-EAE9-4C2A-B91A-50F50A1D052F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5683820-EAE9-4C2A-B91A-50F50A1D052F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5683820-EAE9-4C2A-B91A-50F50A1D052F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8F7B7B2-F436-4F38-A5B6-A0C86FEC4F8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8F7B7B2-F436-4F38-A5B6-A0C86FEC4F8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8F7B7B2-F436-4F38-A5B6-A0C86FEC4F8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8F7B7B2-F436-4F38-A5B6-A0C86FEC4F8F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
