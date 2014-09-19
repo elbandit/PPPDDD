@@ -1,4 +1,4 @@
-PPPDDD
-======
+PPPDDDChap23
+============
 
-Sample code for the book Principles, Practices and Patterns of Domain-Driven Design. From the book http://www.amazon.com/Professional-Domain-Driven-Design-Patterns/dp/1118714709/
+Principles, Practices and Patterns of Domain-Driven Design: Chapter 23 Event Sourcing Code Samples 
