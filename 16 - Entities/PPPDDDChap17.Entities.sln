@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2013 for Web
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPPDDDChap17.Entities.Examples", "PPPDDDChap17.Entities.Examples\PPPDDDChap17.Entities.Examples.csproj", "{CF5DC1DC-18B2-44EC-B316-BBDC78816F7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPPDDDChap17.Entities.Tests", "PPPDDDChap17.Entities.Tests\PPPDDDChap17.Entities.Tests.csproj", "{B3AA7490-CD64-432D-8994-05CC8BD12D3B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C929FF31-B54E-4E2F-9025-AF2268B0C208}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF5DC1DC-18B2-44EC-B316-BBDC78816F7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF5DC1DC-18B2-44EC-B316-BBDC78816F7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF5DC1DC-18B2-44EC-B316-BBDC78816F7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF5DC1DC-18B2-44EC-B316-BBDC78816F7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3AA7490-CD64-432D-8994-05CC8BD12D3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3AA7490-CD64-432D-8994-05CC8BD12D3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3AA7490-CD64-432D-8994-05CC8BD12D3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3AA7490-CD64-432D-8994-05CC8BD12D3B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

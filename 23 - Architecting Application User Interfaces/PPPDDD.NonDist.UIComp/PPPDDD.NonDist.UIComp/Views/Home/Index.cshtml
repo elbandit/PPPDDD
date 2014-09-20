@@ -1,0 +1,29 @@
+﻿@{
+    Layout = null;
+    var productIdsInBasket = new string[3] { "prod1", "prod2", "prod3"};
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>PPPDDD Composite UI</title>
+    @*
+        Can also use RenderAction here if Bounded Contexts
+        need to inject custom javascript
+    *@
+</head>
+<body>
+    <div> 
+        <h1>Your Basket</h1>
+        @foreach(var pid in productIdsInBasket)
+        {
+            <div class="basketItem" style="margin-bottom: 20px;">
+                @{ Html.RenderAction("ItemInBasket", "CatalogueBoundedContext", new { productId = pid}); } 
+                @{ Html.RenderAction("Price", "PricingBoundedContext", new { productId = pid }); }
+            </div>
+            <br />
+        }
+        @{ Html.RenderAction("DeliveryOptions", "ShippingBoundedContext"); }
+    </div>
+</body>
+</html>

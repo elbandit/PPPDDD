@@ -1,4 +1,5 @@
 PPPDDD
 ======
 
-Sample code for the book Principles, Practices and Patterns of Domain-Driven Design. From the book http://www.amazon.com/Professional-Domain-Driven-Design-Patterns/dp/1118714709/
+See chapter 12 in the book for guidance on setting up and running this project, 
+including NServiceBus and MSMQ installation instructions.

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/AccountManagement" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/AccountManagement" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:3100/FollowerDirectory.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ArrayOfFollower">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Follower" nillable="true" type="tns:Follower" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFollower" nillable="true" type="tns:ArrayOfFollower" />
+  <xs:complexType name="Follower">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FollowerId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FollowerName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SocialTags" nillable="true" type="q1:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Follower" nillable="true" type="tns:Follower" />
+</xs:schema>
