@@ -1,5 +1,5 @@
 ﻿using System;
-using Billing.Messages.commands;
+using Billing.Messages.Commands;
 using NServiceBus;
 
 namespace Billing.Payments.PaymentAccepted
@@ -14,7 +14,7 @@ namespace Billing.Payments.PaymentAccepted
             Database.SavePaymentAttempt(message.OrderId, message.Status);
             if (message.Status == PaymentStatus.Accepted)
             {
-                var evnt = new Billing.Messages.events.PaymentAccepted 
+                var evnt = new Billing.Messages.Events.PaymentAccepted 
                 { 
                     OrderId = message.OrderId
                 };

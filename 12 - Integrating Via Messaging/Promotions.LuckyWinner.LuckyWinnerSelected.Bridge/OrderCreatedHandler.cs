@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using NServiceBus;
 using System.Messaging;
-using Sales.Messages.events;
+using Sales.Messages.Events;
 using System.Xml.Linq;
 using System.Xml;
 

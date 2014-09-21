@@ -1,6 +1,6 @@
-﻿using Billing.Messages.events;
+﻿using Billing.Messages.Events;
 using NServiceBus;
-using Sales.Messages.events;
+using Sales.Messages.Events;
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -42,7 +42,7 @@ namespace Shipping.BusinessCustomers.ShippingArranged
             var confirmation = ShippingProvider.ArrangeShippingFor(address, message.OrderId);
             if (confirmation.Status == ShippingStatus.Success)
             {
-                var evnt = new Shipping.Messages.events.ShippingArranged
+                var evnt = new Shipping.Messages.Events.ShippingArranged
                 {
                     OrderId = message.OrderId
                 };

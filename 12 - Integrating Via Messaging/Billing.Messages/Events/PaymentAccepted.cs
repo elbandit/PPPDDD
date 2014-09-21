@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Billing.Messages.events
+namespace Billing.Messages.Events
 {
     public class PaymentAccepted
     {

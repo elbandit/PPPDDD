@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Billing.Messages.commands
+namespace Billing.Messages.Commands
 {
     public class RecordPaymentAttempt
     {

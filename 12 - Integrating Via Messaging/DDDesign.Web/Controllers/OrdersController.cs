@@ -1,4 +1,4 @@
-﻿using Sales.Messages.commands;
+﻿using Sales.Messages.Commands;
 using System;
 using System.Linq;
 using System.Web;

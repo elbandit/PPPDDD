@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sales.Messages.commands
+namespace Sales.Messages.Commands
 {
     public class PlaceOrder
     {

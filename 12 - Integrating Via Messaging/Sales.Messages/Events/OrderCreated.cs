@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Sales.Messages.events
+namespace Sales.Messages.Events
 {
     public class OrderCreated
     {

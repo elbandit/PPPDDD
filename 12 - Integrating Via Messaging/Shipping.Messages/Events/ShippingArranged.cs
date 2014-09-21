@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Shipping.Messages.events
+namespace Shipping.Messages.Events
 {
     public class ShippingArranged  
     {
