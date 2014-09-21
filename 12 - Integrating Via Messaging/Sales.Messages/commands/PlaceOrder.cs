@@ -10,7 +10,7 @@ namespace Sales.Messages.commands
     {
         public string UserId { get; set; }
 
-        public List<string> ProductIds { get; set; }
+        public string[] ProductIds { get; set; }
 
         public string ShippingTypeId { get; set;}
 

@@ -51,7 +51,7 @@ namespace Promotions.LuckyWinner.LuckyWinnerSelected.Bridge
         }
 
          
-        private string GenerateProductIdsXml(List<string> productIds)
+        private string GenerateProductIdsXml(IEnumerable<string> productIds)
         {
             return String.Join("", productIds.Select(p => "<productIds>" + p + "</productIds>"));
         }
