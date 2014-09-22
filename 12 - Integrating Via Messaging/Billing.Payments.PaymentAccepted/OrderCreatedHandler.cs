@@ -1,6 +1,6 @@
-﻿using Billing.Messages.commands;
+﻿using Billing.Messages.Commands;
 using NServiceBus;
-using Sales.Messages.events;
+using Sales.Messages.Events;
 using System;
 
 namespace Billing.Payments.PaymentAccepted

@@ -17,7 +17,8 @@ namespace DDDesign.Web
             Configure.Serialization.Xml();
             bus = Configure.With()
                            .DefaultBuilder()
-                           .DefiningCommandsAs(t => t.Namespace != null && t.Namespace.Contains("commands"))
+                           .DefiningCommandsAs(t => t.Namespace != null 
+                               && t.Namespace.Contains("Commands"))
                            .UseTransport<Msmq>()
                            .UnicastBus()
                            .SendOnly();

@@ -39,8 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="commands\RecordPaymentAttempt.cs" />
-    <Compile Include="events\PaymentAccepted.cs" />
+    <Compile Include="Commands\RecordPaymentAttempt.cs" />
+    <Compile Include="Events\PaymentAccepted.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

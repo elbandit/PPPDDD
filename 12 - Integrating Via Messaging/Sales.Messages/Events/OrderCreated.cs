@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Sales.Messages.events
+namespace Sales.Messages.Events
 {
     public class OrderCreated
     {
@@ -9,7 +9,7 @@ namespace Sales.Messages.events
 
         public string UserId { get; set; }
 
-        public List<string> ProductIds { get; set; }
+        public string[] ProductIds { get; set; }
 
         public string ShippingTypeId { get; set; }
 

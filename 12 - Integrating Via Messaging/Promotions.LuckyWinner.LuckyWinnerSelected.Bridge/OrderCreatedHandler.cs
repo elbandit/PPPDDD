@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using NServiceBus;
 using System.Messaging;
-using Sales.Messages.events;
+using Sales.Messages.Events;
 using System.Xml.Linq;
 using System.Xml;
 
@@ -51,7 +51,7 @@ namespace Promotions.LuckyWinner.LuckyWinnerSelected.Bridge
         }
 
          
-        private string GenerateProductIdsXml(List<string> productIds)
+        private string GenerateProductIdsXml(IEnumerable<string> productIds)
         {
             return String.Join("", productIds.Select(p => "<productIds>" + p + "</productIds>"));
         }

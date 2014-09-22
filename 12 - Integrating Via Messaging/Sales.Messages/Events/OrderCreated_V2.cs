@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sales.Messages.events
+namespace Sales.Messages.Events
 {
     public class OrderCreated_V2 : OrderCreated
     {

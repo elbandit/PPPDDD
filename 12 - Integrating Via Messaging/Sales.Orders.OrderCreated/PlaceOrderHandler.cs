@@ -1,6 +1,6 @@
 ﻿using System;
 using NServiceBus;
-using Sales.Messages.commands;
+using Sales.Messages.Commands;
 using System.Collections.Generic;
 
 namespace Sales.Orders.OrderCreated
@@ -19,7 +19,7 @@ namespace Sales.Orders.OrderCreated
             ); 
 
             // sending a V2 message now
-            var orderCreatedEvent = new Sales.Messages.events.OrderCreated_V2
+            var orderCreatedEvent = new Sales.Messages.Events.OrderCreated_V2
             {
                 OrderId = orderId,
                 UserId = message.UserId,

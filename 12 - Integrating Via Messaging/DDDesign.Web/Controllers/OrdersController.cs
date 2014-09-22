@@ -1,4 +1,4 @@
-﻿using Sales.Messages.commands;
+﻿using Sales.Messages.Commands;
 using System;
 using System.Linq;
 using System.Web;
@@ -21,7 +21,7 @@ namespace DDDesign.Web.Controllers
             var placeOrderCommand = new PlaceOrder
             {
                 UserId = userId,
-                ProductIds = realProductIds.ToList(),
+                ProductIds = realProductIds,
                 ShippingTypeId = shippingTypeId,
                 TimeStamp = DateTime.Now
             };

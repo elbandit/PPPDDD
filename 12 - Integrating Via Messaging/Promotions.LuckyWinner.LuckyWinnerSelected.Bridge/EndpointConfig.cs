@@ -8,8 +8,9 @@ namespace Promotions.LuckyWinner.LuckyWinnerSelected.Bridge
         public void Init()
         {
             Configure.With()
-                     .DefiningCommandsAs(t => t.Namespace != null && t.Namespace.Contains("commands"))
-                     .DefiningEventsAs(t => t.Namespace != null && t.Namespace.Contains("events"));
+                     .DefiningCommandsAs(t => t.Namespace != null 
+                         && t.Namespace.Contains("Commands"))
+                     .DefiningEventsAs(t => t.Namespace != null && t.Namespace.Contains("Events"));
         }
     }
 }
