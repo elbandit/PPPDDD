@@ -14,8 +14,8 @@ namespace Tests
         [TestMethod]
         public void Same_size_and_same_unit_are_equal_even_if_different_references()
         {
-            var oneMetre = new BuildingHeightWithBase(1, MeasurmentUnit.Metres);
-            var oneMetreX = new BuildingHeightWithBase(1, MeasurmentUnit.Metres);
+            var oneMetre = new BuildingHeightWithBase(1, MeasurmentUnit.Meters);
+            var oneMetreX = new BuildingHeightWithBase(1, MeasurmentUnit.Meters);
             var areEqual = oneMetre == oneMetreX; 
             Assert.IsTrue(areEqual);
 
@@ -28,7 +28,7 @@ namespace Tests
         [TestMethod]
         public void Same_size_and_different_unit_are_not_equal()
         {
-            var oneHundredMetres = new BuildingHeightWithBase(100, MeasurmentUnit.Metres);
+            var oneHundredMetres = new BuildingHeightWithBase(100, MeasurmentUnit.Meters);
             var oneHundredFeet = new BuildingHeightWithBase(100, MeasurmentUnit.Feet);
             var areNotEqual = oneHundredMetres != oneHundredFeet;
             Assert.IsTrue(areNotEqual);
@@ -37,7 +37,7 @@ namespace Tests
         [TestMethod]
         public void Equivalent_sizes_in_different_units_are_equal_even_if_different_references()
         {
-            var fortyNineMetres = new BuildingHeightWithBase(49, MeasurmentUnit.Metres);
+            var fortyNineMetres = new BuildingHeightWithBase(49, MeasurmentUnit.Meters);
             var oneHundredAndSixtyOneFeet = new BuildingHeightWithBase(161, MeasurmentUnit.Feet);
             Assert.AreEqual(fortyNineMetres, oneHundredAndSixtyOneFeet);
         }

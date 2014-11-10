@@ -36,9 +36,9 @@ namespace Examples
                 return GetAsFeet() == other.Size;
             }
 
-            if (other.Unit == MeasurmentUnit.Metres)
+            if (other.Unit == MeasurmentUnit.Meters)
             {
-                return GetAsMetres() == other.Size;
+                return GetAsMeters() == other.Size;
             }
 
             throw new Exception("Unexpected measurement unit");
@@ -46,13 +46,13 @@ namespace Examples
 
         private int GetAsFeet()
         {
-            // Expects current size to be in metres so converts from metres to feet
+            // Expects current size to be in meters so converts from metres to feet
             return (int)Math.Round(this.Size * 3.2808399, MidpointRounding.AwayFromZero);
         }
 
-        private int GetAsMetres()
+        private int GetAsMeters()
         {
-            // Expects current size to be in feet, so converts from feet to metres
+            // Expects current size to be in feet, so converts from feet to meters
             return (int)Math.Round(this.Size * 0.3048, MidpointRounding.AwayFromZero);
         }
 
@@ -61,15 +61,15 @@ namespace Examples
             return new BuildingHeight(feet, MeasurmentUnit.Feet);
         }
 
-        public static BuildingHeight FromMetres(int metres)
+        public static BuildingHeight FromMeters(int metres)
         {
-            return new BuildingHeight(metres, MeasurmentUnit.Metres);
+            return new BuildingHeight(metres, MeasurmentUnit.Meters);
         }
     }
 
     public enum MeasurmentUnit
     {
         Feet,
-        Metres
+        Meters
     }
 }
