@@ -8,9 +8,9 @@ namespace Examples.AmbiguousPhoneCall
 {
     public class PhoneCall
     {
-        public PhoneCall(String numberDialled, DateTime callStart, int callLengthInMinutes)
+        public PhoneCall(String numberDialed, DateTime callStart, int callLengthInMinutes)
         {
-            NumberDialled = numberDialled;
+            NumberDialed = numberDialed;
             Minutes = callLengthInMinutes;
             StartTime = callStart;
         }
@@ -19,7 +19,7 @@ namespace Examples.AmbiguousPhoneCall
 
         public int Minutes { get; private set; }
 
-        public String NumberDialled { get; private set; }
+        public String NumberDialed { get; private set; }
 
     }
 }
@@ -28,9 +28,9 @@ namespace Examples.ExplicitPhoneCall
 {
     public class PhoneCall
     {
-        public PhoneCall(PhoneNumber numberDialled, DateTime callStart, Minutes callLength)
+        public PhoneCall(PhoneNumber numberDialed, DateTime callStart, Minutes callLength)
         {
-            NumberDialled = numberDialled;
+            NumberDialed = numberDialed;
             Minutes = callLength;
             StartTime = callStart;
         }
@@ -39,7 +39,7 @@ namespace Examples.ExplicitPhoneCall
 
         public Minutes Minutes { get; private set; }
 
-        public PhoneNumber NumberDialled { get; private set; }
+        public PhoneNumber NumberDialed { get; private set; }
     }
 
     // Value Objects 

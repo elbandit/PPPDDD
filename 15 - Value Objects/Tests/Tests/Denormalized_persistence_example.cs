@@ -17,7 +17,7 @@ namespace Tests
     [TestClass]
     public class Denormalized_persistence_example
     {
-        ISessionFactory sessionFactory = CreateSessionFactory();
+        ISession session = CreateSession();
 
         [TestMethod]
         public void Persisting_denormalized_value_objects()
@@ -42,7 +42,6 @@ namespace Tests
 
         private void NHibernateTransaction(Action<ISession> action)
         {
-            using (var session = sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
                 action(session);
@@ -51,26 +50,27 @@ namespace Tests
         }
 
         // See fluent NHibernate docs for more info: https://github.com/jagregory/fluent-nhibernate/wiki/Getting-started
-        private static ISessionFactory CreateSessionFactory()
+        private static ISession CreateSession()
         {
-            // ** Add your connection string here
-            // Quickest option is to use Server Exploer -> Data Connections -> Add Data Connection -> Microsoft SQL Server Database File
-            // This will create the file for you. Right-click on it and choose properties to get the connection string
-            var connString = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\John\Documents\valueobjectsdb.mdf;Integrated Security=True;Connect Timeout=30";
-           
+            Configuration configuration = null;
+
             // Manually configuring Map. NHibernate supports conventions and advanced features as well
-            return Fluently.Configure()
+            var factory = Fluently.Configure()
                            .Mappings(x => x.FluentMappings.Add(typeof(CustomerMap)))
-                           .Database(
-                                MsSqlConfiguration.MsSql2005.ConnectionString(connString)
-                            )
-                           .ExposeConfiguration(BuildSchema)
+                           .Database(SQLiteConfiguration.Standard.InMemory().ShowSql())
+                           .ExposeConfiguration(cfg => configuration = cfg)
                            .BuildSessionFactory();
+
+            var session = factory.OpenSession();
+
+            BuildSchema(configuration, session);
+
+            return session;
         }
 
-        private static void BuildSchema(Configuration config)
+        private static void BuildSchema(Configuration config, ISession session)
         {
-            new SchemaExport(config).Create(false, true);
+            new SchemaExport(config).Execute(true, true, false, session.Connection, null);
         }
     }
 

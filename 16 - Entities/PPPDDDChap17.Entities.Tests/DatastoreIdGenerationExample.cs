@@ -14,6 +14,8 @@ namespace PPPDDDChap17.Entities.Tests
     [TestClass]
     public class DatastoreIdGenerationExample
     {
+        ISession session = CreateSession();
+
         [TestMethod]
         public void Id_is_set_by_datastore_via_ORM()
         {
@@ -37,7 +39,6 @@ namespace PPPDDDChap17.Entities.Tests
 
         private void NHibernateTransaction(Action<ISession> action)
         {
-            using (var session = sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
                 action(session);
@@ -45,30 +46,28 @@ namespace PPPDDDChap17.Entities.Tests
             };
         }
 
-        ISessionFactory sessionFactory = CreateSessionFactory();
-
         // See fluent NHibernate docs for more info: https://github.com/jagregory/fluent-nhibernate/wiki/Getting-started
-        private static ISessionFactory CreateSessionFactory()
+        private static ISession CreateSession()
         {
+            Configuration configuration = null;
 
-            var connString = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=" + Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.FullName + @"\entitiesdb.mdf;Integrated Security=True;Connect Timeout=30";
-
-            // TODO: enable relative path
-            //var connString = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\John\Documents\entitiesdb.mdf;Integrated Security=True;Connect Timeout=30";
-            
             // Manually configuring Map. NHibernate supports conventions and advanced features as well
-            return Fluently.Configure()
+            var factory = Fluently.Configure()
                            .Mappings(x => x.FluentMappings.Add(typeof(IdTestEntityMap)))
-                           .Database(
-                                MsSqlConfiguration.MsSql2012.ConnectionString(connString)
-                            )
-                           .ExposeConfiguration(BuildSchema)
+                           .Database(SQLiteConfiguration.Standard.InMemory().ShowSql())
+                           .ExposeConfiguration(cfg => configuration = cfg)
                            .BuildSessionFactory();
+
+            var session = factory.OpenSession();
+
+            BuildSchema(configuration, session);
+
+            return session;
         }
 
-        private static void BuildSchema(Configuration config)
+        private static void BuildSchema(Configuration config, ISession session)
         {
-            new SchemaExport(config).Create(true, true);
+            new SchemaExport(config).Execute(true, true, false, session.Connection, null);
         }
     }
 
