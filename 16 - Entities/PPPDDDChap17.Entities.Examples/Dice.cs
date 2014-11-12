@@ -19,11 +19,10 @@ namespace PPPDDDChap17.Entities.Examples
 
             public Guid Id { get; private set; }
 
-            public int LastValue { get; private set; }
-
-            public void Roll()
+            // Bad: looks like a query, but changes every time
+            public int Value()
             {
-                LastValue = r.Next(1, 7);
+                return r.Next(1, 7);
             }
 
             // ..
@@ -43,12 +42,14 @@ namespace PPPDDDChap17.Entities.Examples
 
             public Guid Id { get; private set; }
 
-            public int Roll()
-            {
-                return r.Next(1, 7);
-            }
+            // Good: does not change each time called
+            public int Value { get; private set; }
 
-            // ..
+            // Good: sounds like a command - side-effect expected
+            public void Roll()
+            {
+                Value = r.Next(1, 7);
+            }
         }
     }
 }
