@@ -22,7 +22,7 @@ namespace PPPDDDChap17.Entities.Tests
             var entity1 = new IdTestEntity();
             var entity2 = new IdTestEntity();
 
-            // initially no Id
+            // initially no id
             Assert.AreEqual(0, entity1.Id);
             Assert.AreEqual(0, entity2.Id);
 
@@ -32,7 +32,7 @@ namespace PPPDDDChap17.Entities.Tests
                 session.Save(entity2);
             });
 
-            // Id will have been set via NHibernate
+            // id will have been set via NHibernate
             Assert.AreEqual(1, entity1.Id);
             Assert.AreEqual(2, entity2.Id);
         }

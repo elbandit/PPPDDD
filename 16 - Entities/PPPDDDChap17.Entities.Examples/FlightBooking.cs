@@ -12,9 +12,18 @@ namespace PPPDDDChap17.Entities.Examples
     {
         private bool confirmed = false;
 
-        public FlightBooking(Guid Id, DateTime departureDate, Guid customerId)
+        public FlightBooking(Guid id, DateTime departureDate, Guid customerId)
         {
-            this.Id = Id;
+            if (id == null)
+                throw new IdMissing();
+
+            if (departureDate == null)
+                throw new DepartureDateMissing();
+
+            if (customerId == null)
+                throw new CustomerIdMissing();
+
+            this.Id = id;
             this.DepartureDate = departureDate;
             this.CustomerId = customerId;
         }
@@ -37,6 +46,12 @@ namespace PPPDDDChap17.Entities.Examples
             this.confirmed = true;
         }
     }
+
+    public class IdMissing : Exception {}
+
+    public class DepartureDateMissing : Exception { }
+
+    public class CustomerIdMissing : Exception { }
 
     public class RescheduleRejected : Exception { }
 
