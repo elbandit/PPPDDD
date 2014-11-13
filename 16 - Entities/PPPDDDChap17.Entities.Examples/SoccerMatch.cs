@@ -19,10 +19,10 @@ namespace PPPDDDChap17.Entities.Examples
                     throw new ArgumentNullException("Soccer cup match ID cannot be null");
 
                 if (team1Scores == null)
-                    throw new ArgumentNullException("Home team scores cannot be null");
+                    throw new ArgumentNullException("Team 1 scores cannot be null");
 
                 if (team2Scores == null)
-                    throw new ArgumentNullException("Away team scores cannot be null");
+                    throw new ArgumentNullException("Team 2 scores cannot be null");
 
                 this.ID = id;
                 this.Team1Scores = team1Scores;
@@ -47,10 +47,10 @@ namespace PPPDDDChap17.Entities.Examples
                     throw new ArgumentNullException("Soccer cup match ID cannot be null");
 
                 if (team1Scores == null)
-                    throw new ArgumentNullException("Home team scores cannot be null");
+                    throw new ArgumentNullException("Team 1 scores cannot be null");
 
                 if (team2Scores == null)
-                    throw new ArgumentNullException("Away team scores cannot be null");
+                    throw new ArgumentNullException("Team 2 scores cannot be null");
 
                 this.ID = id;
                 this.Team1Scores = team1Scores;
