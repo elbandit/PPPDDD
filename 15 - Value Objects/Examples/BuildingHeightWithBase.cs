@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Examples
 {
-    public class BuildingHeightWithBase : ValueObject<BuildingHeightWithBase>
+    public class HeightWithBase : ValueObject<HeightWithBase>
     {
-        public BuildingHeightWithBase(int size, MeasurmentUnit unit)
+        public HeightWithBase(int size, MeasurmentUnit unit)
         {
             this.Size = size;
             this.Unit = unit;

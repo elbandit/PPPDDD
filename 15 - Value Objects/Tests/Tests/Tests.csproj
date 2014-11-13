@@ -80,8 +80,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Building_height_equality_tests.cs" />
-    <Compile Include="Building_height_with_base_equality_tests.cs" />
+    <Compile Include="Height_equality_tests.cs" />
+    <Compile Include="Height_with_base_equality_tests.cs" />
     <Compile Include="Combining_money_tests.cs" />
     <Compile Include="DateTime_immutability_tests.cs" />
     <Compile Include="Micro_types_example_tests.cs" />

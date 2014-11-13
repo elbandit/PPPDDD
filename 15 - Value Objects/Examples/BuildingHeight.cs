@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace Examples
 {
     // Value Object
-    public class BuildingHeight
+    public class Height
     {
-        public BuildingHeight(int size, MeasurmentUnit unit)
+        public Height(int size, MeasurmentUnit unit)
         {
             this.Size = size;
             this.Unit = unit;
@@ -21,7 +21,7 @@ namespace Examples
 
         public override bool Equals(object obj)
         {
-            var other = obj as BuildingHeight;
+            var other = obj as Height;
 
             if (other == null) return false;
 
@@ -56,14 +56,14 @@ namespace Examples
             return (int)Math.Round(this.Size * 0.3048, MidpointRounding.AwayFromZero);
         }
 
-        public static BuildingHeight FromFeet(int feet)
+        public static Height FromFeet(int feet)
         {
-            return new BuildingHeight(feet, MeasurmentUnit.Feet);
+            return new Height(feet, MeasurmentUnit.Feet);
         }
 
-        public static BuildingHeight FromMeters(int metres)
+        public static Height FromMeters(int metres)
         {
-            return new BuildingHeight(metres, MeasurmentUnit.Meters);
+            return new Height(metres, MeasurmentUnit.Meters);
         }
     }
 
