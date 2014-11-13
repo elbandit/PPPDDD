@@ -94,12 +94,12 @@ namespace Examples
 
             public Money(decimal value)
             {
-                ThrowExceptionIfNotValid(value);
+                Validate(value);
 
                 Value = value;
             }
 
-            private void ThrowExceptionIfNotValid(decimal value)
+            private void Validate(decimal value)
             {
                 if (value % 0.01m != 0)
                     throw new MoreThanTwoDecimalPlacesInMoneyValueException();
