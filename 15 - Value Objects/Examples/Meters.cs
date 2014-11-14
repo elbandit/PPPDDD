@@ -29,6 +29,16 @@ namespace Examples
             return new Kilometers(DistanceInMeters / 1000);
         }
 
+        public Meters Add(Meters meters)
+        {
+            return new Meters(this.DistanceInMeters + meters.DistanceInMeters);
+        }
+
+        public bool IsLongerThan(Meters meters)
+        {
+            return this.DistanceInMeters > meters.DistanceInMeters;
+        }
+
         public override bool Equals(object obj)
         {
             var m = obj as Meters;
@@ -87,6 +97,16 @@ namespace Examples
             public Kilometers ToKilometers()
             {
                 return new Kilometers(DistanceInMeters / 1000);
+            }
+
+            public Meters Add(Meters meters)
+            {
+                return new Meters(this.DistanceInMeters + meters.DistanceInMeters);
+            }
+
+            public bool IsLongerThan(Meters meters)
+            {
+                return this.DistanceInMeters > meters.DistanceInMeters;
             }
 
             protected override IEnumerable<object> GetAttributesToIncludeInEqualityCheck()
