@@ -44,10 +44,10 @@ namespace Examples
             var m = obj as Meters;
             if (m == null) return false;
 
-            return To2Dp(m.DistanceInMeters) == To2Dp(DistanceInMeters);
+            return ToTwoDecimalPlaces(m.DistanceInMeters) == ToTwoDecimalPlaces(DistanceInMeters);
         }
 
-        private decimal To2Dp(decimal distanceInMeters)
+        private decimal ToTwoDecimalPlaces(decimal distanceInMeters)
         {
             return Math.Round(distanceInMeters, 2, MidpointRounding.AwayFromZero);
         }
