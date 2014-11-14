@@ -10,6 +10,8 @@ namespace PPPDDDChap17.Entities.Examples
     {
         public HolidayBooking(int travelerId, DateTime firstNight, DateTime lastNight, DateTime booked)
         {
+            // validate
+
             this.TravelerId = travelerId;
             this.FirstNight = firstNight;
             this.LastNight = lastNight;
