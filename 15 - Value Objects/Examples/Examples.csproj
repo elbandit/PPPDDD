@@ -50,13 +50,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BankAccount.cs" />
-    <Compile Include="BuildingHeight.cs" />
-    <Compile Include="BuildingHeightWithBase.cs" />
+    <Compile Include="Meters.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="MicroTypes.cs" />
     <Compile Include="Money.cs" />
     <Compile Include="Name.cs" />
-    <Compile Include="PhoneCall.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValueObject.cs" />
   </ItemGroup>
