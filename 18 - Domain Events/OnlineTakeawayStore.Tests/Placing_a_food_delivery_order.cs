@@ -18,7 +18,7 @@ namespace OnlineTakeawayStore.Tests
         // services used in event handlers (previously would have also been collaborators)
         static IEmailer emailer = MockRepository.GenerateStub<IEmailer>();
         static IFoodDeliveryOrderRepository repository = MockRepository.GenerateStub<IFoodDeliveryOrderRepository>();
-        static ICustomerBehaviourChecker checker = MockRepository.GenerateStub<ICustomerBehaviourChecker>();
+        static ICustomerBehaviorChecker checker = MockRepository.GenerateStub<ICustomerBehaviorChecker>();
 
         // test data
         static int customerId = 9989445;

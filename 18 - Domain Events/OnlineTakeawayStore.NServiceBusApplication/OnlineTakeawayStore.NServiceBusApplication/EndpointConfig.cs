@@ -2,6 +2,7 @@
 namespace OnlineTakeawayStore.NServiceBusApplication
 {
     using NServiceBus;
+using OnlineTakeawayStore.Domain;
 
 	/*
 		This class configures this endpoint as a Server. More information about how to configure the NServiceBus host
@@ -19,4 +20,22 @@ namespace OnlineTakeawayStore.NServiceBusApplication
         }
 
     }
+
+    public class DependencyRegistration : INeedInitialization
+    {
+        public void Init()
+        {
+            Configure.Instance.Configurer.ConfigureComponent<DummyBehaviorChecker>(DependencyLifecycle.SingleInstance);
+        }
+    }
+
+    public class DummyBehaviorChecker : ICustomerBehaviorChecker
+    {
+        public bool IsBlacklisted(int customerId)
+        {
+            return true;
+        }
+    }
+
+
 }

@@ -11,9 +11,9 @@ namespace OnlineTakeawayStore.NServiceBusApplication
 {
     public class FoodDeliveryOrderService 
     {
-        public FoodDeliveryOrderService(IBus bu)
+        public FoodDeliveryOrderService(IBus bus)
         {
-            this.Bus = Bus;
+            this.Bus = bus;
         }
         
         private IBus Bus { get; set; }

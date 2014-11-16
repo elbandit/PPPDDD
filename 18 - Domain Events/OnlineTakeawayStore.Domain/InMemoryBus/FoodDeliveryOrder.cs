@@ -46,5 +46,10 @@ namespace OnlineTakeawayStore.Domain.InMemoryBus
 
             bus.InMemory.Raise(new FoodDeliveryOrderConfirmed(this));
         }
+
+        public void Invalidate()
+        {
+            Status = FoodDeliveryOrderSteps.Invalidated;
+        }
     }
 }

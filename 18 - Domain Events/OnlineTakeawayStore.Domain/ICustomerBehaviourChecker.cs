@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OnlineTakeawayStore.Domain
 {
-    public interface ICustomerBehaviourChecker
+    public interface ICustomerBehaviorChecker
     {
         // did they place an order and not pay etc
         bool IsBlacklisted(int customerId);

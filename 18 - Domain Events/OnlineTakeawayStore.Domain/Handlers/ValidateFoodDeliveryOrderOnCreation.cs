@@ -9,9 +9,9 @@ namespace OnlineTakeawayStore.Domain.EventHandlers
 {
     public class ValidateFoodDeliveryOrderOnCreation : IHandleEvents<FoodDeliveryOrderCreated>
     {
-        private ICustomerBehaviourChecker checker;
+        private ICustomerBehaviorChecker checker;
 
-        public ValidateFoodDeliveryOrderOnCreation(ICustomerBehaviourChecker checker)
+        public ValidateFoodDeliveryOrderOnCreation(ICustomerBehaviorChecker checker)
         {
             this.checker = checker;
         }
