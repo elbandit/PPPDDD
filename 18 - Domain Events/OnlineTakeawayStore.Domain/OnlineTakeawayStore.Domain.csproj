@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="DomainEvents.cs" />
     <Compile Include="DomainEventsRegister.cs" />
+    <Compile Include="EventsKeyword\FoodDeliveryOrder.cs" />
     <Compile Include="Handlers\SaveFoodDeliveryOrder.cs" />
     <Compile Include="Handlers\ValidateFoodDeliveryOrderOnCreation.cs" />
     <Compile Include="Events\FoodDeliveryOrderEvents.cs" />
