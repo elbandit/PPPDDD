@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{198900DA-2709-4229-8550-90D75E8A90E0}</ProjectGuid>
+    <ProjectGuid>{D90DB8A2-A1CB-4618-961C-FD3F2B0D73D1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OnlineTakeawayStore.Tests</RootNamespace>
-    <AssemblyName>OnlineTakeawayStore.Tests</AssemblyName>
+    <RootNamespace>OnlineTakeawayStore.Application</RootNamespace>
+    <AssemblyName>OnlineTakeawayStore.Application</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -35,9 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Rhino.Mocks">
-      <HintPath>..\packages\RhinoMocks.3.6.1\lib\net\Rhino.Mocks.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -53,23 +50,19 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Food_delivery_order_validation.cs" />
-    <Compile Include="Placing_a_food_delivery_order.cs" />
+    <Compile Include="Handlers\EmailBlacklistedCustomerOnOrderInvalidation.cs" />
+    <Compile Include="FoodDeliveryOrderService.cs" />
+    <Compile Include="Handlers\SendConfirmationEmailOnOrderConfirmed.cs" />
+    <Compile Include="IEmailer.cs" />
+    <Compile Include="INotificationChannel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Food_delivery_order_unit_tests.cs" />
+    <Compile Include="ServiceLayerHandlersRegister.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OnlineTakeawayStore.Application\OnlineTakeawayStore.Application.csproj">
-      <Project>{d90db8a2-a1cb-4618-961c-fd3f2b0d73d1}</Project>
-      <Name>OnlineTakeawayStore.Application</Name>
-    </ProjectReference>
     <ProjectReference Include="..\OnlineTakeawayStore.Domain\OnlineTakeawayStore.Domain.csproj">
       <Project>{203ba48c-4ebb-480b-b01d-e7e7d7e60a96}</Project>
       <Name>OnlineTakeawayStore.Domain</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
