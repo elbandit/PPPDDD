@@ -50,6 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="EventsKeywordVersion\FoodDeliveryOrderService.cs" />
     <Compile Include="Handlers\EmailBlacklistedCustomerOnOrderInvalidation.cs" />
     <Compile Include="FoodDeliveryOrderService.cs" />
     <Compile Include="Handlers\SendConfirmationEmailOnOrderConfirmed.cs" />
