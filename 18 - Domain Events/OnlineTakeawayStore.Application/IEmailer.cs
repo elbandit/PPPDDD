@@ -10,6 +10,8 @@ namespace OnlineTakeawayStore.Application
     {
         void SendFoodDeliveryOrderConfirmation(int customerId);
 
+        void SendFoodDeliveryOrderAcknowledgement(int customerId);
+
         void NotifyBlacklistedCustomerRejection(int customerId);
     }
 }

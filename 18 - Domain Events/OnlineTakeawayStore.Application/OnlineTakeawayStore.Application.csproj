@@ -53,6 +53,7 @@
     <Compile Include="Handlers\EmailBlacklistedCustomerOnOrderInvalidation.cs" />
     <Compile Include="FoodDeliveryOrderService.cs" />
     <Compile Include="Handlers\SendConfirmationEmailOnOrderConfirmed.cs" />
+    <Compile Include="Handlers\SendEmailAcknowledgementOnOrderCreation.cs" />
     <Compile Include="IEmailer.cs" />
     <Compile Include="INotificationChannel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

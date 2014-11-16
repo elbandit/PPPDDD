@@ -29,12 +29,12 @@ namespace OnlineTakeawayStore.Application
             // This has to be registered in-line to keep the "state" in scope
             // The state is the client channel tha keeps a connection to the specific customer making this order request
             // Alternative is to use threadstatic to clear callbacks
-            Action<FoodDeliveryOrderCreated> publishOrderConfirmedNotfication = e =>
+            Action<FoodDeliveryOrderCreated> publishOrderAcknowledgement = e =>
             {
                 if (e.Order.Id == id) // filter out events for other customers' orders
-                    clientChannel.Publish("ORDER_CONFIRMED");
+                    clientChannel.Publish("ORDER_ACKNOWLEDGED");
             };
-            DomainEvents.Register<FoodDeliveryOrderCreated>(publishOrderConfirmedNotfication);
+            DomainEvents.Register<FoodDeliveryOrderCreated>(publishOrderAcknowledgement);
 
             Action<FoodDeliveryOrderInvalidatedDueToBlacklistedCustomer> publishBlacklistNotification = e =>
             {
@@ -47,7 +47,7 @@ namespace OnlineTakeawayStore.Application
 
             // Unregister the callback to prevent the list of handlers constantly increasing
             // drawback to using this approach is to remember to do this
-            DomainEvents.UnRegister(publishOrderConfirmedNotfication);
+            DomainEvents.UnRegister(publishOrderAcknowledgement);
             DomainEvents.UnRegister(publishBlacklistNotification);
         }
     }
@@ -70,22 +70,6 @@ namespace OnlineTakeawayStore.Application
         public int Quantity { get; set; }
     }
 
-    /* ----------------- Service Layer event handlers - contentious ---------- */
-    /*
-    public class SendConfirmationEmailForFoodDeliveryOrdersOnValidation : IHandleEvents<FoodDeliveryOrderValidated>
-    {
-        private IEmailer emailer; 
-
-        public SendConfirmationEmailForFoodDeliveryOrdersOnValidation(IEmailer emailer)
-        {
-            this.emailer = emailer;
-        }
-
-        public void Handle(FoodDeliveryOrderValidated @event)
-        {
-            //emailer.SendFoodDeliveryOrderConfirmation(@event.Order.CustomerId);
-        }
-    }
-    */
+    
  }
 

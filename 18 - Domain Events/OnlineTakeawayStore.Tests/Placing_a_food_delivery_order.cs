@@ -18,6 +18,7 @@ namespace OnlineTakeawayStore.Tests
         // services used in event handlers (previously would have also been collaborators)
         static IEmailer emailer = MockRepository.GenerateStub<IEmailer>();
         static IFoodDeliveryOrderRepository repository = MockRepository.GenerateStub<IFoodDeliveryOrderRepository>();
+        static ICustomerBehaviourChecker checker = MockRepository.GenerateStub<ICustomerBehaviourChecker>();
 
         // test data
         static int customerId = 9989445;
@@ -26,10 +27,13 @@ namespace OnlineTakeawayStore.Tests
         static int restaurantId = 422326;
 
         [ClassInitialize]
-        public static void When_placing_a_food_delivery_order_that_is_accepted_by_the_restaurant(TestContext ctx)
+        public static void When_placing_a_food_delivery_order(TestContext ctx)
         {
-            DomainHandlersRegister.WireUpDomainEventHandlers(repository, null);
+            DomainEvents.ClearAll();
+
+            DomainHandlersRegister.WireUpDomainEventHandlers(repository, checker);
             ServiceLayerHandlersRegister.WireUpDomainEventHandlers(emailer);
+            checker.Stub(x => x.IsBlacklisted(customerId)).Return(false);
 
             var service = new FoodDeliveryOrderService(client, connector);
             var request = new PlaceFoodDeliveryOrderRequest
@@ -43,15 +47,15 @@ namespace OnlineTakeawayStore.Tests
         }
 
         [TestMethod]
-        public void The_order_will_be_confirmed_with_an_email()
+        public void The_order_will_be_acknowledged_with_an_email()
         {
-            emailer.AssertWasCalled(e => e.SendFoodDeliveryOrderConfirmation(customerId));
+            emailer.AssertWasCalled(e => e.SendFoodDeliveryOrderAcknowledgement(customerId));
         }
 
         [TestMethod]
-        public void A_real_time_notification_of_order_completion_will_also_be_sent()
+        public void A_real_time_notification_of_order_acknowledged()
         {
-            client.AssertWasCalled(c => c.Publish("ORDER_CONFIRMED"));
+            client.AssertWasCalled(c => c.Publish("ORDER_ACKNOWLEDGED"));
         }
 
         [TestMethod]
@@ -93,41 +97,7 @@ namespace OnlineTakeawayStore.Tests
             MenuItemIds = menuItemÌds,
             DeliveryTime = deliveryTime
         };
+
         static string orderRequest = "ORDER_REQUEST_" + customerId + "_" + restaurantId + "_" + String.Join(",", menuItemÌds.Select(x => x.ToString()) + "_" + deliveryTime.ToLocalTime());
-
-        [TestMethod]
-        public void Each_time_the_kitchen_staff_the_order_to_the_next_step_a_real_time_notification_is_sent_to_the_customer()
-        {
-            connector.Stub(s => s.ConnectTo(restaurantId)).Return(kitchen);
-
-            // when the order is placed
-            var service = new FoodDeliveryOrderService(client, connector);
-            service.PlaceFoodDeliveryOrder(request);
-                // the order is saved
-                   // TODO
-
-            // when the order is validated
-                // the order is saved
-                // the restaurant kitchen is notified of the order when the kitchen confirms the order
-                kitchen.Stub(k => k.Handle(orderRequest)).Return("ORDER_CONFIRMED");
-
-            // then
-                // the order is saved
-                // the customer is sent a real-time notification
-                // the customer is sent a real-time notification
-
-            // Order is cooked
-                // triggered by update from restaurant 
-                // client notified
-
-            // Order id despatched
-                // triggered by update from restaurant
-                // client notified
-
-            // Final delivery step
-                // order saved 
-                // client notified
-                // connections closed
-        }
     }
 }

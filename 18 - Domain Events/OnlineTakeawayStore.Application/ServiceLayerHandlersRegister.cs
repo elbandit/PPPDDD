@@ -17,6 +17,7 @@ namespace OnlineTakeawayStore.Application
         public static void WireUpDomainEventHandlers(IEmailer emailer)
         {
             DomainEvents.Register<FoodDeliveryOrderConfirmed>(new SendConfirmationEmailOnOrderConfirmed(emailer));
+            DomainEvents.Register<FoodDeliveryOrderValidated>(new SendEmailAcknowledgementOnOrderValidation(emailer));
             DomainEvents.Register<FoodDeliveryOrderInvalidatedDueToBlacklistedCustomer>(new EmailBlacklistedCustomerOnOrderInvalidation(emailer));
         }
     }
