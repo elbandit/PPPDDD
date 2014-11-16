@@ -19,6 +19,8 @@ namespace OnlineTakeawayStore.Domain.InMemoryBus
 
         public void Handle(OnlineTakeawayStore.Domain.Events.FoodDeliveryOrderCreated @event)
         {
+            Console.WriteLine("Validating food delivery order: " + @event.Order.Id);
+
             if (checker.IsBlacklisted(@event.Order.CustomerId))
             {
                 @event.Order.Invalidate();
