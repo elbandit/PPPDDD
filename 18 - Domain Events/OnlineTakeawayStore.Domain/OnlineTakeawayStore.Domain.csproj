@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DispatcherVersion\Events\FoodDeliveryOrderEvents.cs" />
+    <Compile Include="DispatcherVersion\FoodDeliveryOrder.cs" />
     <Compile Include="DomainEvents.cs" />
     <Compile Include="DomainEventsRegister.cs" />
     <Compile Include="EventsKeyword\FoodDeliveryOrder.cs" />
@@ -56,7 +58,7 @@
     <Compile Include="FoodDeliveryOrder.cs" />
     <Compile Include="ICustomerBehaviourChecker.cs" />
     <Compile Include="IFoodDeliveryOrderRepository.cs" />
-    <Compile Include="InMemoryBus\Events\FoodDeliveryOrder.cs" />
+    <Compile Include="InMemoryBus\Events\FoodDeliveryOrderEvents.cs" />
     <Compile Include="InMemoryBus\FoodDeliveryOrder.cs" />
     <Compile Include="InMemoryBus\ValidateFoodDeliveryOrderOnCreation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
