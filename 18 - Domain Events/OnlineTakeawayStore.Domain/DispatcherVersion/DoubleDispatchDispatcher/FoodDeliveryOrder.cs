@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using OnlineTakeawayStore.Domain.DispatcherVersion.Events;
 
-namespace OnlineTakeawayStore.Domain.DispatcherVersion.DoubleDispatchVersion
+namespace OnlineTakeawayStore.Domain.DispatcherVersion
 {
     public class FoodDeliveryOrder
     {
         public FoodDeliveryOrder(int id, int customerId, int restuarantId, List<int> menuItemIds,
-            DateTime deliveryTime, IEventDispatcher dispatcher)
+            DateTime deliveryTime)
         {
             this.Id = id;
             this.CustomerId = customerId;
@@ -20,7 +20,7 @@ namespace OnlineTakeawayStore.Domain.DispatcherVersion.DoubleDispatchVersion
             this.RecordedEvents = new List<Object>();
             Status = FoodDeliveryOrderSteps.Pending;
 
-            dispatcher.RecordEvent(new FoodDeliveryOrderCreated(this));
+            RecordedEvents.Add(new FoodDeliveryOrderCreated(this));
         }
 
         public int Id { get; private set; }
@@ -37,41 +37,16 @@ namespace OnlineTakeawayStore.Domain.DispatcherVersion.DoubleDispatchVersion
 
         public List<Object> RecordedEvents { get; private set; }
 
-        public void Confirm(IEventDispatcher dispatcher)
+        public void Confirm()
         {
             Status = FoodDeliveryOrderSteps.Confirmed;
 
-            dispatcher.RecordEvent(new FoodDeliveryOrderConfirmed(this));
+            RecordedEvents.Add(new FoodDeliveryOrderConfirmed(this));
         }
 
         public void Invalidate()
         {
             Status = FoodDeliveryOrderSteps.Invalidated;
         }
-    }
-
-    public interface IEventDispatcher
-    {
-        void RecordEvent(Object @event);
-    }
-
-    public class FoodDeliveryOrderCreated
-    {
-        public FoodDeliveryOrderCreated(FoodDeliveryOrder order)
-        {
-            this.Order = order;
-        }
-
-        public FoodDeliveryOrder Order { get; private set; }
-    }
-
-    public class FoodDeliveryOrderConfirmed
-    {
-        public FoodDeliveryOrderConfirmed(FoodDeliveryOrder order)
-        {
-            this.Order = order;
-        }
-
-        public FoodDeliveryOrder Order { get; private set; }
     }
 }

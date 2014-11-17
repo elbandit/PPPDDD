@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OnlineTakeawayStore.Domain.DispatcherVersion;
+using FoodDeliveryOrder = OnlineTakeawayStore.Domain.DispatcherVersion.FoodDeliveryOrder;
 
 namespace OnlineTakeawayStore.Application.DispatcherVersion
 {

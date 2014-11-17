@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DispatcherVersion\DoubleDispatchDispatcher\FoodDeliveryOrder.cs" />
     <Compile Include="DispatcherVersion\Events\FoodDeliveryOrderEvents.cs" />
     <Compile Include="DispatcherVersion\FoodDeliveryOrder.cs" />
     <Compile Include="DomainEvents.cs" />
