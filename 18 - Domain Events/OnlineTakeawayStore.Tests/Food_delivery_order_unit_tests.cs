@@ -12,6 +12,8 @@ namespace OnlineTakeawayStore.Tests
         [TestMethod]
         public void A_food_delivery_order_created_event_will_be_raised_on_creation()
         {
+            DomainEvents.ClearAll();
+
             var eventWasRaised = false;
             DomainEvents.Register<FoodDeliveryOrderCreated>(order =>
             {

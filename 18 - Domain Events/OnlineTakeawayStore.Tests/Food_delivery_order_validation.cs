@@ -16,7 +16,7 @@ namespace OnlineTakeawayStore.Tests
         static IRestaurantConnector connector = MockRepository.GenerateStub<IRestaurantConnector>();
 
         // services used in domain event handlers
-        static ICustomerBehaviourChecker checker = MockRepository.GenerateStub<ICustomerBehaviourChecker>();
+        static ICustomerBehaviorChecker checker = MockRepository.GenerateStub<ICustomerBehaviorChecker>();
         static IEmailer emailer = MockRepository.GenerateStub<IEmailer>();
         static IFoodDeliveryOrderRepository repository = MockRepository.GenerateStub<IFoodDeliveryOrderRepository>();
 

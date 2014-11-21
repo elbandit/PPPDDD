@@ -16,6 +16,8 @@
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -59,13 +61,9 @@
     <Compile Include="Food_delivery_order_unit_tests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DomainEvents.OnlineTakeawayStore\OnlineTakeawayStore.Application.csproj">
-      <Project>{d90db8a2-a1cb-4618-961c-fd3f2b0d73d1}</Project>
-      <Name>OnlineTakeawayStore.Application</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\OnlineTakeawayStore.Domain\OnlineTakeawayStore.Domain.csproj">
+    <ProjectReference Include="..\OnlineTakeawayStore.Domain\OnlineTakeawayStore.csproj">
       <Project>{203ba48c-4ebb-480b-b01d-e7e7d7e60a96}</Project>
-      <Name>OnlineTakeawayStore.Domain</Name>
+      <Name>OnlineTakeawayStore</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +89,7 @@
   </Choose>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
