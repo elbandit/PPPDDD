@@ -58,9 +58,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\OnlineTakeawayStore.Domain\OnlineTakeawayStore.Domain.csproj">
+    <ProjectReference Include="..\..\OnlineTakeawayStore.Domain\OnlineTakeawayStore.csproj">
       <Project>{203ba48c-4ebb-480b-b01d-e7e7d7e60a96}</Project>
-      <Name>OnlineTakeawayStore.Domain</Name>
+      <Name>OnlineTakeawayStore</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
