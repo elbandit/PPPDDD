@@ -1,13 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2013 for Web
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineTakeawayStore.Tests", "OnlineTakeawayStore.Tests\OnlineTakeawayStore.Tests.csproj", "{198900DA-2709-4229-8550-90D75E8A90E0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineTakeawayStore", "OnlineTakeawayStore.Domain\OnlineTakeawayStore.csproj", "{203BA48C-4EBB-480B-B01D-E7E7D7E60A96}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineTakeawayStore.NServiceBusApplication", "OnlineTakeawayStore.NServiceBusApplication\OnlineTakeawayStore.NServiceBusApplication\OnlineTakeawayStore.NServiceBusApplication.csproj", "{A3D84A0A-D018-4CC7-94E5-9A334C83587E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D88E7BA8-BB6D-42CF-B1CB-53791C383A5A}"
 	ProjectSection(SolutionItems) = preProject
@@ -15,6 +11,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D88E7B
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineTakeawayStore.ReturnEvents", "OnlineTakeawayStore.ReturnEvents\OnlineTakeawayStore.ReturnEvents.csproj", "{13F72F5A-A233-4903-A685-76BC1CE87F49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineTakeawayStore.StaticDomainEvents", "OnlineTakeawayStore.StaticDomainEvents\OnlineTakeawayStore.StaticDomainEvents.csproj", "{203BA48C-4EBB-480B-B01D-E7E7D7E60A96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineTakeawayStore.NativeEvents", "OnlineTakeawayStore.NativeEvents\OnlineTakeawayStore.NativeEvents.csproj", "{8145FB74-F2DB-468C-A7BA-7A9EC391B9A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineTakeawayStore.NServiceBus", "OnlineTakeawayStore.NServiceBus\OnlineTakeawayStore.NServiceBus.csproj", "{A3D84A0A-D018-4CC7-94E5-9A334C83587E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,10 +30,18 @@ Global
 		{198900DA-2709-4229-8550-90D75E8A90E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{198900DA-2709-4229-8550-90D75E8A90E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{198900DA-2709-4229-8550-90D75E8A90E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13F72F5A-A233-4903-A685-76BC1CE87F49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13F72F5A-A233-4903-A685-76BC1CE87F49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13F72F5A-A233-4903-A685-76BC1CE87F49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13F72F5A-A233-4903-A685-76BC1CE87F49}.Release|Any CPU.Build.0 = Release|Any CPU
 		{203BA48C-4EBB-480B-B01D-E7E7D7E60A96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{203BA48C-4EBB-480B-B01D-E7E7D7E60A96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{203BA48C-4EBB-480B-B01D-E7E7D7E60A96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{203BA48C-4EBB-480B-B01D-E7E7D7E60A96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8145FB74-F2DB-468C-A7BA-7A9EC391B9A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8145FB74-F2DB-468C-A7BA-7A9EC391B9A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8145FB74-F2DB-468C-A7BA-7A9EC391B9A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8145FB74-F2DB-468C-A7BA-7A9EC391B9A4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A3D84A0A-D018-4CC7-94E5-9A334C83587E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A3D84A0A-D018-4CC7-94E5-9A334C83587E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3D84A0A-D018-4CC7-94E5-9A334C83587E}.Release|Any CPU.ActiveCfg = Release|Any CPU

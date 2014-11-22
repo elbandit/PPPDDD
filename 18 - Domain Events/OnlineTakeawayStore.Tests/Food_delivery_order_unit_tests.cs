@@ -1,8 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OnlineTakeawayStore.Domain;
-using OnlineTakeawayStore.Domain.Events;
 using System.Collections.Generic;
+using OnlineTakeawayStore.StaticDomainEvents.Infrastructure;
+using OnlineTakeawayStore.StaticDomainEvents.Model.Events;
+using OnlineTakeawayStore.StaticDomainEvents.Model;
 
 namespace OnlineTakeawayStore.Tests
 {
