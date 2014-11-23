@@ -16,8 +16,8 @@ namespace OnlineTakeawayStore.NServiceBus.Application
             var service = new FoodDeliveryOrderService(Bus);
             var request = new PlaceFoodDeliveryOrderRequest
             {
-                CustomerId = 8989,
-                RestaurantId = 333,
+                CustomerId = Guid.NewGuid(),
+                RestaurantId = Guid.NewGuid(),
                 DeliveryTime = DateTime.Now.AddHours(1),
                 MenuItemIds = new List<int> { 1, 2, 3}
             };

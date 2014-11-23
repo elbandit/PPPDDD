@@ -10,7 +10,7 @@ namespace OnlineTakeawayStore.StaticDomainEvents.Model
 {
     public class FoodDeliveryOrder
     {
-        public FoodDeliveryOrder(int id, int customerId, int restuarantId, List<int> menuItemIds, DateTime deliveryTime)
+        public FoodDeliveryOrder(Guid id, Guid customerId, Guid restuarantId, List<int> menuItemIds, DateTime deliveryTime)
         {
             this.Id = id;
             this.CustomerId = customerId;
@@ -23,13 +23,13 @@ namespace OnlineTakeawayStore.StaticDomainEvents.Model
             DomainEvents.Raise(new FoodDeliveryOrderCreated(this));
         }
 
-        public int Id { get; private set; }
+        public Guid Id { get; private set; }
 
         public FoodDeliveryOrderSteps Status { get; private set; }
 
-        public int CustomerId { get; private set; }
+        public Guid CustomerId { get; private set; }
 
-        public int RestaurantId { get; private set; }
+        public Guid RestaurantId { get; private set; }
 
         public List<int> MenuItemIds { get; private set; }
 

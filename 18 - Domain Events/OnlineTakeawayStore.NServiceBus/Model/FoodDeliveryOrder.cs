@@ -10,7 +10,7 @@ namespace OnlineTakeawayStore.NServiceBus.Model
 {
     public class FoodDeliveryOrder
     {
-        public FoodDeliveryOrder(int id, int customerId, int restuarantId, List<int> menuItemIds,
+        public FoodDeliveryOrder(Guid id, Guid customerId, Guid restuarantId, List<int> menuItemIds,
             DateTime deliveryTime, IBus bus)
         {
             this.Id = id;
@@ -27,13 +27,13 @@ namespace OnlineTakeawayStore.NServiceBus.Model
 
         private IBus bus;
 
-        public int Id { get; private set; }
+        public Guid Id { get; private set; }
 
         public FoodDeliveryOrderSteps Status { get; private set; }
 
-        public int CustomerId { get; private set; }
+        public Guid CustomerId { get; private set; }
 
-        public int RestaurantId { get; private set; }
+        public Guid RestaurantId { get; private set; }
 
         public List<int> MenuItemIds { get; private set; }
 

@@ -11,8 +11,6 @@ namespace OnlineTakeawayStore.Application.NativeEvents
 {
     public class FoodDeliveryOrderService
     {
-        private static int Id = 0;
-
         // sends real-time notifications to browser and restaurant
         private INotificationChannel clientChannel;
         private IRestaurantConnector connector;
@@ -25,7 +23,7 @@ namespace OnlineTakeawayStore.Application.NativeEvents
 
         public void PlaceFoodDeliveryOrder(PlaceFoodDeliveryOrderRequest request)
         {
-            var id = Id++; // for demonstration purposes only
+            var id = Guid.NewGuid();
 
             FoodDeliveryOrderCreatedHandler onCreationHandler = (FoodDeliveryOrder o) => 
             {
@@ -41,9 +39,9 @@ namespace OnlineTakeawayStore.Application.NativeEvents
 
     public class PlaceFoodDeliveryOrderRequest
     {
-        public int CustomerId { get; set; }
+        public Guid CustomerId { get; set; }
 
-        public int RestaurantId { get; set; }
+        public Guid RestaurantId { get; set; }
 
         public List<int> MenuItemIds { get; set; }
 

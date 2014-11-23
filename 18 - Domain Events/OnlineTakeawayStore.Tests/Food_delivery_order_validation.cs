@@ -23,14 +23,14 @@ namespace OnlineTakeawayStore.Tests
         static IFoodDeliveryOrderRepository repository = MockRepository.GenerateStub<IFoodDeliveryOrderRepository>();
 
         // test data
-        static int blacklistedCustomerId = 67554;
+        static Guid blacklistedCustomerId = Guid.NewGuid();
         static List<int> menuItemIds = new List<int> { 333, 164, 990 };
         static PlaceFoodDeliveryOrderRequest request = new PlaceFoodDeliveryOrderRequest
         {
             CustomerId = blacklistedCustomerId,
             DeliveryTime = DateTime.Now.AddHours(1),
             MenuItemIds = menuItemIds,
-            RestaurantId = 4567
+            RestaurantId = Guid.NewGuid()
         };
         
         [ClassInitialize]

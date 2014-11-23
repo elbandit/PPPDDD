@@ -9,9 +9,9 @@ namespace OnlineTakeawayStore.Domain.EventsKeyword
     public class FoodDeliveryOrder
     {
         public event FoodDeliveryOrderCreatedHandler FoodDeliveryOrderCreated;
-        public event FoodDeliveryOrderConfirmedHandler FoodDeliveryOrderConfirmed; 
+        public event FoodDeliveryOrderConfirmedHandler FoodDeliveryOrderConfirmed;
 
-        public FoodDeliveryOrder(int id, int customerId, int restuarantId, List<int> menuItemIds, DateTime deliveryTime, 
+        public FoodDeliveryOrder(Guid id, Guid customerId, Guid restuarantId, List<int> menuItemIds, DateTime deliveryTime, 
             FoodDeliveryOrderCreatedHandler creationHandler)
         {
             this.Id = id;
@@ -30,13 +30,13 @@ namespace OnlineTakeawayStore.Domain.EventsKeyword
                 FoodDeliveryOrderCreated(this);
         }
 
-        public int Id { get; private set; }
+        public Guid Id { get; private set; }
 
         public FoodDeliveryOrderSteps Status { get; private set; }
 
-        public int CustomerId { get; private set; }
+        public Guid CustomerId { get; private set; }
 
-        public int RestaurantId { get; private set; }
+        public Guid RestaurantId { get; private set; }
 
         public List<int> MenuItemIds { get; private set; }
 
