@@ -76,32 +76,5 @@ namespace OnlineTakeawayStore.Tests
             Assert.AreEqual(deliveryTime, savedOrder.RequestedDeliveryTime);
         }
     }
-   
-    [TestClass]
-    public class Food_delivery_order_with_real_time_updates
-    {
-        // application service collaborators
-        static INotificationChannel client = MockRepository.GenerateStub<INotificationChannel>();
-        static IRestaurantConnector connector = MockRepository.GenerateStub<IRestaurantConnector>();
-        static INotificationChannel kitchen = MockRepository.GenerateStub<INotificationChannel>();
-
-        // services used in event handlers (previously would have also been collaborators)
-        static IEmailer emailer = MockRepository.GenerateStub<IEmailer>();
-        static IFoodDeliveryOrderRepository repository = MockRepository.GenerateStub<IFoodDeliveryOrderRepository>();
-
-        // test data
-        static Guid customerId = Guid.NewGuid();
-        static DateTime deliveryTime = DateTime.Now.AddHours(1);
-        static List<int> menuItemÌds = new List<int> { 46, 23, 921 };
-        static Guid restaurantId = Guid.NewGuid();
-        static PlaceFoodDeliveryOrderRequest request = new PlaceFoodDeliveryOrderRequest
-        {
-            CustomerId = customerId,
-            RestaurantId = restaurantId,
-            MenuItemIds = menuItemÌds,
-            DeliveryTime = deliveryTime
-        };
-
-        static string orderRequest = "ORDER_REQUEST_" + customerId + "_" + restaurantId + "_" + String.Join(",", menuItemÌds.Select(x => x.ToString()) + "_" + deliveryTime.ToLocalTime());
-    }
+      
 }

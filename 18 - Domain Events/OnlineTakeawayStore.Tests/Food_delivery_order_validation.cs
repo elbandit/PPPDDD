@@ -49,7 +49,9 @@ namespace OnlineTakeawayStore.Tests
         [TestMethod]
         public void A_notification_will_be_sent_to_customer_indicating_they_are_blacklisted()
         {
-            clientChannel.AssertWasCalled(c => c.Publish("ORDER_REJECTED_BLACKLISTED_CUSTOMER_0"), x => x.IgnoreArguments());
+            clientChannel.AssertWasCalled(c => c.Publish(""), x => x.IgnoreArguments());
+            var arg = clientChannel.GetArgumentsForCallsMadeOn(c => c.Publish(""))[0][0];
+            Assert.IsTrue(arg.ToString().StartsWith("ORDER_REJECTED_BLACKLISTED_CUSTOMER_"));
         }
 
         [TestMethod]
