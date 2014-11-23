@@ -5,6 +5,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Rhino.Mocks;
 using OnlineTakeawayStore.Application;
 using OnlineTakeawayStore.Domain;
+using OnlineTakeawayStore.StaticDomainEvents.Model;
+using OnlineTakeawayStore.StaticDomainEvents.Infrastructure;
 
 namespace OnlineTakeawayStore.Tests
 {

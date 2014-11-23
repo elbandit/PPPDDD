@@ -61,13 +61,13 @@
     <Compile Include="Food_delivery_order_unit_tests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OnlineTakeawayStore.Domain\OnlineTakeawayStore.csproj">
-      <Project>{203ba48c-4ebb-480b-b01d-e7e7d7e60a96}</Project>
-      <Name>OnlineTakeawayStore</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\OnlineTakeawayStore.StaticDomainEvents\OnlineTakeawayStore.StaticDomainEvents.csproj">
+      <Project>{203ba48c-4ebb-480b-b01d-e7e7d7e60a96}</Project>
+      <Name>OnlineTakeawayStore.StaticDomainEvents</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
