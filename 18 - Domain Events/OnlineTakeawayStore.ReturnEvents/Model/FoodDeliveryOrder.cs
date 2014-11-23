@@ -44,9 +44,9 @@ namespace OnlineTakeawayStore.Domain.DispatcherVersion
             RecordedEvents.Add(new FoodDeliveryOrderConfirmed(this));
         }
 
-        public void Invalidate()
+        public void Reject()
         {
-            Status = FoodDeliveryOrderSteps.Invalidated;
+            Status = FoodDeliveryOrderSteps.Rejected;
         }
     }
 
@@ -58,7 +58,6 @@ namespace OnlineTakeawayStore.Domain.DispatcherVersion
         Confirmed,
         Cooked,
         Despatched,
-        Rejected,
-        Invalidated
+        Rejected
     }
 }

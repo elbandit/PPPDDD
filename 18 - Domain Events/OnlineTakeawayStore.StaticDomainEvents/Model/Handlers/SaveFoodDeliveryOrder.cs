@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace OnlineTakeawayStore.StaticDomainEvents.Model.EventHandlers
 {
-    public class SaveFoodDeliveryOrder : IHandleEvents<FoodDeliveryOrderCreated>, IHandleEvents<FoodDeliveryOrderInvalidatedDueToBlacklistedCustomer>
+    public class SaveFoodDeliveryOrder : IHandleEvents<FoodDeliveryOrderCreated>, IHandleEvents<FoodDeliveryOrderRejectedDueToBlacklistedCustomer>
     {
         // repository could be backed by any kind of storage technology
         private IFoodDeliveryOrderRepository repository;
@@ -23,7 +23,7 @@ namespace OnlineTakeawayStore.StaticDomainEvents.Model.EventHandlers
             repository.Save(@event.Order);
         }
 
-        public void Handle(FoodDeliveryOrderInvalidatedDueToBlacklistedCustomer @event)
+        public void Handle(FoodDeliveryOrderRejectedDueToBlacklistedCustomer @event)
         {
             repository.Save(@event.Order);
         }

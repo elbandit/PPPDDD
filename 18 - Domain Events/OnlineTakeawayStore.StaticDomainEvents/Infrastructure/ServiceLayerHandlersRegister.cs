@@ -19,7 +19,7 @@ namespace OnlineTakeawayStore.Application
         {
             DomainEvents.Register<FoodDeliveryOrderConfirmed>(new SendConfirmationEmailOnOrderConfirmed(emailer));
             DomainEvents.Register<FoodDeliveryOrderValidated>(new SendEmailAcknowledgementOnOrderValidation(emailer));
-            DomainEvents.Register<FoodDeliveryOrderInvalidatedDueToBlacklistedCustomer>(new EmailBlacklistedCustomerOnOrderInvalidation(emailer));
+            DomainEvents.Register<FoodDeliveryOrderRejectedDueToBlacklistedCustomer>(new EmailBlacklistedCustomerOnOrderInvalidation(emailer));
         }
     }
 }

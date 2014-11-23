@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace OnlineTakeawayStore.Application.EventHandlers
 {
-    public class EmailBlacklistedCustomerOnOrderInvalidation : IHandleEvents<FoodDeliveryOrderInvalidatedDueToBlacklistedCustomer>
+    public class EmailBlacklistedCustomerOnOrderInvalidation : IHandleEvents<FoodDeliveryOrderRejectedDueToBlacklistedCustomer>
     {
         private IEmailer emailer;
 
@@ -18,7 +18,7 @@ namespace OnlineTakeawayStore.Application.EventHandlers
             this.emailer = emailer;
         }
 
-        public void Handle(FoodDeliveryOrderInvalidatedDueToBlacklistedCustomer @event)
+        public void Handle(FoodDeliveryOrderRejectedDueToBlacklistedCustomer @event)
         {
             emailer.NotifyBlacklistedCustomerRejection(@event.Order.CustomerId);
         }

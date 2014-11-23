@@ -50,9 +50,9 @@ namespace OnlineTakeawayStore.Domain.EventsKeyword
                 FoodDeliveryOrderConfirmed(this);
         }
 
-        public void Invalidate()
+        public void Reject()
         {
-            Status = FoodDeliveryOrderSteps.Invalidated;
+            Status = FoodDeliveryOrderSteps.Rejected;
         }
     }
 
@@ -64,8 +64,7 @@ namespace OnlineTakeawayStore.Domain.EventsKeyword
         Confirmed,
         Cooked,
         Despatched,
-        Rejected,
-        Invalidated
+        Rejected
     }
 
     public delegate void FoodDeliveryOrderCreatedHandler(FoodDeliveryOrder order);

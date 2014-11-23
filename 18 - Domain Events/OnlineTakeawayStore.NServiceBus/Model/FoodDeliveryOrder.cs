@@ -46,9 +46,9 @@ namespace OnlineTakeawayStore.NServiceBus.Model
             bus.InMemory.Raise(new FoodDeliveryOrderConfirmed(this));
         }
 
-        public void Invalidate()
+        public void Reject()
         {
-            Status = FoodDeliveryOrderSteps.Invalidated;
+            Status = FoodDeliveryOrderSteps.Rejected;
         }
     }
 
@@ -60,7 +60,6 @@ namespace OnlineTakeawayStore.NServiceBus.Model
         Confirmed,
         Cooked,
         Despatched,
-        Rejected,
-        Invalidated
+        Rejected
     }
 }

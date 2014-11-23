@@ -57,7 +57,7 @@ namespace OnlineTakeawayStore.Tests
         [TestMethod]
         public void A_real_time_notification_of_order_acknowledged()
         {
-            client.AssertWasCalled(c => c.Publish("ORDER_ACKNOWLEDGED"));
+            client.AssertWasCalled(c => c.Publish("ORDER_ACKNOWLEDGED_" + (FoodDeliveryOrderService.Id - 1)));
         }
 
         [TestMethod]

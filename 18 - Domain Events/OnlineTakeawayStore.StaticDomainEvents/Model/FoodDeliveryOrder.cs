@@ -42,9 +42,9 @@ namespace OnlineTakeawayStore.StaticDomainEvents.Model
             DomainEvents.Raise(new FoodDeliveryOrderConfirmed(this));
         }
 
-        public void Invalidate()
+        public void Reject()
         {
-            Status = FoodDeliveryOrderSteps.Invalidated;
+            Status = FoodDeliveryOrderSteps.Rejected;
         }
 
         public void CompleteCurrentStep()
@@ -98,7 +98,6 @@ namespace OnlineTakeawayStore.StaticDomainEvents.Model
         Cooked,
         Despatched,
         Rejected,
-        Invalidated
     }
 
     public class UnexpectedFoodDeliveryStep : Exception { }

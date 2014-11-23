@@ -49,7 +49,7 @@ namespace OnlineTakeawayStore.Tests
         [TestMethod]
         public void A_notification_will_be_sent_to_customer_indicating_they_are_blacklisted()
         {
-            clientChannel.AssertWasCalled(c => c.Publish("ORDER_INVALIDATED_BLACKLISTED_CUSTOMER"));
+            clientChannel.AssertWasCalled(c => c.Publish("ORDER_REJECTED_BLACKLISTED_CUSTOMER_0"), x => x.IgnoreArguments());
         }
 
         [TestMethod]
@@ -59,12 +59,12 @@ namespace OnlineTakeawayStore.Tests
         }
 
         [TestMethod]
-        public void The_order_will_be_saved_in_the_invalidated_state()
+        public void The_order_will_be_saved_in_the_rejected_state()
         {
             FoodDeliveryOrder savedOrder = (FoodDeliveryOrder)repository.GetArgumentsForCallsMadeOn(r => r.Save(null), x => x.IgnoreArguments())[0][0];
 
             Assert.AreEqual(blacklistedCustomerId, savedOrder.CustomerId);
-            Assert.AreEqual(FoodDeliveryOrderSteps.Invalidated, savedOrder.Status);
+            Assert.AreEqual(FoodDeliveryOrderSteps.Rejected, savedOrder.Status);
         }
 
         [ClassCleanup]

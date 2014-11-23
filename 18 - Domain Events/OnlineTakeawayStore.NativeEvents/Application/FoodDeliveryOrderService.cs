@@ -29,7 +29,7 @@ namespace OnlineTakeawayStore.Application.NativeEvents
 
             FoodDeliveryOrderCreatedHandler onCreationHandler = (FoodDeliveryOrder o) => 
             {
-                clientChannel.Publish("ORDER_ACKNOWLEDGED");
+                clientChannel.Publish("ORDER_ACKNOWLEDGED_" + o.Id);
             };
             
             var order = new FoodDeliveryOrder(

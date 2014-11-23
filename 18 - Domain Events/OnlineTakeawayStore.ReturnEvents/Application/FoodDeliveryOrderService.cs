@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OnlineTakeawayStore.Domain.DispatcherVersion;
 using OnlineTakeawayStore.ReturnEvents.Infrastructure;
+using OnlineTakeawayStore.Domain.DispatcherVersion.Events;
 
 namespace OnlineTakeawayStore.Application.DispatcherVersion
 {
@@ -29,9 +30,9 @@ namespace OnlineTakeawayStore.Application.DispatcherVersion
         {
             var id = Id++; // for demonstration purposes only
 
-            dispatcher.Register<FoodDeliveryOrder>(o =>
+            dispatcher.Register<FoodDeliveryOrderCreated>(e =>
             {
-                clientChannel.Publish("ORDER_ACKNOWLEDGED");
+                clientChannel.Publish("ORDER_ACKNOWLEDGED_ " + e.Order.Id);
             });
 
             var order = new FoodDeliveryOrder(
