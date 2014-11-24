@@ -7,7 +7,7 @@ namespace PPPDDDChap19.eBidder.Listings.Model.Auctions
     {
         private Auction() { }
 
-        public Auction(Guid id, Guid itemId, Money startingPrice, DateTime endsAt)
+        public Auction(Guid id, Guid listingId, Money startingPrice, DateTime endsAt)
         {
             if (id == Guid.Empty)
                 throw new ArgumentNullException("Auction Id cannot be null");
@@ -19,7 +19,7 @@ namespace PPPDDDChap19.eBidder.Listings.Model.Auctions
                 throw new ArgumentNullException("EndsAt must have a value");
             
             Id = id;
-            ItemId = itemId;
+            ListingId = listingId;
             StartingPrice = startingPrice;
             EndsAt = endsAt;            
         }
@@ -29,7 +29,7 @@ namespace PPPDDDChap19.eBidder.Listings.Model.Auctions
             // Only if no bids and more than 12 hours left
         }
 
-        private Guid ItemId { get; set; }
+        private Guid ListingId { get; set; }
         private DateTime EndsAt { get; set; }       
         private Money StartingPrice { get; set; }
         private WinningBid WinningBid { get; set; }
