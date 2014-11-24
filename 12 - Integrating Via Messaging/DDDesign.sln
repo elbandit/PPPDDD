@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2013 for Web
-VisualStudioVersion = 12.0.21005.1
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales.Messages", "Sales.Messages\Sales.Messages.csproj", "{2DD347E9-1417-4AC5-9BDC-84DBE0707427}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDDesign.Web", "DDDesign.Web\DDDesign.Web.csproj", "{577647AD-2F18-4590-B28F-D46F9351E0E0}"
@@ -20,6 +18,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Promotions.LuckyWinner.LuckyWinnerSelected", "Promotions.LuckyWinner.LuckyWinnerSelected\Promotions.LuckyWinner.LuckyWinnerSelected.csproj", "{150B3671-0358-4A92-B1B1-040E1E8A4E75}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Promotions.LuckyWinner.LuckyWinnerSelected.Bridge", "Promotions.LuckyWinner.LuckyWinnerSelected.Bridge\Promotions.LuckyWinner.LuckyWinnerSelected.Bridge.csproj", "{7E833DCC-577E-4601-83DD-E6B71F1B9D77}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Billing Context", "Billing Context", "{3127DD92-DAB4-481E-8A8B-37C22A6D6780}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Promotions Context", "Promotions Context", "{E9D889AA-241E-4DFA-B81D-43449F1DBE76}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sales Context", "Sales Context", "{AE53C794-2020-4930-A9A9-4F97EDAD9686}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shipping Context", "Shipping Context", "{079CBA19-BF9F-437B-83DE-47984F187549}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -66,5 +72,15 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B3707164-FF36-473E-877D-A652C8E41D14} = {3127DD92-DAB4-481E-8A8B-37C22A6D6780}
+		{D8BE42BB-5FD0-4DB2-919B-9FCB8D455F63} = {3127DD92-DAB4-481E-8A8B-37C22A6D6780}
+		{150B3671-0358-4A92-B1B1-040E1E8A4E75} = {E9D889AA-241E-4DFA-B81D-43449F1DBE76}
+		{7E833DCC-577E-4601-83DD-E6B71F1B9D77} = {E9D889AA-241E-4DFA-B81D-43449F1DBE76}
+		{18455B18-D42C-4B5A-98E0-2112F8066542} = {AE53C794-2020-4930-A9A9-4F97EDAD9686}
+		{2DD347E9-1417-4AC5-9BDC-84DBE0707427} = {AE53C794-2020-4930-A9A9-4F97EDAD9686}
+		{2A146AA7-EF86-4304-839C-C43B97834F15} = {079CBA19-BF9F-437B-83DE-47984F187549}
+		{AB3A64C2-9FD1-4382-AAB8-10748573DE98} = {079CBA19-BF9F-437B-83DE-47984F187549}
 	EndGlobalSection
 EndGlobal

@@ -3,6 +3,7 @@ using PPPDDDChap19.eBidder.Listings.Application.Infrastructure;
 using PPPDDDChap19.eBidder.Listings.Model.Auctions.BidHistory;
 using PPPDDDChap19.eBidder.Listings.Model.Auctions;
 using PPPDDDChap19.eBidder.Listings.Model;
+using PPPDDDChap19.eBidder.Listings.Model.Members;
 
 namespace PPPDDDChap19.eBidder.Listings.Application.Application.BusinessUseCases
 {
@@ -12,41 +13,37 @@ namespace PPPDDDChap19.eBidder.Listings.Application.Application.BusinessUseCases
         private IBidHistoryRepository _bidHistory;
         //private IDocumentSession _unitOfWork;
         private IClock _clock;
+        private IMemberService _memberService;
 
         public BidOnAuctionService(IAuctionRepository auctions,
-                            IBidHistoryRepository bidHistory, 
-                            IClock clock)
+                                   IBidHistoryRepository bidHistory, 
+                                   IMemberService memberService,
+                                   IClock clock)
         {
             _auctions = auctions;
             _bidHistory = bidHistory;
-            //_unitOfWork = unitOfWork;
             _clock = clock;
+            _memberService = memberService;
         }
 
         public void Bid(Guid auctionId, Guid memberId, decimal amount)
-        {
-            //try
-            {
-                using (DomainEvents.Register(OutBid()))
-                using (DomainEvents.Register(BidPlaced()))
-                {
-                    // Ensure member exisits
-                    // var member = _members.FindBy(memberId);
+        {            
+            using (DomainEvents.Register(OutBid()))
+            using (DomainEvents.Register(BidPlaced()))
+            {                    
+                var member = _memberService.GetMember(memberId);
 
+                if (member.CanBid)
+                { 
                     var auction = _auctions.FindBy(auctionId);
 
                     var bidAmount = new Money(amount);
 
-                    auction.PlaceBidFor(new Offer(memberId, bidAmount, _clock.Time()), _clock.Time());
-                }
+                    var offer = new Offer(memberId, bidAmount, _clock.Time())
 
-                //_unitOfWork.SaveChanges();
-            }
-            //catch (ConcurrencyException ex)
-            //{
-            //    //_unitOfWork.Advanced.Clear();
-            //    Bid(auctionId, memberId, amount);
-            //}
+                    auction.PlaceBidFor(offer, _clock.Time());
+                }                    
+            }                      
         }
 
         private Action<BidPlaced> BidPlaced()
