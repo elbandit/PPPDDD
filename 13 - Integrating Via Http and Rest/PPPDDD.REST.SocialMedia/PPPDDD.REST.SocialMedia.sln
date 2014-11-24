@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2013 for Web
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountManagement.EntryPoint.Api", "AccountManagement.EntryPoint\AccountManagement.EntryPoint.Api.csproj", "{66644357-5B60-4E85-9615-5378D400C18D}"
 EndProject
@@ -10,6 +10,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountManagement.RegularAccounts.BeganFollowing", "AccountManagement.RegularAccounts.BeganFollowing\AccountManagement.RegularAccounts.BeganFollowing.csproj", "{8F0F2B7C-755A-468A-836C-8F2101BE8046}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discovery.Reccommendations.Followers", "Discovery.Reccommendations.Followers\Discovery.Reccommendations.Followers.csproj", "{FC59B0E6-E709-4440-A857-E9C7F6A6CB8D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Account Management Context", "Account Management Context", "{06F29165-64CB-4F97-A514-9BCEE718EFB8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Discovery Context", "Discovery Context", "{28CD0E81-04F4-4A5F-A9BB-E2460693833C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,5 +40,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{66644357-5B60-4E85-9615-5378D400C18D} = {06F29165-64CB-4F97-A514-9BCEE718EFB8}
+		{F9B8D9B8-C9C7-4F8B-A75B-39B28A8E7F55} = {06F29165-64CB-4F97-A514-9BCEE718EFB8}
+		{8F0F2B7C-755A-468A-836C-8F2101BE8046} = {06F29165-64CB-4F97-A514-9BCEE718EFB8}
+		{FC59B0E6-E709-4440-A857-E9C7F6A6CB8D} = {28CD0E81-04F4-4A5F-A9BB-E2460693833C}
 	EndGlobalSection
 EndGlobal
