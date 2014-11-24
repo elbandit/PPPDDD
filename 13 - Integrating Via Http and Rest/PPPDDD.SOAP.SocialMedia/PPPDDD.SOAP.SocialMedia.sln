@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2013 for Web
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountManagement", "AccountManagement\AccountManagement.csproj", "{C6E52CD8-14E4-49E4-B35F-1C927D14C7D6}"
 EndProject
@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discovery", "Discovery\Disc
 	ProjectSection(ProjectDependencies) = postProject
 		{C6E52CD8-14E4-49E4-B35F-1C927D14C7D6} = {C6E52CD8-14E4-49E4-B35F-1C927D14C7D6}
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Account Management Context", "Account Management Context", "{03081BDB-6E10-41F4-9BDA-06AA04547666}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Discovery Context", "Discovery Context", "{BE69D4C1-76B4-4BEA-96FE-04101989DE65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,5 +31,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C6E52CD8-14E4-49E4-B35F-1C927D14C7D6} = {03081BDB-6E10-41F4-9BDA-06AA04547666}
+		{89E0E5EC-0910-4DEB-B2A2-7B3C85C15092} = {BE69D4C1-76B4-4BEA-96FE-04101989DE65}
 	EndGlobalSection
 EndGlobal
