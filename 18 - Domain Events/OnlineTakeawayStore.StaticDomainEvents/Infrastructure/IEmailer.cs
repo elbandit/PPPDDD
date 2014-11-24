@@ -8,10 +8,10 @@ namespace OnlineTakeawayStore.Application
 {
     public interface IEmailer
     {
-        void SendFoodDeliveryOrderConfirmation(int customerId);
+        void SendFoodDeliveryOrderConfirmation(Guid customerId);
 
-        void SendFoodDeliveryOrderAcknowledgement(int customerId);
+        void SendFoodDeliveryOrderAcknowledgement(Guid customerId);
 
-        void NotifyBlacklistedCustomerRejection(int customerId);
+        void NotifyBlacklistedCustomerRejection(Guid customerId);
     }
 }

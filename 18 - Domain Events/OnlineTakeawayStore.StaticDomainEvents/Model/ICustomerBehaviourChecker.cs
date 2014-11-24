@@ -9,6 +9,6 @@ namespace OnlineTakeawayStore.StaticDomainEvents.Model
     public interface ICustomerBehaviorChecker
     {
         // did they place an order and not pay etc
-        bool IsBlacklisted(int customerId);
+        bool IsBlacklisted(Guid customerId);
     }
 }

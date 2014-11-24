@@ -13,8 +13,6 @@ namespace OnlineTakeawayStore.Application
 {
     public class FoodDeliveryOrderService
     {
-        private static int Id = 0;
-
         private INotificationChannel clientChannel;
         private IRestaurantConnector connector;
 
@@ -26,7 +24,7 @@ namespace OnlineTakeawayStore.Application
 
         public void PlaceFoodDeliveryOrder(PlaceFoodDeliveryOrderRequest request)
         {
-            var id = Id++; // for demonstration purposes only
+            var id = Guid.NewGuid();
             
             // This has to be registered in-line to keep the "state" in scope
             // The state is the client channel tha keeps a connection to the specific customer making this order request
@@ -34,16 +32,18 @@ namespace OnlineTakeawayStore.Application
             Action<FoodDeliveryOrderCreated> publishOrderAcknowledgement = e =>
             {
                 if (e.Order.Id == id) // filter out events for other customers' orders
-                    clientChannel.Publish("ORDER_ACKNOWLEDGED");
+                    clientChannel.Publish("ORDER_ACKNOWLEDGED_" + e.Order.Id);
             };
             DomainEvents.Register<FoodDeliveryOrderCreated>(publishOrderAcknowledgement);
 
-            Action<FoodDeliveryOrderInvalidatedDueToBlacklistedCustomer> publishBlacklistNotification = e =>
+            Action<FoodDeliveryOrderRejectedDueToBlacklistedCustomer> publishBlacklistNotification = e =>
             {
                 if (e.Order.Id == id)
-                    clientChannel.Publish("ORDER_INVALIDATED_BLACKLISTED_CUSTOMER");
+                    clientChannel.Publish(
+                        "ORDER_REJECTED_BLACKLISTED_CUSTOMER_" + e.Order.Id
+                    );
             };
-            DomainEvents.Register<FoodDeliveryOrderInvalidatedDueToBlacklistedCustomer>(publishBlacklistNotification);
+            DomainEvents.Register<FoodDeliveryOrderRejectedDueToBlacklistedCustomer>(publishBlacklistNotification);
 
             var order = new FoodDeliveryOrder(id, request.CustomerId, request.RestaurantId, request.MenuItemIds, request.DeliveryTime);
 
@@ -56,9 +56,9 @@ namespace OnlineTakeawayStore.Application
 
     public class PlaceFoodDeliveryOrderRequest
     {
-        public int CustomerId { get; set; }
+        public Guid CustomerId { get; set; }
 
-        public int RestaurantId { get; set; }
+        public Guid RestaurantId { get; set; }
 
         public List<int> MenuItemIds { get; set; }
 

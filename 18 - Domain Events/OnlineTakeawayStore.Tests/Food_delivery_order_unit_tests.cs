@@ -20,7 +20,7 @@ namespace OnlineTakeawayStore.Tests
             {
                 eventWasRaised = true;
             });
-            new FoodDeliveryOrder(1, 1, 1, new List<int>(), DateTime.Now);
+            new FoodDeliveryOrder(Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid(), new List<int>(), DateTime.Now);
 
             Assert.AreEqual(eventWasRaised, true);
             // Also may want to verify that the properties were correctly set

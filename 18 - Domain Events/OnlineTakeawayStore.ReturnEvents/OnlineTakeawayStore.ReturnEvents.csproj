@@ -45,7 +45,6 @@
     <Compile Include="Infrastructure\INotificationChannel.cs" />
     <Compile Include="Model\FoodDeliveryOrder.cs" />
     <Compile Include="Model\FoodDeliveryOrderEvents.cs" />
-    <Compile Include="Model\DoubleDispatchDispatcher\FoodDeliveryOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

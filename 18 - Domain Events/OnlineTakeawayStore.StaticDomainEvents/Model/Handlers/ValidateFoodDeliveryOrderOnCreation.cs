@@ -21,8 +21,8 @@ namespace OnlineTakeawayStore.StaticDomainEvents.Model.EventHandlers
         {
             if (checker.IsBlacklisted(@event.Order.CustomerId))
             {
-                @event.Order.Invalidate();
-                DomainEvents.Raise(new FoodDeliveryOrderInvalidatedDueToBlacklistedCustomer(@event.Order));
+                @event.Order.Reject();
+                DomainEvents.Raise(new FoodDeliveryOrderRejectedDueToBlacklistedCustomer(@event.Order));
             }
             else
                 DomainEvents.Raise(new FoodDeliveryOrderValidated(@event.Order));

@@ -23,10 +23,10 @@ namespace OnlineTakeawayStore.Tests
         static ICustomerBehaviorChecker checker = MockRepository.GenerateStub<ICustomerBehaviorChecker>();
 
         // test data
-        static int customerId = 9989445;
+        static Guid customerId = Guid.NewGuid();
         static DateTime deliveryTime = DateTime.Now.AddHours(1);
         static List<int> menuItemÌds = new List<int> { 46, 23, 921 };
-        static int restaurantId = 422326;
+        static Guid restaurantId = Guid.NewGuid();
 
         [ClassInitialize]
         public static void When_placing_a_food_delivery_order(TestContext ctx)
@@ -57,7 +57,9 @@ namespace OnlineTakeawayStore.Tests
         [TestMethod]
         public void A_real_time_notification_of_order_acknowledged()
         {
-            client.AssertWasCalled(c => c.Publish("ORDER_ACKNOWLEDGED"));
+            client.AssertWasCalled(c => c.Publish("ORDER_ACKNOWLEDGED_"), x => x.IgnoreArguments());
+            var arg = client.GetArgumentsForCallsMadeOn(c => c.Publish(""))[0][0];
+            Assert.IsTrue(arg.ToString().StartsWith("ORDER_ACKNOWLEDGED"));
         }
 
         [TestMethod]
@@ -74,32 +76,5 @@ namespace OnlineTakeawayStore.Tests
             Assert.AreEqual(deliveryTime, savedOrder.RequestedDeliveryTime);
         }
     }
-   
-    [TestClass]
-    public class Food_delivery_order_with_real_time_updates
-    {
-        // application service collaborators
-        static INotificationChannel client = MockRepository.GenerateStub<INotificationChannel>();
-        static IRestaurantConnector connector = MockRepository.GenerateStub<IRestaurantConnector>();
-        static INotificationChannel kitchen = MockRepository.GenerateStub<INotificationChannel>();
-
-        // services used in event handlers (previously would have also been collaborators)
-        static IEmailer emailer = MockRepository.GenerateStub<IEmailer>();
-        static IFoodDeliveryOrderRepository repository = MockRepository.GenerateStub<IFoodDeliveryOrderRepository>();
-
-        // test data
-        static int customerId = 9989445;
-        static DateTime deliveryTime = DateTime.Now.AddHours(1);
-        static List<int> menuItemÌds = new List<int> { 46, 23, 921 };
-        static int restaurantId = 422326;
-        static PlaceFoodDeliveryOrderRequest request = new PlaceFoodDeliveryOrderRequest
-        {
-            CustomerId = customerId,
-            RestaurantId = restaurantId,
-            MenuItemIds = menuItemÌds,
-            DeliveryTime = deliveryTime
-        };
-
-        static string orderRequest = "ORDER_REQUEST_" + customerId + "_" + restaurantId + "_" + String.Join(",", menuItemÌds.Select(x => x.ToString()) + "_" + deliveryTime.ToLocalTime());
-    }
+      
 }

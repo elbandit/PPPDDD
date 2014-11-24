@@ -23,14 +23,14 @@ namespace OnlineTakeawayStore.Tests
         static IFoodDeliveryOrderRepository repository = MockRepository.GenerateStub<IFoodDeliveryOrderRepository>();
 
         // test data
-        static int blacklistedCustomerId = 67554;
+        static Guid blacklistedCustomerId = Guid.NewGuid();
         static List<int> menuItemIds = new List<int> { 333, 164, 990 };
         static PlaceFoodDeliveryOrderRequest request = new PlaceFoodDeliveryOrderRequest
         {
             CustomerId = blacklistedCustomerId,
             DeliveryTime = DateTime.Now.AddHours(1),
             MenuItemIds = menuItemIds,
-            RestaurantId = 4567
+            RestaurantId = Guid.NewGuid()
         };
         
         [ClassInitialize]
@@ -49,7 +49,9 @@ namespace OnlineTakeawayStore.Tests
         [TestMethod]
         public void A_notification_will_be_sent_to_customer_indicating_they_are_blacklisted()
         {
-            clientChannel.AssertWasCalled(c => c.Publish("ORDER_INVALIDATED_BLACKLISTED_CUSTOMER"));
+            clientChannel.AssertWasCalled(c => c.Publish(""), x => x.IgnoreArguments());
+            var arg = clientChannel.GetArgumentsForCallsMadeOn(c => c.Publish(""))[0][0];
+            Assert.IsTrue(arg.ToString().StartsWith("ORDER_REJECTED_BLACKLISTED_CUSTOMER_"));
         }
 
         [TestMethod]
@@ -59,12 +61,12 @@ namespace OnlineTakeawayStore.Tests
         }
 
         [TestMethod]
-        public void The_order_will_be_saved_in_the_invalidated_state()
+        public void The_order_will_be_saved_in_the_rejected_state()
         {
             FoodDeliveryOrder savedOrder = (FoodDeliveryOrder)repository.GetArgumentsForCallsMadeOn(r => r.Save(null), x => x.IgnoreArguments())[0][0];
 
             Assert.AreEqual(blacklistedCustomerId, savedOrder.CustomerId);
-            Assert.AreEqual(FoodDeliveryOrderSteps.Invalidated, savedOrder.Status);
+            Assert.AreEqual(FoodDeliveryOrderSteps.Rejected, savedOrder.Status);
         }
 
         [ClassCleanup]

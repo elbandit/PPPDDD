@@ -16,7 +16,7 @@ namespace OnlineTakeawayStore.Domain
         public static void WireUpDomainEventHandlers(IFoodDeliveryOrderRepository repository, ICustomerBehaviorChecker checker)
         {
             DomainEvents.Register<FoodDeliveryOrderCreated>(new ValidateFoodDeliveryOrderOnCreation(checker));
-            DomainEvents.Register<FoodDeliveryOrderInvalidatedDueToBlacklistedCustomer>(new SaveFoodDeliveryOrder(repository));
+            DomainEvents.Register<FoodDeliveryOrderRejectedDueToBlacklistedCustomer>(new SaveFoodDeliveryOrder(repository));
         }
     }
 }

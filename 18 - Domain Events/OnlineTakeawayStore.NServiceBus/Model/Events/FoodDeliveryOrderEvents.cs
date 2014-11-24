@@ -28,9 +28,9 @@ namespace OnlineTakeawayStore.NServiceBus.Model.Events
         public FoodDeliveryOrder Order { get; private set; }
     }
 
-    public class FoodDeliveryOrderInvalidatedDueToBlacklistedCustomer
+    public class FoodDeliveryOrderRejectedDueToBlacklistedCustomer
     {
-        public FoodDeliveryOrderInvalidatedDueToBlacklistedCustomer(FoodDeliveryOrder order)
+        public FoodDeliveryOrderRejectedDueToBlacklistedCustomer(FoodDeliveryOrder order)
         {
             this.Order = order;
         }

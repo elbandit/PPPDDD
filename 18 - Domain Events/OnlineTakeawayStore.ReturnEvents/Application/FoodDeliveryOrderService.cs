@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OnlineTakeawayStore.Domain.DispatcherVersion;
 using OnlineTakeawayStore.ReturnEvents.Infrastructure;
+using OnlineTakeawayStore.Domain.DispatcherVersion.Events;
 
 namespace OnlineTakeawayStore.Application.DispatcherVersion
 {
@@ -27,11 +28,11 @@ namespace OnlineTakeawayStore.Application.DispatcherVersion
 
         public void PlaceFoodDeliveryOrder(PlaceFoodDeliveryOrderRequest request)
         {
-            var id = Id++; // for demonstration purposes only
+            var id = Guid.NewGuid();
 
-            dispatcher.Register<FoodDeliveryOrder>(o =>
+            dispatcher.Register<FoodDeliveryOrderCreated>(e =>
             {
-                clientChannel.Publish("ORDER_ACKNOWLEDGED");
+                clientChannel.Publish("ORDER_ACKNOWLEDGED_ " + e.Order.Id);
             });
 
             var order = new FoodDeliveryOrder(
@@ -48,9 +49,9 @@ namespace OnlineTakeawayStore.Application.DispatcherVersion
 
     public class PlaceFoodDeliveryOrderRequest
     {
-        public int CustomerId { get; set; }
+        public Guid CustomerId { get; set; }
 
-        public int RestaurantId { get; set; }
+        public Guid RestaurantId { get; set; }
 
         public List<int> MenuItemIds { get; set; }
 
