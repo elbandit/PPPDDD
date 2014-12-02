@@ -55,10 +55,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Food_delivery_order_validation.cs" />
-    <Compile Include="Placing_a_food_delivery_order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Food_delivery_order_unit_tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
