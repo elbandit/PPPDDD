@@ -9,6 +9,7 @@ namespace OnlineTakeawayStore.NativeEvents.Model
 {
     public class OrderForDelivery
     {
+        public Guid Id { get; private set; }
         private DateTime TimeOfOrderBeingPlaced { get; set; }
         private DateTime TimeThatPizzaWasDelivered { get; set; }
         private FoodDeliveryOrderSteps Status { get; set; }
@@ -18,12 +19,11 @@ namespace OnlineTakeawayStore.NativeEvents.Model
         public event DeliveryGuaranteeFailedHandler DeliveryGuaranteeFailed;
 
         public OrderForDelivery(Guid id, Guid customerId, Guid restuarantId, List<int> menuItemIds, DateTime timeOfOrderBeingPlaced)
-        
         {
+            Id = id;
             TimeOfOrderBeingPlaced = timeOfOrderBeingPlaced;
             Status = FoodDeliveryOrderSteps.Pending;
         }
-
 
         public void ConfirmReceipt(DateTime timeThatPizzaWasDelivered)
         {
