@@ -37,6 +37,5 @@ namespace OnlineTakeawayStore.ReturnEvents.Model
                 }
             }
         }
-
     }
 }

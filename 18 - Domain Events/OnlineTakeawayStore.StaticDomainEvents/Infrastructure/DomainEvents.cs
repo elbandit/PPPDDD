@@ -6,12 +6,7 @@ using System.Threading.Tasks;
 
 namespace OnlineTakeawayStore.StaticDomainEvents.Infrastructure
 {
-    public interface IHandleEvents<T>
-    {
-        void Handle(T @event);
-    }
-
-        /// <summary>
+    /// <summary>
     /// Domain Events class from http://www.udidahan.com/2008/08/25/domain-events-take-2/
     /// </summary>
     public static class DomainEvents

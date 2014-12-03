@@ -38,6 +38,5 @@ namespace OnlineTakeawayStore.NServiceBus.Model
                 }
             }
         }
-
     }
 }

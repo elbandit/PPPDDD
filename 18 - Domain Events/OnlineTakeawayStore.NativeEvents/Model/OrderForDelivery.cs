@@ -38,7 +38,6 @@ namespace OnlineTakeawayStore.NativeEvents.Model
                 }
             }
         }
-
     }
 
  }

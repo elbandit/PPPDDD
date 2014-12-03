@@ -35,6 +35,5 @@ namespace OnlineTakeawayStore.StaticDomainEvents.Model
                 }
             }
         }
-
     }
 }
