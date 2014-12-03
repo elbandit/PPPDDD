@@ -47,7 +47,7 @@
     <Compile Include="Application\CofirmDeliveryOfOrder.cs" />
     <Compile Include="Application\Events\RefundDueToLateDelivery.cs" />
     <Compile Include="Model\Events\DeliveryGuaranteeFailed.cs" />
-    <Compile Include="Model\FoodDeliveryOrderStatus.cs" />
+    <Compile Include="Model\FoodDeliveryOrderSteps.cs" />
     <Compile Include="Model\IDeliveryGuaranteeOffer.cs" />
     <Compile Include="Model\IOrderRepository.cs" />
     <Compile Include="Model\OrderForDelivery.cs" />

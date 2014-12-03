@@ -7,8 +7,8 @@
     <ProjectGuid>{A3D84A0A-D018-4CC7-94E5-9A334C83587E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OnlineTakeawayStore.NServiceBusApplication</RootNamespace>
-    <AssemblyName>OnlineTakeawayStore.NServiceBusApplication</AssemblyName>
+    <RootNamespace>OnlineTakeawayStore.NServiceBus</RootNamespace>
+    <AssemblyName>OnlineTakeawayStore.NServiceBus</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
@@ -50,17 +50,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\ConfirmDeliveryOfOrder.cs" />
+    <Compile Include="Application\Events\RefundDueToLateDelivery.cs" />
     <Compile Include="Infrastructure\EndpointConfig.cs" />
+    <Compile Include="Model\Events\DeliveryGuaranteeFailed.cs" />
+    <Compile Include="Model\FoodDeliveryOrderSteps.cs" />
+    <Compile Include="Model\IDeliveryGuaranteeOffer.cs" />
+    <Compile Include="Model\IOrderRepository.cs" />
+    <Compile Include="Model\OrderForDelivery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Application\" />
-    <Folder Include="Model\Events\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
