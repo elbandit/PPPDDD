@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnlineTakeawayStore.NServiceBus.Model
+namespace OnlineTakeawayStore.StaticDomainEvents.Model
 {
-    enum FoodDeliveryOrderSteps
+    public interface IOrderRepository
     {
-        Pending,
-        Delivered
+        OrderForDelivery FindBy(Guid id);
     }
 }

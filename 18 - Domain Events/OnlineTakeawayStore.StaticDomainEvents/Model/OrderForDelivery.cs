@@ -1,13 +1,12 @@
-﻿using NServiceBus;
-using OnlineTakeawayStore.NServiceBus.Model;
-using OnlineTakeawayStore.NServiceBus.Model.Events;
+﻿using OnlineTakeawayStore.StaticDomainEvents.Infrastructure;
+using OnlineTakeawayStore.StaticDomainEvents.Model.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnlineTakeawayStore.NServiceBus.Model
+namespace OnlineTakeawayStore.StaticDomainEvents.Model
 {
     public class OrderForDelivery
     {
@@ -16,14 +15,12 @@ namespace OnlineTakeawayStore.NServiceBus.Model
         private DateTime TimeThatPizzaWasDelivered { get; set; }
         private FoodDeliveryOrderSteps Status { get; set; }
         private IDeliveryGuaranteeOffer DeliveryGuaranteeOffer { get; set; }
-        private IBus Bus { get; set; }
 
-        public OrderForDelivery(Guid id, Guid customerId, Guid restuarantId, List<int> menuItemIds, DateTime timeOfOrderBeingPlaced, IBus bus)
+        public OrderForDelivery(Guid id, Guid customerId, Guid restuarantId, List<int> menuItemIds, DateTime timeOfOrderBeingPlaced)
         {
             Id = id;
             TimeOfOrderBeingPlaced = timeOfOrderBeingPlaced;
             Status = FoodDeliveryOrderSteps.Pending;
-            Bus = bus;
         }
 
         public void ConfirmReceipt(DateTime timeThatPizzaWasDelivered)
@@ -34,7 +31,7 @@ namespace OnlineTakeawayStore.NServiceBus.Model
                 Status = FoodDeliveryOrderSteps.Delivered;
                 if (DeliveryGuaranteeOffer.IsNotSatisfiedBy(TimeOfOrderBeingPlaced, TimeThatPizzaWasDelivered))
                 {
-                    Bus.InMemory.Raise(new DeliveryGuaranteeFailed(this));
+                    DomainEvents.Raise(new DeliveryGuaranteeFailed(this));
                 }
             }
         }

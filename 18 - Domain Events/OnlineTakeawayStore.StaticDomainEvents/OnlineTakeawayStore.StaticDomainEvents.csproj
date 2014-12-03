@@ -7,8 +7,8 @@
     <ProjectGuid>{203BA48C-4EBB-480B-B01D-E7E7D7E60A96}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OnlineTakeawayStore.Domain</RootNamespace>
-    <AssemblyName>OnlineTakeawayStore.Domain</AssemblyName>
+    <RootNamespace>OnlineTakeawayStore.StaticDomainEvents</RootNamespace>
+    <AssemblyName>OnlineTakeawayStore.StaticDomainEvents</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -47,14 +47,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\ConfirmDeliveryOfOrder.cs" />
+    <Compile Include="Application\Events\RefundDueToLateDelivery.cs" />
     <Compile Include="Infrastructure\DomainEvents.cs" />
+    <Compile Include="Model\Events\DeliveryGuaranteeFailed.cs" />
+    <Compile Include="Model\FoodDeliveryOrderSteps.cs" />
+    <Compile Include="Model\IDeliveryGuaranteeOffer.cs" />
+    <Compile Include="Model\IOrderRepository.cs" />
+    <Compile Include="Model\OrderForDelivery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Application\Handlers\" />
-    <Folder Include="Model\Events\" />
-    <Folder Include="Model\Handlers\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

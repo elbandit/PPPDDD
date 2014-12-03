@@ -11,54 +11,58 @@ namespace OnlineTakeawayStore.StaticDomainEvents.Infrastructure
         void Handle(T @event);
     }
 
+        /// <summary>
+    /// Domain Events class from http://www.udidahan.com/2008/08/25/domain-events-take-2/
+    /// </summary>
     public static class DomainEvents
     {
-        private static List<Delegate> actions;
-        private static List<object> handlers;
-
-        public static void Register<T>(Action<T> callback)
+        [ThreadStatic]
+        private static List<Delegate> _actions;
+        private static List<Delegate> Actions
         {
-            if (actions == null)
-                actions = new List<Delegate>();
-
-            actions.Add(callback);
-        }
-
-        public static void Register<T>(IHandleEvents<T> handler)
-        {
-            if (handlers == null)
-                handlers = new List<object>();
-
-            handlers.Add(handler);
-        }
-
-        // invokes each handler synchronously inside the same thread
-        // before returning control to the caller
-        public static void Raise<T>(T @event)
-        {
-            if (handlers != null)
+            get
             {
-                handlers.OfType<IHandleEvents<T>>()
-                        .ToList()
-                        .ForEach(h => h.Handle(@event));
-            }
-            if (actions != null)
-            {
-                actions.OfType<Action<T>>()
-                       .ToList()
-                       .ForEach(a => a(@event));
+                if (_actions == null)
+                {
+                    _actions = new List<Delegate>();
+                }
+                return _actions;
             }
         }
+       
+        public static IDisposable Register<T>(Action<T> callback)
+        {           
+            Actions.Add(callback);
 
-        public static void UnRegister<T>(Action<T> callback)
-        {
-            actions.Remove(callback);
+            return new DomainEventRegistrationRemover(() => Actions.Remove(callback));
         }
 
-        public static void ClearAll()
+        public static void Raise<T>(T eventArgs)
         {
-            actions = new List<Delegate>();
-            handlers = new List<object>();
+            foreach (Delegate action in Actions)
+            {
+                Action<T> typedAction = action as Action<T>;
+                if (typedAction != null)
+                {
+                    typedAction(eventArgs);
+                }
+            }
+        }
+     
+        private sealed class DomainEventRegistrationRemover : IDisposable
+        {
+            private readonly Action _callOnDispose;
+
+            public DomainEventRegistrationRemover(Action toCall)
+            {
+                _callOnDispose = toCall;
+            }
+
+            public void Dispose()
+            {
+                _callOnDispose();
+            }
         }
     }
 }
+

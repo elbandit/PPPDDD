@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnlineTakeawayStore.NServiceBus.Model
+namespace OnlineTakeawayStore.StaticDomainEvents.Model
 {
     public interface IDeliveryGuaranteeOffer
     {
