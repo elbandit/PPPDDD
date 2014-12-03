@@ -39,13 +39,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\ConfirmDeliveryOfOrder.cs" />
+    <Compile Include="Infrastructure\IEventDispatcher.cs" />
+    <Compile Include="Model\Events\DeliveryGuaranteeFailed.cs" />
+    <Compile Include="Model\FoodDeliveryOrderSteps.cs" />
+    <Compile Include="Model\IDeliveryGuaranteeOffer.cs" />
+    <Compile Include="Model\IOrderRepository.cs" />
+    <Compile Include="Model\OrderForDelivery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Application\" />
-    <Folder Include="Infrastructure\" />
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
