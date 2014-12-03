@@ -31,7 +31,7 @@ namespace OnlineTakeawayStore.StaticDomainEvents.Application
             }
         }
 
-        private void onDeliveryFailure(DeliveryGuaranteeFailed message)
+        private void onDeliveryFailure(DeliveryGuaranteeFailed evnt)
         {
             // handle internal event and publish external event to other bounded contexts
             bus.Send(new RefundDueToLateDelivery() { OrderId = message.Order.Id });
