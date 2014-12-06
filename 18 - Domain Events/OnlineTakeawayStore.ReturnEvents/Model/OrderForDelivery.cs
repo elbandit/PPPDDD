@@ -15,12 +15,14 @@ namespace OnlineTakeawayStore.ReturnEvents.Model
         private FoodDeliveryOrderSteps Status { get; set; }
         private IDeliveryGuaranteeOffer DeliveryGuaranteeOffer { get; set; }
 
-        public OrderForDelivery(Guid id, Guid customerId, Guid restuarantId, List<int> menuItemIds, DateTime timeOfOrderBeingPlaced)
+        public OrderForDelivery(Guid id, Guid customerId, Guid restuarantId, List<int> menuItemIds, DateTime timeOfOrderBeingPlaced,
+            IDeliveryGuaranteeOffer deliveryGuaranteeOffer)
         {
             Id = id;
             TimeOfOrderBeingPlaced = timeOfOrderBeingPlaced;
             Status = FoodDeliveryOrderSteps.Pending;
             RecordedEvents = new List<Object>();
+            DeliveryGuaranteeOffer = deliveryGuaranteeOffer;
         }
 
         public List<Object> RecordedEvents { get; private set; }

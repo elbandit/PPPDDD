@@ -56,12 +56,17 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitTestExamples\ReturnDomainEvents.cs" />
     <Compile Include="UnitTestExamples\StaticDomainEvents.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OnlineTakeawayStore.ReturnEvents\OnlineTakeawayStore.ReturnEvents.csproj">
+      <Project>{13f72f5a-a233-4903-a685-76bc1ce87f49}</Project>
+      <Name>OnlineTakeawayStore.ReturnEvents</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OnlineTakeawayStore.StaticDomainEvents\OnlineTakeawayStore.StaticDomainEvents.csproj">
       <Project>{203ba48c-4ebb-480b-b01d-e7e7d7e60a96}</Project>
       <Name>OnlineTakeawayStore.StaticDomainEvents</Name>
