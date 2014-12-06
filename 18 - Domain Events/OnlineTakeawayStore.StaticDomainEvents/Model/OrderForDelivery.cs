@@ -16,11 +16,13 @@ namespace OnlineTakeawayStore.StaticDomainEvents.Model
         private FoodDeliveryOrderSteps Status { get; set; }
         private IDeliveryGuaranteeOffer DeliveryGuaranteeOffer { get; set; }
 
-        public OrderForDelivery(Guid id, Guid customerId, Guid restuarantId, List<int> menuItemIds, DateTime timeOfOrderBeingPlaced)
+        public OrderForDelivery(Guid id, Guid customerId, Guid restuarantId, List<int> menuItemIds, DateTime timeOfOrderBeingPlaced,
+            IDeliveryGuaranteeOffer deliveryGuaranteeOffer)
         {
             Id = id;
             TimeOfOrderBeingPlaced = timeOfOrderBeingPlaced;
             Status = FoodDeliveryOrderSteps.Pending;
+            DeliveryGuaranteeOffer = deliveryGuaranteeOffer;
         }
 
         public void ConfirmReceipt(DateTime timeThatPizzaWasDelivered)
