@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using DDDPPP.Chap19.MicroORM.Application.Infrastructure;
 
-namespace DDDPPP.Chap19.MicroORM.Application.Model.Auction
+namespace PPPDDDChap05.DomainModel.Model
 {
-    public class Price : ValueObject<Price>
+    public class Price 
     {
         private Price()
         { }
@@ -23,26 +21,21 @@ namespace DDDPPP.Chap19.MicroORM.Application.Model.Auction
         public Money BidIncrement()
         {
             if (Amount.IsGreaterThanOrEqualTo(new Money(0.01m)) && Amount.IsLessThanOrEqualTo(new Money(0.99m)))
-                return Amount.Add(new Money(0.05m));
+                    return Amount.add(new Money(0.05m));
 
             if (Amount.IsGreaterThanOrEqualTo(new Money(1.00m)) && Amount.IsLessThanOrEqualTo(new Money(4.99m)))
-                return Amount.Add(new Money(0.20m));
-
+                    return Amount.add(new Money(0.20m));
+                
             if (Amount.IsGreaterThanOrEqualTo(new Money(5.00m)) && Amount.IsLessThanOrEqualTo(new Money(14.99m)))
-                return Amount.Add(new Money(0.50m));
+                    return Amount.add(new Money(0.50m));
 
-            return Amount.Add(new Money(1.00m));
-
+            return Amount.add(new Money(1.00m));
+            
         }
 
         public bool CanBeExceededBy(Money offer)
-        {           
-            return offer.IsGreaterThanOrEqualTo(BidIncrement());
-        }
-
-        protected override IEnumerable<object> GetAttributesToIncludeInEqualityCheck()
         {
-            return new List<Object>() { Amount };
+            return offer.IsGreaterThanOrEqualTo(BidIncrement());
         }
     }
 }

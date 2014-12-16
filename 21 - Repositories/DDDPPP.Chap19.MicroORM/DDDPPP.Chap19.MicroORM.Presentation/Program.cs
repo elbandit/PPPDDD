@@ -24,10 +24,11 @@ namespace DDDPPP.Chap19.MicroORM.Presentation
             var auctionId = CreateAuction();
 
             Bid(auctionId, memberIdA, 10m);
-            Bid(auctionId, memberIdB, 1.49m);
-            Bid(auctionId, memberIdB, 10.01m);
-            Bid(auctionId, memberIdB, 12.00m);
-            Bid(auctionId, memberIdA, 12.00m);
+            Bid(auctionId, memberIdB, 9.99m);
+            //Bid(auctionId, memberIdB, 1.49m);
+            //Bid(auctionId, memberIdB, 10.01m);
+            //Bid(auctionId, memberIdB, 12.00m);
+            //Bid(auctionId, memberIdA, 12.00m);
         }
 
         public static Guid CreateAuction()
