@@ -45,24 +45,24 @@ namespace PPPDDDChap05.DomainModel.Model
             return HasEnded == false;        
         }
 
-        public void PlaceBidFor(Bid offer, DateTime currentTime)
+        public void PlaceBidFor(Bid bid, DateTime currentTime)
         {
             if (StillInProgress(currentTime))
             {
                 if (FirstOffer())
-                    PlaceABidForTheFirst(offer);
-                else if (BidderIsIncreasingMaximumBid(offer))
-                    WinningBid = WinningBid.RaiseMaximumBidTo(offer.MaximumBid);
-                else if (WinningBid.CanBeExceededBy(offer.MaximumBid))
+                    PlaceABidForTheFirst(bid);
+                else if (BidderIsIncreasingMaximumBid(bid))
+                    WinningBid = WinningBid.RaiseMaximumBidTo(bid.MaximumBid);
+                else if (WinningBid.CanBeExceededBy(bid.MaximumBid))
                 {
-                    Place(WinningBid.DetermineWinningBidIncrement(offer));                        
+                    Place(WinningBid.DetermineWinningBidIncrement(bid));
                 }                                                   
             }     
         }
 
-        private bool BidderIsIncreasingMaximumBid(Bid offer)
+        private bool BidderIsIncreasingMaximumBid(Bid bid)
         {
-            return WinningBid.WasMadeBy(offer.Bidder) && offer.MaximumBid.IsGreaterThan(WinningBid.MaximumBid);
+            return WinningBid.WasMadeBy(bid.Bidder) && bid.MaximumBid.IsGreaterThan(WinningBid.MaximumBid);
         }
 
         private bool FirstOffer()
@@ -70,10 +70,10 @@ namespace PPPDDDChap05.DomainModel.Model
             return WinningBid == null;
         }
 
-        private void PlaceABidForTheFirst(Bid offer)
+        private void PlaceABidForTheFirst(Bid bid)
         {
-            if (offer.MaximumBid.IsGreaterThanOrEqualTo(StartingPrice))
-                Place(new WinningBid(offer.Bidder, offer.MaximumBid, StartingPrice, offer.TimeOfOffer));            
+            if (bid.MaximumBid.IsGreaterThanOrEqualTo(StartingPrice))
+                Place(new WinningBid(bid.Bidder, bid.MaximumBid, StartingPrice, bid.TimeOfOffer));            
         }
 
         private void Place(WinningBid newBid)
