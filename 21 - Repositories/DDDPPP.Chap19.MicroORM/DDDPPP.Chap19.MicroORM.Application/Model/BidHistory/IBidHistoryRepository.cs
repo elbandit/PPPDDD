@@ -9,7 +9,7 @@ namespace DDDPPP.Chap19.MicroORM.Application.Model.BidHistory
     public interface IBidHistoryRepository
     {
         int NoOfBidsFor(Guid autionId);
-        void Add(Bid bid);
+        void Add(HistoricalBid bid);
         BidHistory FindBy(Guid auctionId);
     }
 }

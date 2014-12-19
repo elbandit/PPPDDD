@@ -42,9 +42,10 @@
     <Compile Include="Application\BidOnAuctionService.cs" />
     <Compile Include="Model\Auction.cs" />
     <Compile Include="Model\AutomaticBidder.cs" />
+    <Compile Include="Model\HistoricalBid.cs" />
     <Compile Include="Model\IAuctionRepository.cs" />
     <Compile Include="Model\Money.cs" />
-    <Compile Include="Model\Offer.cs" />
+    <Compile Include="Model\Bid.cs" />
     <Compile Include="Model\Price.cs" />
     <Compile Include="Model\WinningBid.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

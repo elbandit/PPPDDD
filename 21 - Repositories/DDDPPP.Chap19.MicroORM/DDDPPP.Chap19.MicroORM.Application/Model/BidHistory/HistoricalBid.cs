@@ -8,9 +8,9 @@ using DDDPPP.Chap19.MicroORM.Application.Infrastructure;
 
 namespace DDDPPP.Chap19.MicroORM.Application.Model.BidHistory
 {
-    public class Bid : ValueObject<Bid>
+    public class HistoricalBid : ValueObject<HistoricalBid>
     {
-        public Bid(Guid auctionId, Guid bidderId, Money amountBid, DateTime timeOfBid)
+        public HistoricalBid(Guid auctionId, Guid bidderId, Money amountBid, DateTime timeOfBid)
         {
             if (auctionId == Guid.Empty)
                 throw new ArgumentNullException("Auction Id cannot be null");

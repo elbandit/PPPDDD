@@ -6,9 +6,9 @@ namespace DDDPPP.Chap19.MicroORM.Application.Model.BidHistory
 {
     public class BidHistory
     {
-        private IEnumerable<Bid> _bids;
+        private IEnumerable<HistoricalBid> _bids;
 
-        public BidHistory(IEnumerable<Bid> bids)
+        public BidHistory(IEnumerable<HistoricalBid> bids)
         {
             if (bids == null)
                 throw new ArgumentNullException("Bids cannot be null");
@@ -16,7 +16,7 @@ namespace DDDPPP.Chap19.MicroORM.Application.Model.BidHistory
             _bids = bids;
         }
 
-        public IEnumerable<Bid> ShowAllBids()
+        public IEnumerable<HistoricalBid> ShowAllBids()
         {
             var bids = _bids.OrderByDescending(x => x.AmountBid).ThenBy(x => x.TimeOfBid);
 

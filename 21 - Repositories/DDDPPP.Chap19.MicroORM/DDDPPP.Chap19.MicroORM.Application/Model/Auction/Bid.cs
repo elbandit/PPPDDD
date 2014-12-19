@@ -5,9 +5,9 @@ using DDDPPP.Chap19.MicroORM.Application.Infrastructure;
 
 namespace DDDPPP.Chap19.MicroORM.Application.Model.Auction
 {
-    public class Offer : ValueObject<Offer>
+    public class Bid : ValueObject<Bid>
     {
-        public Offer(Guid bidderId, Money maximumBid, DateTime timeOfOffer)
+        public Bid(Guid bidderId, Money maximumBid, DateTime timeOfOffer)
         {
             if (bidderId == Guid.Empty)
                 throw new ArgumentNullException("BidderId cannot be null");

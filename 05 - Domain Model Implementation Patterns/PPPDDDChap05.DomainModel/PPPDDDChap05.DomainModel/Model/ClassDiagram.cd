@@ -1,54 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="PPPDDDChap05.DomainModel.Model.Auction">
-    <Position X="0.5" Y="0.5" Width="3" />
+    <Position X="0.5" Y="0.5" Width="2.75" />
+    <Members>
+      <Method Name="BidderIsIncreasingMaximumBid" Hidden="true" />
+      <Method Name="FirstOffer" Hidden="true" />
+      <Method Name="Place" Hidden="true" />
+      <Method Name="PlaceABidForTheFirst" Hidden="true" />
+      <Method Name="StillInProgress" Hidden="true" />
+    </Members>
     <AssociationLine Name="StartingPrice" Type="PPPDDDChap05.DomainModel.Model.Money">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="1.01" Y="1.543" />
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.568" Y="0.268" Height="0.182" Width="1.403" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAACAABAEAkABAAAAAAABAAAAAgAAAAABGCAAABAAAA=</HashCode>
+      <HashCode>AAACAABAEAgABAAAAAAABAAAACgAAAAABGCAAABAAAA=</HashCode>
       <FileName>Model\Auction.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="WinningBid" />
       <Property Name="StartingPrice" />
-    </ShowAsAssociation>
-  </Class>
-  <Class Name="PPPDDDChap05.DomainModel.Model.WinningBid">
-    <Position X="4.5" Y="0.5" Width="2.25" />
-    <AssociationLine Name="MaximumBid" Type="PPPDDDChap05.DomainModel.Model.Money">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-1.165" Y="0.527" />
-      </MemberNameLabel>
-    </AssociationLine>
-    <AssociationLine Name="CurrentAuctionPrice" Type="PPPDDDChap05.DomainModel.Model.Price">
-      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
-        <Position X="0.152" Y="0.135" Height="0.182" Width="1.477" />
-      </MemberNameLabel>
-    </AssociationLine>
-    <TypeIdentifier>
-      <HashCode>BAAAAAAAAQAAAgABAAAAIAIAAgAAAAEAAAAAAAAAAAA=</HashCode>
-      <FileName>Model\WinningBid.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="MaximumBid" />
-      <Property Name="CurrentAuctionPrice" />
+      <Property Name="WinningBid" />
     </ShowAsAssociation>
   </Class>
   <Class Name="PPPDDDChap05.DomainModel.Model.Money">
     <Position X="4.5" Y="4" Width="2.25" />
+    <Members>
+      <Method Name="ThrowExceptionIfNotValid" Hidden="true" />
+    </Members>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEAAAAgAAAAAQAAAAAAACoAAACAAA=</HashCode>
+      <HashCode>AAIAAAAAAAAAAAAEAAAAgAAAAAQAAAAAAACoAAAAAAA=</HashCode>
       <FileName>Model\Money.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PPPDDDChap05.DomainModel.Model.Offer">
+  <Class Name="PPPDDDChap05.DomainModel.Model.Bid">
     <Position X="0.5" Y="4.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAAAAAAAAAIAAAAAgAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Model\Offer.cs</FileName>
+      <FileName>Model\Bid.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="MaximumBid" />
@@ -67,6 +56,27 @@
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Amount" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PPPDDDChap05.DomainModel.Model.WinningBid">
+    <Position X="4.5" Y="0.5" Width="2.25" />
+    <AssociationLine Name="MaximumBid" Type="PPPDDDChap05.DomainModel.Model.Money">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.165" Y="0.527" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="CurrentAuctionPrice" Type="PPPDDDChap05.DomainModel.Model.Price">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.152" Y="0.135" Height="0.182" Width="1.477" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>BAAIAAAAAQAAAgAhAAAAIAIAAgAAAAUAAAAAAAAEBAA=</HashCode>
+      <FileName>Model\WinningBid.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="MaximumBid" />
+      <Property Name="CurrentAuctionPrice" />
     </ShowAsAssociation>
   </Class>
   <Font Name="Segoe UI" Size="9" />

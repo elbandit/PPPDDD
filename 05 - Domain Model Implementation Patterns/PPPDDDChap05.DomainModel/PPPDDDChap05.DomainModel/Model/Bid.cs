@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace PPPDDDChap05.DomainModel.Model
 {
-    public class Offer 
+    public class Bid 
     {
-        public Offer(Guid bidderId, Money maximumBid, DateTime timeOfOffer)
+        public Bid(Guid bidderId, Money maximumBid, DateTime timeOfOffer)
         {
             if (bidderId == Guid.Empty)
                 throw new ArgumentNullException("BidderId cannot be null");

@@ -21,7 +21,7 @@ namespace DDDPPP.Chap19.MicroORM.Application.Application.Queries
             return Convert(bidHistory.ShowAllBids());
         }
 
-        public IEnumerable<BidInformation> Convert(IEnumerable<Bid> bids)
+        public IEnumerable<BidInformation> Convert(IEnumerable<HistoricalBid> bids)
         {
             var bidInfo = new List<BidInformation>();
 

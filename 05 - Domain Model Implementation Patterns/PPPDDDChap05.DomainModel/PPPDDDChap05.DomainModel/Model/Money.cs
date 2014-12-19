@@ -28,7 +28,7 @@ namespace PPPDDDChap05.DomainModel.Model
                 throw new InvalidOperationException("Money cannot be a negative value.");
         }
 
-        public Money add(Money money)
+        public Money Add(Money money)
         {
             return new Money(Value + money.Value);
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace PPPDDDChap05.DomainModel.Model
 {
@@ -27,6 +28,7 @@ namespace PPPDDDChap05.DomainModel.Model
         }
 
         private Guid Id { get; set; }
+        private IList<HistoricalBid> Bids { get; set; }         
         private Guid ListingId { get; set; }
         private DateTime EndsAt { get; set; }       
         private Money StartingPrice { get; set; }
@@ -43,25 +45,22 @@ namespace PPPDDDChap05.DomainModel.Model
             return HasEnded == false;        
         }
 
-        public void PlaceBidFor(Offer offer, DateTime currentTime)
+        public void PlaceBidFor(Bid offer, DateTime currentTime)
         {
             if (StillInProgress(currentTime))
             {
                 if (FirstOffer())
                     PlaceABidForTheFirst(offer);
-                else if (BidderIsIncreasingMaximumBidToNew(offer))
+                else if (BidderIsIncreasingMaximumBid(offer))
                     WinningBid = WinningBid.RaiseMaximumBidTo(offer.MaximumBid);
                 else if (WinningBid.CanBeExceededBy(offer.MaximumBid))
                 {
-                    var newBids = new AutomaticBidder().GenerateNextSequenceOfBidsAfter(offer, WinningBid);
-
-                    foreach (var bid in newBids)
-                        Place(bid);                    
+                    Place(WinningBid.DetermineWinningBidIncrement(offer));                        
                 }                                                   
             }     
         }
 
-        private bool BidderIsIncreasingMaximumBidToNew(Offer offer)
+        private bool BidderIsIncreasingMaximumBid(Bid offer)
         {
             return WinningBid.WasMadeBy(offer.Bidder) && offer.MaximumBid.IsGreaterThan(WinningBid.MaximumBid);
         }
@@ -71,14 +70,15 @@ namespace PPPDDDChap05.DomainModel.Model
             return WinningBid == null;
         }
 
-        private void PlaceABidForTheFirst(Offer offer)
+        private void PlaceABidForTheFirst(Bid offer)
         {
             if (offer.MaximumBid.IsGreaterThanOrEqualTo(StartingPrice))
                 Place(new WinningBid(offer.Bidder, offer.MaximumBid, StartingPrice, offer.TimeOfOffer));            
         }
 
         private void Place(WinningBid newBid)
-        {           
+        {
+            Bids.Add(new HistoricalBid(newBid.Bidder, newBid.MaximumBid, newBid.TimeOfBid));
             WinningBid = newBid;            
         }
     }

@@ -17,14 +17,18 @@ namespace DDDPPP.Chap19.MicroORM.Presentation
 
             var memberIdA = Guid.NewGuid();
             var memberIdB = Guid.NewGuid();
+            var memberIdC = Guid.NewGuid();
 
             members.Add(memberIdA, "Ted");
             members.Add(memberIdB, "Rob");
+            members.Add(memberIdC, "Lucy");
 
             var auctionId = CreateAuction();
 
             Bid(auctionId, memberIdA, 10m);
             Bid(auctionId, memberIdB, 9.99m);
+            Bid(auctionId, memberIdC, 10.05m);
+            Bid(auctionId, memberIdB, 11m);
             //Bid(auctionId, memberIdB, 1.49m);
             //Bid(auctionId, memberIdB, 10.01m);
             //Bid(auctionId, memberIdB, 12.00m);

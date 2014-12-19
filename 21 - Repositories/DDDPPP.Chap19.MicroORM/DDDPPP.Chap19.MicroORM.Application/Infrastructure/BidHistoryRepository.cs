@@ -32,7 +32,7 @@ namespace DDDPPP.Chap19.MicroORM.Application.Infrastructure
             return count;
         }
 
-        public void Add(Bid bid)        
+        public void Add(HistoricalBid bid)        
         {
             var bidHistoryDTO = new BidDTO();
 
@@ -55,11 +55,11 @@ namespace DDDPPP.Chap19.MicroORM.Application.Infrastructure
                 bidDTOs = connection.Query<BidDTO>("Select * From BidHistory Where AuctionId = @Id", new { Id = auctionId });
             }
   
-            var bids = new List<Bid>();
+            var bids = new List<HistoricalBid>();
 
             foreach (var bid in bidDTOs)
             { 
-                bids.Add(new Bid(bid.AuctionId, bid.BidderId, new Money(bid.Bid), bid.TimeOfBid));
+                bids.Add(new HistoricalBid(bid.AuctionId, bid.BidderId, new Money(bid.Bid), bid.TimeOfBid));
             }
 
             return new BidHistory(bids);

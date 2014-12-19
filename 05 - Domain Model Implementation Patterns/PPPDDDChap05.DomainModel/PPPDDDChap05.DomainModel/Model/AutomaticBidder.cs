@@ -4,7 +4,7 @@ namespace PPPDDDChap05.DomainModel.Model
 {
     public class AutomaticBidder 
     {
-        public IEnumerable<WinningBid> GenerateNextSequenceOfBidsAfter(Offer offer, WinningBid currentWinningBid)
+        public IEnumerable<WinningBid> GenerateNextSequenceOfBidsAfter(Bid offer, WinningBid currentWinningBid)
         {
             var bids = new List<WinningBid>();
 
@@ -13,7 +13,7 @@ namespace PPPDDDChap05.DomainModel.Model
                 var bidFromOffer = new WinningBid(offer.Bidder, offer.MaximumBid, offer.MaximumBid, offer.TimeOfOffer);
                 bids.Add(bidFromOffer);
 
-                bids.Add(CalculateNextBid(bidFromOffer, new Offer(currentWinningBid.Bidder, currentWinningBid.MaximumBid, currentWinningBid.TimeOfBid)));               
+                bids.Add(CalculateNextBid(bidFromOffer, new Bid(currentWinningBid.Bidder, currentWinningBid.MaximumBid, currentWinningBid.TimeOfBid)));               
             }
             else
             {
@@ -31,7 +31,7 @@ namespace PPPDDDChap05.DomainModel.Model
             return bids;
         }
 
-        private WinningBid CalculateNextBid(WinningBid winningbid, Offer offer)
+        private WinningBid CalculateNextBid(WinningBid winningbid, Bid offer)
         {
             WinningBid bid;
 

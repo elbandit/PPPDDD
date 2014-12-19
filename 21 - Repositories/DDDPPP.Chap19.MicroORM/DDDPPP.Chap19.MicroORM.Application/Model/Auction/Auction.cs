@@ -69,27 +69,22 @@ namespace DDDPPP.Chap19.MicroORM.Application.Model.Auction
             return (EndsAt > currentTime);
         }
 
-        public void PlaceBidFor(Offer offer, DateTime currentTime)
-        {
+        public void PlaceBidFor(Bid bid, DateTime currentTime)
+        {          
             if (StillInProgress(currentTime))
             {
                 if (FirstOffer())
-                    PlaceABidForTheFirst(offer);
-                else if (BidderIsIncreasingMaximumBidToNew(offer))
-                    CurrentWinningBid = CurrentWinningBid.RaiseMaximumBidTo(offer.MaximumBid);
-                else if (CurrentWinningBid.CanBeExceededBy(offer.MaximumBid))
-                {
-                    var newBids = new AutomaticBidder().GenerateNextSequenceOfBidsAfter(offer, CurrentWinningBid);
-
-                    foreach (var bid in newBids)
-                        Place(bid);
-                }
+                    PlaceABidForTheFirst(bid);
+                else if (BidderIsIncreasingMaximumBid(bid))
+                    CurrentWinningBid = CurrentWinningBid.RaiseMaximumBidTo(bid.MaximumBid);
+                else if (CurrentWinningBid.CanBeExceededBy(bid.MaximumBid))
+                    Set(CurrentWinningBid.DetermineWinningBidIncrement(bid));                
             }
         }
 
-        private bool BidderIsIncreasingMaximumBidToNew(Offer offer)
+        private bool BidderIsIncreasingMaximumBid(Bid bid)
         {
-            return CurrentWinningBid.WasMadeBy(offer.Bidder) && offer.MaximumBid.IsGreaterThan(CurrentWinningBid.MaximumBid);
+            return CurrentWinningBid.WasMadeBy(bid.Bidder) && bid.MaximumBid.IsGreaterThan(CurrentWinningBid.MaximumBid);
         }
 
         private bool FirstOffer()
@@ -97,19 +92,22 @@ namespace DDDPPP.Chap19.MicroORM.Application.Model.Auction
             return CurrentWinningBid == null;
         }
 
-        private void PlaceABidForTheFirst(Offer offer)
+        private void PlaceABidForTheFirst(Bid offer)
         {
             if (offer.MaximumBid.IsGreaterThanOrEqualTo(StartingPrice))
-                Place(new WinningBid(offer.Bidder, offer.MaximumBid, StartingPrice, offer.TimeOfOffer));
+            {
+                DomainEvents.Raise(new BidPlaced(this.Id, offer.Bidder, StartingPrice, offer.TimeOfOffer));
+
+                Set(new WinningBid(Id, offer.Bidder, offer.MaximumBid, StartingPrice, offer.TimeOfOffer));
+            }
         }
 
-        private void Place(WinningBid newBid)
+        private void Set(WinningBid newBid)
         {
             if (!FirstOffer() && CurrentWinningBid.WasMadeBy(newBid.Bidder))
                 DomainEvents.Raise(new OutBid(Id, CurrentWinningBid.Bidder));
 
-            CurrentWinningBid = newBid;
-            DomainEvents.Raise(new BidPlaced(Id, newBid.Bidder, newBid.CurrentAuctionPrice.Amount, newBid.TimeOfBid));
+            CurrentWinningBid = newBid;            
         }
     }
 

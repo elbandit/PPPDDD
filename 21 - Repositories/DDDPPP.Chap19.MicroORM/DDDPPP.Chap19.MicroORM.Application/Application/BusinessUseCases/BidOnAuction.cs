@@ -31,7 +31,7 @@ namespace DDDPPP.Chap19.MicroORM.Application.Application.BusinessUseCases
 
                     var bidAmount = new Money(amount);
 
-                    auction.PlaceBidFor(new Offer(memberId, bidAmount, _clock.Time()), _clock.Time());
+                    auction.PlaceBidFor(new Bid(memberId, bidAmount, _clock.Time()), _clock.Time());
 
                     _auctionRepository.Save(auction);
                 }
@@ -50,7 +50,7 @@ namespace DDDPPP.Chap19.MicroORM.Application.Application.BusinessUseCases
         {
             return (BidPlaced e) =>
             {
-                var bidEvent = new Bid(e.AuctionId, e.Bidder, e.AmountBid, e.TimeOfBid);
+                var bidEvent = new HistoricalBid(e.AuctionId, e.Bidder, e.AmountBid, e.TimeOfBid);
               
                 _bidHistoryRepository.Add(bidEvent);
             };

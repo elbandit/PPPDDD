@@ -19,7 +19,7 @@ namespace PPPPDDDChap05.DomainModel.Application
 
             var bidAmount = new Money(amount);
 
-            var offer = new Offer(memberId, bidAmount, dateOfBid);
+            var offer = new Bid(memberId, bidAmount, dateOfBid);
 
             auction.PlaceBidFor(offer, dateOfBid);                                
          }                      

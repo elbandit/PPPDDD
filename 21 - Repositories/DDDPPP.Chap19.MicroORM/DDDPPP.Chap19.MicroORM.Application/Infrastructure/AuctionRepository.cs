@@ -58,6 +58,7 @@ namespace DDDPPP.Chap19.MicroORM.Application.Infrastructure
             {
                 var bidSnapshot = new WinningBidSnapshot();
 
+                bidSnapshot.AuctionId = auctionDTO.Id;
                 bidSnapshot.BiddersMaximumBid = auctionDTO.MaximumBid.Value;
                 bidSnapshot.CurrentPrice = auctionDTO.CurrentPrice.Value;
                 bidSnapshot.BiddersId = auctionDTO.BidderMemberId.Value;
