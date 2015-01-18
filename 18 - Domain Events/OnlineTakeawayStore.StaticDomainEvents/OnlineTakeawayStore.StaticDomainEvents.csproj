@@ -7,8 +7,8 @@
     <ProjectGuid>{203BA48C-4EBB-480B-B01D-E7E7D7E60A96}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OnlineTakeawayStore.Domain</RootNamespace>
-    <AssemblyName>OnlineTakeawayStore.Domain</AssemblyName>
+    <RootNamespace>OnlineTakeawayStore.StaticDomainEvents</RootNamespace>
+    <AssemblyName>OnlineTakeawayStore.StaticDomainEvents</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -47,22 +47,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application\FoodDeliveryOrderService.cs" />
-    <Compile Include="Application\Handlers\EmailBlacklistedCustomerOnOrderInvalidation.cs" />
-    <Compile Include="Application\Handlers\SendConfirmationEmailOnOrderConfirmed.cs" />
-    <Compile Include="Application\Handlers\SendEmailAcknowledgementOnOrderCreation.cs" />
-    <Compile Include="Infrastructure\IEmailer.cs" />
-    <Compile Include="Infrastructure\INotificationChannel.cs" />
+    <Compile Include="Application\ConfirmDeliveryOfOrder.cs" />
+    <Compile Include="Application\Events\RefundDueToLateDelivery.cs" />
     <Compile Include="Infrastructure\DomainEvents.cs" />
-    <Compile Include="Model\DomainEventsRegister.cs" />
-    <Compile Include="Model\Handlers\SaveFoodDeliveryOrder.cs" />
-    <Compile Include="Model\Handlers\ValidateFoodDeliveryOrderOnCreation.cs" />
-    <Compile Include="Model\Events\FoodDeliveryOrderEvents.cs" />
-    <Compile Include="Model\FoodDeliveryOrder.cs" />
-    <Compile Include="Model\ICustomerBehaviourChecker.cs" />
-    <Compile Include="Model\IFoodDeliveryOrderRepository.cs" />
+    <Compile Include="Model\Events\DeliveryGuaranteeFailed.cs" />
+    <Compile Include="Model\FoodDeliveryOrderSteps.cs" />
+    <Compile Include="Model\IDeliveryGuaranteeOffer.cs" />
+    <Compile Include="Model\IOrderRepository.cs" />
+    <Compile Include="Model\OrderForDelivery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Infrastructure\ServiceLayerHandlersRegister.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

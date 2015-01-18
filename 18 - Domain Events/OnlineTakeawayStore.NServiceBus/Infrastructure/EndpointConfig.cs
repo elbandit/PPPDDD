@@ -1,5 +1,4 @@
 using NServiceBus;
-using OnlineTakeawayStore.Model;
 
 namespace OnlineTakeawayStore.NServiceBus
 {
@@ -25,17 +24,8 @@ namespace OnlineTakeawayStore.NServiceBus
     {
         public void Init()
         {
-            Configure.Instance.Configurer.ConfigureComponent<DummyBehaviorChecker>(DependencyLifecycle.SingleInstance);
+            // dependency injection configuration goes here
+            //Configure.Instance.Configurer.ConfigureComponent<T>(DependencyLifecycle.SingleInstance);
         }
     }
-
-    public class DummyBehaviorChecker : ICustomerBehaviorChecker
-    {
-        public bool IsBlacklisted(int customerId)
-        {
-            return true;
-        }
-    }
-
-
 }
