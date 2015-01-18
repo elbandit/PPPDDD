@@ -10,4 +10,13 @@ namespace OnlineTakeawayStore.StaticDomainEvents.Model
     {
         bool IsNotSatisfiedBy(DateTime timeOfOrderBeingPlaced, DateTime timeThatPizzaWasDelivered);
     }
+
+    public class ThirtyMinuteDeliveryGuaranteeOffer : IDeliveryGuaranteeOffer
+    {
+        public bool IsNotSatisfiedBy(DateTime timeOfOrderBeingPlaced, DateTime timeThatPizzaWasDelivered)
+        {
+            return (timeThatPizzaWasDelivered - timeOfOrderBeingPlaced) > TimeSpan.FromMinutes(30);
+        }
+    }
+
 }
