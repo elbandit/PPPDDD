@@ -1,9 +1,7 @@
-﻿using log4net;
-using log4net.Core;
-using Raven.Client;
-using System;
+﻿using System;
 using StatsdClient;
 using Domain;
+using log4net;
 
 namespace PPPDDD.ApplicationServices.Gambling.ApplicationServices.LoggingAndMetrics
 {
