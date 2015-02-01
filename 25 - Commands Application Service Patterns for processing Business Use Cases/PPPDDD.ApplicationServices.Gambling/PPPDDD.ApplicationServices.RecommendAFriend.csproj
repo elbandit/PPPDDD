@@ -120,6 +120,7 @@
     <Compile Include="ApplicationServices\FrameworkHooks\TransactionFilter.cs" />
     <Compile Include="ApplicationServices\PublishSubscribeAsync\ReferAFriend.cs" />
     <Compile Include="ApplicationServices\PublishSubscribe\RecommendAFriend.cs" />
+    <Compile Include="ApplicationServices\RequestReply\RecommendAFriend.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\RecommendAFriendController.cs" />
     <Compile Include="Global.asax.cs">
