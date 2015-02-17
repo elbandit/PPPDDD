@@ -3,60 +3,75 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace PPPDDDChap05.TransactionScript.Domain
 {
-    public class BidOnAuctionCommand
+    public class BidOnAuctionCommand: ICommand
     {
-        public BidOnAuctionCommand()
-        { }
+        private Guid auctionId {get; set;}
+        private Guid bidderId {get; set;}
+        private decimal amount {get; set;}
+        private DateTime timeOfBid { get; set; }
 
-        public void Execute(Guid auctionId, Guid bidderId, decimal amount, DateTime dateOfBid)
+        public BidOnAuctionCommand(Guid auctionId, Guid bidderId, decimal amount, DateTime timeOfBid)
         {
-            ThrowExceptionIfNotValid(auctionId, bidderId, amount, dateOfBid);
-
-            Auction auction = new Auction();
-
-            ThrowExceptionIfAuctionHasEnded(auction, dateOfBid);
-
-            if (auction.WinningBidder == Guid.Empty)
-            {
-                FirstBid(auction, bidderId, amount, dateOfBid);
-            }
-            else
-            {
-                if (auction.WinningBidder == bidderId && amount > auction.WinninBidderMaximumBid)
-                {
-                    auction.WinninBidderMaximumBid = amount;
-                }
-                else
-                { 
-                    if (amount >= (auction.WinningBid + BidIncrement(auction.WinningBid)))
-                    {                        
-                        if (amount <= auction.WinninBidderMaximumBid)
-                        { 
-                           if (auction.WinninBidderMaximumBid >= (auction.WinningBid + BidIncrement(auction.WinningBid))
-                               auction.WinningBid = (auction.WinningBid + BidIncrement(auction.WinningBid);
-                           else
-                               auction.WinningBid = auction.WinninBidderMaximumBid;
-                        }
-                        else
-                        {
-                        
-                        }
-                    }
-                    else
-                        throw new ApplicationException(String.Format("You need to bid at least {0}",auction.WinningBid + BidIncrement(auction.WinningBid)));
-                }
-            }            
+            this.auctionId = auctionId;
+            this.bidderId = bidderId;
+            this.amount = amount;
+            this.timeOfBid = timeOfBid;
         }
 
-        private void ThrowExceptionIfAuctionHasEnded(Auction auction, DateTime dateOfBid)
+        public void Execute()
         {
-            if (auction.EndsAt < dateOfBid)
+            using (TransactionScope scope = new TransactionScope())
             {
-                throw new ApplicationException("Auction has already ended");
+                ThrowExceptionIfNotValid(auctionId, bidderId, amount, timeOfBid);
+
+                ThrowExceptionIfAuctionHasEnded(auctionId);
+
+                if (IsFirstBid(auctionId))
+                    PlaceFirstBid(auctionId, bidderId, amount, timeOfBid);
+                else if (IsIncreasingMaximimBid(auctionId, amount, bidderId))
+                    IncreaseMaximumBidTo(amount);
+                else if (CanMeetOrExceedBidIncrement(amount))
+                    UpdatePrice(auctionId, bidderId, amount, timeOfBid);
             }
+        }
+
+        private void ThrowExceptionIfAuctionHasEnded(Guid auctionId)
+        {
+            // check at DB
+        }
+
+        private bool CanMeetOrExceedBidIncrement(decimal amount)
+        {
+            return true;
+        }
+
+        private void UpdatePrice(Guid auctionId, Guid bidderId, decimal amount, DateTime timeOfBi)
+        {
+        
+        }
+
+        private void IncreaseMaximumBidTo(decimal amount)
+        { 
+        
+        }
+
+        private bool IsIncreasingMaximimBid(Guid auctionId, decimal amount, Guid bidderId)
+        {
+            return true;
+        }
+
+        private bool IsFirstBid(Guid auctionId)
+        {
+            return true;
+        }
+
+        private void PlaceFirstBid(Guid auctionId, Guid bidderId, decimal amount, DateTime timeOfBid)
+        { 
+        
         }
 
         private void FirstBid(Auction auction, Guid bidderId, decimal amount, DateTime dateOfBid)

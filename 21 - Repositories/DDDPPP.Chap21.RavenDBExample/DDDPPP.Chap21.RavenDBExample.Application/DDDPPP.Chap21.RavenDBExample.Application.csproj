@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{09529C4E-59D9-4758-AB00-240982F0BC63}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DDDPPP.Chap21.RavenDBExample.Application</RootNamespace>
+    <AssemblyName>DDDPPP.Chap21.RavenDBExample.Application</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Raven.Abstractions">
+      <HintPath>..\packages\RavenDB.Client.2.5.2750\lib\net45\Raven.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Client.Lightweight">
+      <HintPath>..\packages\RavenDB.Client.2.5.2750\lib\net45\Raven.Client.Lightweight.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap.2.6.4.1\lib\net40\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Application\BusinessUseCases\BidOnAuction.cs" />
+    <Compile Include="Application\BusinessUseCases\CreateAuction.cs" />
+    <Compile Include="Application\BusinessUseCases\NewAuctionRequest.cs" />
+    <Compile Include="Application\Queries\AuctionStatus.cs" />
+    <Compile Include="Application\Queries\AuctionStatusQuery.cs" />
+    <Compile Include="Application\Queries\BidHistoryQuery.cs" />
+    <Compile Include="Application\Queries\BidInformation.cs" />
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Infrastructure\AuctionRepository.cs" />
+    <Compile Include="Infrastructure\BidHistory_NumberOfBids.cs" />
+    <Compile Include="Infrastructure\BidHistoryRepository.cs" />
+    <Compile Include="Infrastructure\DomainEvents.cs" />
+    <Compile Include="Infrastructure\Entity.cs" />
+    <Compile Include="Infrastructure\ValueObject.cs" />
+    <Compile Include="Model\Auction\Auction.cs" />
+    <Compile Include="Model\Auction\AutomaticBidder.cs" />
+    <Compile Include="Model\Auction\BidPlaced.cs" />
+    <Compile Include="Infrastructure\IClock.cs" />
+    <Compile Include="Model\Auction\Money.cs" />
+    <Compile Include="Model\Auction\MoneyCannotBeANegativeValueException.cs" />
+    <Compile Include="Model\Auction\MoreThanTwoDecimalPlacesInMoneyValueException.cs" />
+    <Compile Include="Model\Auction\Offer.cs" />
+    <Compile Include="Model\Auction\OutBid.cs" />
+    <Compile Include="Model\Auction\Price.cs" />
+    <Compile Include="Infrastructure\SystemClock.cs" />
+    <Compile Include="Model\BidHistory\Bid.cs" />
+    <Compile Include="Model\Auction\IAuctionRepository.cs" />
+    <Compile Include="Model\Auction\WinningBid.cs" />
+    <Compile Include="Model\BidHistory\BidHistory.cs" />
+    <Compile Include="Model\BidHistory\IBidHistoryRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

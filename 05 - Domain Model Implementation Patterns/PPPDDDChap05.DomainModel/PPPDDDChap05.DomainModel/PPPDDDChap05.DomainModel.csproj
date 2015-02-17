@@ -41,7 +41,6 @@
   <ItemGroup>
     <Compile Include="Application\BidOnAuctionService.cs" />
     <Compile Include="Model\Auction.cs" />
-    <Compile Include="Model\AutomaticBidder.cs" />
     <Compile Include="Model\HistoricalBid.cs" />
     <Compile Include="Model\IAuctionRepository.cs" />
     <Compile Include="Model\Money.cs" />

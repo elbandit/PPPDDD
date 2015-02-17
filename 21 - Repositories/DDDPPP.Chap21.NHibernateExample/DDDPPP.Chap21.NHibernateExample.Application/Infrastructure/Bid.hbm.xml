@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+    namespace="DDDPPP.Chap21.NHibernateExample.Application.Model.BidHistory"
+        assembly="DDDPPP.Chap21.NHibernateExample.Application">
+
+  <class name="Bid" table="BidHistory" lazy="false" >
+
+    <id name="Id" column="Id" type="Guid">
+      <generator class="guid"/>
+    </id>
+    
+    <property name="AuctionId" column="AuctionId" not-null="false"/>
+    <property name="Bidder" column="BidderId" not-null="false"/>
+
+    <component name="AmountBid" class="DDDPPP.Chap21.NHibernateExample.Application.Model.Auction.Money">
+      <property name="Value" column="Bid" not-null="false"/>
+    </component>
+
+    <property name="TimeOfBid" column="TimeOfBid" not-null="false"/>    
+  </class>
+</hibernate-mapping>

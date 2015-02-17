@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,10 +42,15 @@
   <ItemGroup>
     <Compile Include="Application\BidOnAuctionService.cs" />
     <Compile Include="Domain\Auction.cs" />
+    <Compile Include="Domain\BidOnAuction.cs" />
     <Compile Include="Domain\BidOnAuctionCommand.cs" />
+    <Compile Include="Domain\CreateAuction.cs" />
+    <Compile Include="Domain\ICommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Domain\ClassDiagram1.cd" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

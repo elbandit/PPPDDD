@@ -46,11 +46,11 @@ namespace PPPDDDChap05.DomainModel.Model
 
         public WinningBid DetermineWinningBidIncrement(Bid newbid)
         {
-            if (this.CanBeExceededBy(this.MaximumBid) && this.CanBeExceededBy(newbid.MaximumBid))
+            if (this.CanMeetOrExceedBidIncrement(this.MaximumBid) && this.CanMeetOrExceedBidIncrement(newbid.MaximumBid))
             {
                 return DetermineWinnerFromProxyBidding(this, newbid);
             }
-            else if (this.CanBeExceededBy(newbid.MaximumBid))
+            else if (this.CanMeetOrExceedBidIncrement(newbid.MaximumBid))
             {
                 return CreateNewBid(newbid.Bidder, CurrentAuctionPrice.BidIncrement(), newbid.MaximumBid, newbid.TimeOfOffer);
             }
@@ -66,7 +66,7 @@ namespace PPPDDDChap05.DomainModel.Model
             {
                 nextIncrement = CreateNewBid(this.Bidder, this.MaximumBid, this.MaximumBid, this.TimeOfBid);
 
-                if (nextIncrement.CanBeExceededBy(newbid.MaximumBid))
+                if (nextIncrement.CanMeetOrExceedBidIncrement(newbid.MaximumBid))
                     return CreateNewBid(newbid.Bidder, nextIncrement.CurrentAuctionPrice.BidIncrement(), newbid.MaximumBid, newbid.TimeOfOffer);
                 else
                     return CreateNewBid(newbid.Bidder, newbid.MaximumBid, newbid.MaximumBid, newbid.TimeOfOffer);
@@ -75,7 +75,7 @@ namespace PPPDDDChap05.DomainModel.Model
             {
                 nextIncrement = CreateNewBid(newbid.Bidder, newbid.MaximumBid, newbid.MaximumBid, newbid.TimeOfOffer);
 
-                if (nextIncrement.CanBeExceededBy(winningBid.MaximumBid))
+                if (nextIncrement.CanMeetOrExceedBidIncrement(winningBid.MaximumBid))
                     return CreateNewBid(winningBid.Bidder, nextIncrement.CurrentAuctionPrice.BidIncrement(), winningBid.MaximumBid, winningBid.TimeOfBid);
                 else
                     return CreateNewBid(winningBid.Bidder, winningBid.MaximumBid, winningBid.MaximumBid, winningBid.TimeOfBid);
@@ -92,7 +92,7 @@ namespace PPPDDDChap05.DomainModel.Model
             return !this.MaximumBid.IsGreaterThanOrEqualTo(bid);
         }
 
-        public bool CanBeExceededBy(Money offer)
+        public bool CanMeetOrExceedBidIncrement(Money offer)
         {
             return CurrentAuctionPrice.CanBeExceededBy(offer);
         }

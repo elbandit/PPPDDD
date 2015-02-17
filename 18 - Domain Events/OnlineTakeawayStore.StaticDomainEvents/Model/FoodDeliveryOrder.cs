@@ -102,3 +102,62 @@ namespace OnlineTakeawayStore.StaticDomainEvents.Model
 
     public class UnexpectedFoodDeliveryStep : Exception { }
 }
+
+
+
+namespace OnlineTakeawayStore.Model
+{
+    public class OrderForDelivery
+    {
+        private DateTime TimeOfOrderBeingPlaced { get; set; }
+        private DateTime TimeThatPizzaWasDelivered { get; set; }
+
+        public OrderForDelivery(Guid id, Guid customerId, Guid restuarantId, List<int> menuItemIds, DateTime timeOfOrderBeingPlaced)
+        {
+            // ....
+            TimeOfOrderBeingPlaced = timeOfOrderBeingPlaced;
+            Status = FoodDeliveryOrderSteps.Pending;
+        }
+
+        public void ConfirmReceipt(DateTime timeThatPizzaWasDelivered)
+        {
+            if (Status != FoodDeliveryOrderSteps.Delivered)
+            {
+                TimeThatPizzaWasDelivered = timeThatPizzaWasDelivered;
+                Status = FoodDeliveryOrderSteps.Delivered;
+
+                if(DeliveryGuaranteeOffer.IsNotSatisifiedBy(timeOfOrderBeingPlaced, timeThatPizzaWasDelivered);
+                {
+                    DomainEvents.Raise(new DeliveryGuaranteeFailed(this));
+                }
+            }
+        }
+    }
+}
+
+namespace OnlineTakeawayStore.ApplicationServiceLayer
+{
+    public class ConfirmDeliveryOfOrder
+    {
+        //.....
+
+        public void Confirm(DateTime timeThatPizzaWasDelivered, int orderId)
+        {
+            var order = _orderRepository.FindBy(orderId);
+
+            using (DomainEvents.Register(onDeliveryGuaranteeFailed()))
+            {
+                order.ConfirmReceipt(timeThatPizzaWasDelivered);
+            }
+        }
+
+        private Action<DeliveryGuaranteeFailed> onDeliveryGuaranteeFailed()
+        {
+
+            return (DeliveryGuaranteeFailed e) => _bus.Send(new RefundDueToLateDelivery() { RentalRequestId = e.OrderId });
+        }
+    }
+
+
+    public class 
+}
