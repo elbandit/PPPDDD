@@ -7,8 +7,8 @@
     <ProjectGuid>{A3D84A0A-D018-4CC7-94E5-9A334C83587E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OnlineTakeawayStore.NServiceBusApplication</RootNamespace>
-    <AssemblyName>OnlineTakeawayStore.NServiceBusApplication</AssemblyName>
+    <RootNamespace>OnlineTakeawayStore.NServiceBus</RootNamespace>
+    <AssemblyName>OnlineTakeawayStore.NServiceBus</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
@@ -32,16 +32,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NServiceBus, Version=4.3.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\NServiceBus.Interfaces.4.3.8\lib\net40\NServiceBus.dll</HintPath>
+    <Reference Include="NServiceBus">
+      <HintPath>..\packages\NServiceBus.Interfaces.4.3.3\lib\net40\NServiceBus.dll</HintPath>
     </Reference>
-    <Reference Include="NServiceBus.Core, Version=4.3.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\NServiceBus.4.3.3\lib\net40\NServiceBus.Core.dll</HintPath>
+    <Reference Include="NServiceBus.Core">
+      <HintPath>..\packages\NServiceBus.4.3.3\lib\net40\NServiceBus.Core.dll</HintPath>
     </Reference>
     <Reference Include="NServiceBus.Host">
-      <HintPath>..\..\packages\NServiceBus.Host.4.3.3\lib\net40\NServiceBus.Host.exe</HintPath>
+      <HintPath>..\packages\NServiceBus.Host.4.3.3\lib\net40\NServiceBus.Host.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -52,14 +50,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application\Demonstration.cs" />
+    <Compile Include="Application\ConfirmDeliveryOfOrder.cs" />
+    <Compile Include="Application\Events\RefundDueToLateDelivery.cs" />
     <Compile Include="Infrastructure\EndpointConfig.cs" />
-    <Compile Include="Application\FoodDeliveryOrderService.cs" />
-    <Compile Include="Infrastructure\IEmailer.cs" />
-    <Compile Include="Infrastructure\INotificationChannel.cs" />
-    <Compile Include="Model\Events\FoodDeliveryOrderEvents.cs" />
-    <Compile Include="Model\FoodDeliveryOrder.cs" />
-    <Compile Include="Model\ICustomerBehaviourChecker.cs" />
+    <Compile Include="Model\Events\DeliveryGuaranteeFailed.cs" />
+    <Compile Include="Model\FoodDeliveryOrderSteps.cs" />
+    <Compile Include="Model\IDeliveryGuaranteeOffer.cs" />
+    <Compile Include="Model\IOrderRepository.cs" />
+    <Compile Include="Model\OrderForDelivery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
