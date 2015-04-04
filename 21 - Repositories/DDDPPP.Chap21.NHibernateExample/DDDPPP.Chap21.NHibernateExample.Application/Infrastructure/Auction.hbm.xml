@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+    namespace="DDDPPP.Chap21.NHibernateExample.Application.Model.Auction"
+        assembly="DDDPPP.Chap21.NHibernateExample.Application">
+
+  <class name="Auction" table="Auctions" lazy="false" >
+
+    <id name="Id" column="Id" type="Guid">      
+    </id>
+
+    <version name="Version" column="Version" type="Int32" unsaved-value="0"/>
+    
+    <component name="StartingPrice" class="Money">
+      <property name="Value" column="StartingPrice" not-null="true"/>
+    </component>
+
+    <property name="EndsAt" column="AuctionEnds" not-null="true"/>
+  
+    <component name="WinningBid" class="WinningBid">
+
+      <property name="Bidder" column="BidderMemberId" not-null="false"/>
+                   
+      <property name="TimeOfBid" column="TimeOfBid" not-null="false"/>
+      
+      <component name="MaximumBid" class="Money">
+        <property name="Value" column="MaximumBid" not-null="false"/>
+      </component>       
+      
+      <component name="CurrentAuctionPrice" class="Price">
+        <component name="Amount" class="Money">
+          <property name="Value" column="CurrentPrice" not-null="false"/>
+        </component>
+      </component>
+    </component>
+  </class>
+</hibernate-mapping>

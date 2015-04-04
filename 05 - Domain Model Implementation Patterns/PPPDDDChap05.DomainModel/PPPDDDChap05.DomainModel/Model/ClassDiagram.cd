@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="PPPDDDChap05.DomainModel.Model.Auction">
+    <Position X="0.5" Y="0.5" Width="2.75" />
+    <Members>
+      <Method Name="BidderIsIncreasingMaximumBid" Hidden="true" />
+      <Method Name="FirstOffer" Hidden="true" />
+      <Method Name="Place" Hidden="true" />
+      <Method Name="PlaceABidForTheFirst" Hidden="true" />
+      <Method Name="StillInProgress" Hidden="true" />
+    </Members>
+    <AssociationLine Name="StartingPrice" Type="PPPDDDChap05.DomainModel.Model.Money">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.568" Y="0.268" Height="0.182" Width="1.403" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAABAEQgABAAAAAAABAAAACgAAAAABGCAAABAAAA=</HashCode>
+      <FileName>Model\Auction.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="StartingPrice" />
+      <Property Name="WinningBid" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Bids" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="PPPDDDChap05.DomainModel.Model.Money">
+    <Position X="4.5" Y="4.25" Width="2.25" />
+    <Members>
+      <Method Name="ThrowExceptionIfNotValid" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAEAAAAgAAAAAQAAAAAAACoAAAAAAA=</HashCode>
+      <FileName>Model\Money.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PPPDDDChap05.DomainModel.Model.Bid">
+    <Position X="0.5" Y="4.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAIAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Bid.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="MaximumBid" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PPPDDDChap05.DomainModel.Model.Price">
+    <Position X="8.5" Y="0.5" Width="1.75" />
+    <AssociationLine Name="Amount" Type="PPPDDDChap05.DomainModel.Model.Money">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.81" Y="0.127" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAACAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Price.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Amount" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PPPDDDChap05.DomainModel.Model.WinningBid">
+    <Position X="4.5" Y="0.5" Width="2.25" />
+    <Members>
+      <Method Name="CreateNewBid" Hidden="true" />
+      <Method Name="DetermineWinnerFromProxyBidding" Hidden="true" />
+      <Method Name="MaxBidCanBeExceededBy" Hidden="true" />
+    </Members>
+    <AssociationLine Name="MaximumBid" Type="PPPDDDChap05.DomainModel.Model.Money">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-2.065" Y="0.077" Height="0.182" Width="1.862" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="CurrentAuctionPrice" Type="PPPDDDChap05.DomainModel.Model.Price">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.152" Y="0.135" Height="0.182" Width="1.477" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>BAAIAAAAAQAAAgAhAAAAIAIAAgAAAAUAAAAAAAAEBAA=</HashCode>
+      <FileName>Model\WinningBid.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="MaximumBid" />
+      <Property Name="CurrentAuctionPrice" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PPPDDDChap05.DomainModel.Model.HistoricalBid" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAABAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\HistoricalBid.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
