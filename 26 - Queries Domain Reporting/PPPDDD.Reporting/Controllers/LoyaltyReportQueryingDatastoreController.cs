@@ -37,12 +37,12 @@ namespace PPPDDD.Reporting.Controllers
                 con.Open();
                 var pointsQuery = "select [Month], [PointsPerDollar] from loyaltySettings " +
                                   "where [Month] >= @start " + 
-                                  "and [Month] >= @end";
+                                  "and [Month] < @end";
                 settings = con.Query<LoyaltySettings>(pointsQuery, new { start = start, end = end });
 
                 var signupsQuery = "select count(*) from loyaltyAccounts" +
                                    "where isActive = true " +
-                                   "where [created] >= @start " +
+                                   "and [created] >= @start " +
                                    "and [created] < @end ";
                 signups = con.Query<SignupCount>(signupsQuery, new { start = start, end = end } );
 
