@@ -43,13 +43,28 @@
     <Compile Include="Model\IHandleEvents.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Events\BookingConfirmedByCustomer.cs" />
-    <Compile Include="Model\OnlineGaming.cs" />
+    <Compile Include="OnlineGaming\WithDomainServices\Model\Competitor.cs" />
+    <Compile Include="OnlineGaming\WithDomainServices\Model\IGame.cs" />
+    <Compile Include="OnlineGaming\WithDomainServices\Model\IGameRewardPolicy.cs" />
+    <Compile Include="OnlineGaming\WithDomainServices\Model\IGameScoringPolicy.cs" />
+    <Compile Include="OnlineGaming\WithDomainServices\Model\IScoreFinder.cs" />
+    <Compile Include="OnlineGaming\WithDomainServices\Model\OnlineDeathmatch.cs" />
+    <Compile Include="OnlineGaming\WithDomainServices\Model\Ranking.cs" />
+    <Compile Include="OnlineGaming\WithDomainServices\Model\Score.cs" />
+    <Compile Include="OnlineGaming\WithoutDomainServices\Model\Competitor.cs" />
+    <Compile Include="OnlineGaming\WithoutDomainServices\Model\OnlineDeathmatch.cs" />
+    <Compile Include="OnlineGaming\WithoutDomainServices\Model\Ranking.cs" />
+    <Compile Include="OnlineGaming\WithoutDomainServices\Model\Score.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\RomanceOMeter.cs" />
     <Compile Include="Model\ShippingRouteFinder.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Infrastructure\" />
+    <Folder Include="OnlineGaming\WithDomainServices\Application\" />
+    <Folder Include="OnlineGaming\WithDomainServices\Infrastructure\" />
+    <Folder Include="OnlineGaming\WithoutDomainServices\Application\" />
+    <Folder Include="OnlineGaming\WithoutDomainServices\Infrastructure\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
