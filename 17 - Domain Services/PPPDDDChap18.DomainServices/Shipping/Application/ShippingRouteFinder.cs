@@ -1,11 +1,11 @@
-﻿using System;
+﻿using PPPDDDChap18.DomainServices.Shipping.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PPPDDDChap18.DomainServices
+namespace PPPDDDChap18.DomainServices.Shipping.Application
 {
     // implementation of Domain Service - this would live in the Service Layer
     public class ShippingRouteFinder : IShippingRouteFinder
@@ -31,22 +31,4 @@ namespace PPPDDDChap18.DomainServices
             return null;
         }
     }
-
-    // interface for Domain Service - this would live in the Domain Model
-    // this is the "contract"
-    public interface IShippingRouteFinder
-    {
-        Route FindFastestRoute(Location departing, Location destination, DateTime departureDate);
-    }
-
-    public class Route
-    {
-        // ...
-    }
-
-    public class Location
-    {
-        // ...
-    }
-
 }

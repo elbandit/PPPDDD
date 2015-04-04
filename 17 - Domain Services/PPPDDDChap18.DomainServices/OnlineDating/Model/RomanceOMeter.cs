@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PPPDDDChap18.DomainServices
+namespace PPPDDDChap18.DomainServices.OnlineDating.Model
 {
     // Domain Service - part of Ubiquitous Language
     public class RomanceOMeter
@@ -34,34 +34,5 @@ namespace PPPDDDChap18.DomainServices
             // ...
             return new CompatibilityRating();
         }
-    }
-
-
-    // entity
-    public class LoveSeeker
-    {
-        public Guid Id { get; protected set; }
-
-        public BloodType BloodType { get; private set; }
-
-        // ...
-    }
-
-    // Value Objects
-
-    public class CompatibilityRating
-    {
-        public CompatibilityRating Boost(CompatibilityRating rating)
-        {
-            // ..
-            return null;
-        }
-
-        // ..
-    }
-
-    public class BloodType
-    {
-        // ...
     }
 }
