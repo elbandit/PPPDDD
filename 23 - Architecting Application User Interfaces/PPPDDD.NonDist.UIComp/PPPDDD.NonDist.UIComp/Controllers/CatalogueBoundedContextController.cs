@@ -4,7 +4,7 @@ using System.Web.Mvc;
 
 namespace PPPDDD.NonDist.UIComp.Controllers
 {
-    public class CatalogueBoundedContextController : Controller
+    public class CatalogBoundedContextController : Controller
     {
         [ChildActionOnly] // action cannot be rendered as an individual page
         public PartialViewResult ItemInBasket(string productId)
@@ -12,7 +12,7 @@ namespace PPPDDD.NonDist.UIComp.Controllers
             var product = SalesBoundedContext.ProductFinder.Find(productId);
 
             /* convention will look for a partial view called:
-             * /Views/CatalogueBoundedContext/ItemInBasket.cshtml
+             * /Views/CatalogBoundedContext/ItemInBasket.cshtml
             */
             return PartialView(product);
         }
