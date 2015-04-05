@@ -89,7 +89,7 @@
     <Content Include="Web.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\CatalogueBoundedContext\ItemInBasket.cshtml" />
+    <Content Include="Views\CatalogBoundedContext\ItemInBasket.cshtml" />
     <Content Include="Views\PricingBoundedContext\Price.cshtml" />
     <Content Include="Views\ShippingBoundedContext\DeliveryOptions.cshtml" />
   </ItemGroup>

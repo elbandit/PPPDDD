@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PPPDDDChap18.DomainServices.Infrastructure
+namespace PPPDDDChap18.DomainServices.Insurance.Model
 {
-    interface IHandleEvents<T>
+    public interface IPolicyRepository
     {
+        Policy Get(int policyId);
     }
+
 }

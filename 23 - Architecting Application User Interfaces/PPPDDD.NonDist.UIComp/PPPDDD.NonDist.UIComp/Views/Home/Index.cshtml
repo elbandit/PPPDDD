@@ -18,7 +18,7 @@
         @foreach(var pid in productIdsInBasket)
         {
             <div class="basketItem" style="margin-bottom: 20px;">
-                @{ Html.RenderAction("ItemInBasket", "CatalogueBoundedContext", new { productId = pid}); } 
+                @{ Html.RenderAction("ItemInBasket", "CatalogBoundedContext", new { productId = pid}); } 
                 @{ Html.RenderAction("Price", "PricingBoundedContext", new { productId = pid }); }
             </div>
             <br />

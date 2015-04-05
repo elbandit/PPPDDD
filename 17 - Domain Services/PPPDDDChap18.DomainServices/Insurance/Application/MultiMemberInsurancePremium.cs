@@ -1,10 +1,11 @@
-﻿using System;
+﻿using PPPDDDChap18.DomainServices.Insurance.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PPPDDDChap18.DomainServices
+namespace PPPDDDChap18.DomainServices.Insurance.Application
 {
     // Application Service
     public class MultiMemberInsurancePremium
@@ -32,43 +33,5 @@ namespace PPPDDDChap18.DomainServices
 
             return multiMemberQuote;
         }
-    }
-
-    /*         Domain Objects      */
-    public interface IPolicyRepository
-    {
-        Policy Get(int policyId);
-    }
-
-    public interface IMemberRepository
-    {
-        IEnumerable<Member> Get(IEnumerable<int> memberIds);
-    }
-
-    // Entities
-    public class Policy
-    {
-        public Guid Id { get; protected set; }
-
-        // ...
-    }
-
-    public class Member
-    {
-        public Guid Id { get; protected set; }
-
-        // ...
-    }
-
-    // Domain Service interface
-    public interface IMultiMemberPremiumCalculator
-    {
-        Quote CalculatePremium(Policy mainPolicy, IEnumerable<Member> additionalMembers);
-    }
-
-    // Value Object
-    public class Quote
-    {
-        // ...
     }
 }
