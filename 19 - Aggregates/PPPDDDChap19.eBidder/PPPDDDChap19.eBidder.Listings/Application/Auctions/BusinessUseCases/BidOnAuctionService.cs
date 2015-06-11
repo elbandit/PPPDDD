@@ -39,7 +39,7 @@ namespace PPPDDDChap19.eBidder.Listings.Application.Application.BusinessUseCases
 
                     var bidAmount = new Money(amount);
 
-                    var offer = new Offer(memberId, bidAmount, _clock.Time())
+                    var offer = new Offer(memberId, bidAmount, _clock.Time());
 
                     auction.PlaceBidFor(offer, _clock.Time());
                 }                    
